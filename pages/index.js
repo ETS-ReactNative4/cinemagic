@@ -8,6 +8,7 @@ import TitleText from '@/comps/TextUI'
 import DetailsBut from '@/comps/DetailsBut'
 import DotNavBar from '@/comps/DotNavBar'
 import CloseBtn from '@/comps/CloseBtn'
+import BackBtn from '@/comps/BackBtn'
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <DetailsBut/>
       <DotNavBar/>
       <CloseBtn/>
+      <BackBtn/>
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
