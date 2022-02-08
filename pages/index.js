@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import Logo from '@/comps/Logo'
 import NavBarUI from '@/comps/NavBar'
 import SearchBar from '@/comps/SearchBar'
+import TitleText from '@/comps/TextUI'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Logo/>
       <SearchBar/>
       <NavBarUI/>
+      <TitleText/>
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
