@@ -6,6 +6,7 @@ import NavBarUI from '@/comps/NavBar'
 import SearchBar from '@/comps/SearchBar'
 import TitleText from '@/comps/TextUI'
 import DetailsBut from '@/comps/DetailsBut'
+import DotNavBar from '@/comps/DotNavBar'
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <NavBarUI/>
       <TitleText/>
       <DetailsBut/>
+      <DotNavBar/>
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
