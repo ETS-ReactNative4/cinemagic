@@ -1,29 +1,33 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, {useRouter} from 'react';
+import styled from 'styled-components';
 
-const ButtonUI = styled.button`
-font-size: ${props=>props.fontsize};
-color: white;
-background-color: ${props=>props.bgcolor};
-border-radius:15px;
-font-weight: ${props=>props.fontweight}
-height: ${props=>props.height};
-width: ${props=>props.width};
-border: none;
-letter-spacing:0.5px;
+const Cont = styled.div`
+    display: flex;
+    padding: 20px;
 `;
+const Button = styled.button`
+    height: 35px;
+    width: 80px;
+    background-color: #D02A1C;
+    border: none;
+    border-radius: 20px;
+`
+const BtnText = styled.div`
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-family:'Sen', sans-serif;
+    font-size: 15px;
+`
 
-const DetailsBut = ({
-    fontsize = "14px",
-    fontweight = "bold",
-    height = "33px",
-    width = "79px",
-    bgcolor = "#D02A1C",
-    text = "DETAILS",
-    handleClick
+const DetailsBtn = ({
+    onClickDetailsBtn = () =>{}
 }) => {
-    return (<ButtonUI onClick={handleClick}fontsize={fontsize} fontweight={fontweight} height={height} width={width} bgcolor={bgcolor}>{text}</ButtonUI>
-    );
+    return <Cont onClick={onClickDetailsBtn}>
+        <Button>
+            <BtnText>Details</BtnText>
+        </Button>
+    </Cont>
 }
 
-export default DetailsBut;
+export default DetailsBtn;
