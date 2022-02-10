@@ -1,33 +1,22 @@
-import React, {useState} from 'react';
+import React, {useRouter} from 'react';
 import styled from 'styled-components';
-// import {useRouter} from 'next/router';
-// import { NavigationContainer, useNavigation } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const BackBut = styled.div`
+const Cont = styled.div`
     display: flex;
-    align-items: center;
-    width: 24px;
-    height: 24px;
-
+    padding: 20px;
 `;
+const BackBtnImg = styled.img`
+    height: 18px;
+    width: 18px;
+`
 
 const BackBtn = ({
-    backicon = "/back_but.png",
+    imgSrc="/back.svg",
+    onPressBackBtn = () =>{}
 }) => {
-    //const router = useRouter();
-
-    // const Stack = createNativeStackNavigator();
-    // const navigation = useNavigation();
-  
-    // const [nav, setNav] = useState(0)
-
-    // onPressBaxk=()=>{
-    //     setNav(0)
-    //     navigation.navigate('Fave')
-    //   },
-
-    return <BackBut backicon={backicon}/>
+    return <Cont onClick={onPressBackBtn}>
+        <BackBtnImg src={imgSrc}></BackBtnImg>
+    </Cont>
 }
 
 export default BackBtn;

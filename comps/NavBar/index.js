@@ -1,71 +1,33 @@
-import React, {useState} from 'react';
+import React, {useRouter} from 'react';
 import styled from 'styled-components';
-// import {useRouter} from 'next/router';
-// import { NavigationContainer, useNavigation } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Cont = styled.div`
-`;
-
-const NavBar = styled.div`
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
     align-items: center;
-    width: 429px;
-    height: 80px;
+    justify-content: space-between;
+    padding: 20px;
+    width: 300px;
+    height: 65px;
     background-color: #303234;
+    border-radius: 5px 5px 25px 25px;
 `;
 
-const FaveImage = styled.img`
-    width: 50px;
-    height: 45px;
-    padding:2px;
-`;
+const NavBarIcon = styled.img`
+    width: ${props=>props.width};
+    heigth: ${props=>props.height};
+`
 
-const HomeImage = styled.img`
-    width: 51px;
-    height: 50px;
-    padding:2px;
-`;
-
-const SettingImage = styled.img`
-    width: 51px;
-    height: 50px;
-    padding:2px;
-`;
-
-const NavBarUI = ({
-    fave = "/fave_icon.png",
-    home = "/home_icon.png",
-    setting = "/setting_icon.png",
+const NavBar = ({
+    width = "30px",
+    heigth = "30px",
+    onClickNavBar = () =>{}
 }) => {
-    //const router = useRouter();
-
-    // const Stack = createNativeStackNavigator();
-    // const navigation = useNavigation();
-  
-    // const [nav, setNav] = useState(0)
-
-    // onPressFave=()=>{
-    //     setNav(0)
-    //     navigation.navigate('Fave')
-    //   },
-    //   onPressHome=()=>{
-    //     setNav(1)
-    //     navigation.navigate('Home')
-    //   },
-    //   onPressSetting=()=>{
-    //     setNav(2)
-    //     navigation.navigate('Setting')
-    //   }
-
     return <Cont>
-    <NavBar>
-        <FaveImage src={fave} ></FaveImage>
-        <HomeImage src={home}></HomeImage>
-        <SettingImage src={setting}></SettingImage>
-    </NavBar> 
+        <NavBarIcon onClick={onClickNavBar} src="/favorite-dark.svg" width='35px' height='35px'></NavBarIcon>
+        <NavBarIcon onClick={onClickNavBar} src="/home-dark.svg" width={width} height={heigth}></NavBarIcon>
+        <NavBarIcon onClick={onClickNavBar} src="/setting-dark.svg" width={width} height={heigth}></NavBarIcon>
     </Cont>
 }
 
-export default NavBarUI;
+export default NavBar;

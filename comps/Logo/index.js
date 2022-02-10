@@ -1,26 +1,22 @@
-import React, {useState} from 'react';
+import React, {useRouter} from 'react';
 import styled from 'styled-components';
 
 const Cont = styled.div`
-display: flex;
-justify-content: space-evenly;
-align-items: center;
+    display: flex;
+    padding: 20px;
 `;
-
 const LogoText = styled.div`
-font-size:20px;
-font-weight:bold;
-color: #D02A1C;
-font-family: 
-`;
-
+    font-size: 18px;
+    color: #D02A1C;
+    font-family: 'Sen', sans-serif;
+    font-weight: 900;
+`
 
 const Logo = ({
-    handleClick
+    onClickLogo = () =>{}
 }) => {
-
-    return <Cont>
-       <LogoText onClickLogo={handleClick}>CINEMAGIC</LogoText>
+    return <Cont onClick={onClickLogo}>
+        <LogoText>CINEMAGIC</LogoText>
     </Cont>
 }
 

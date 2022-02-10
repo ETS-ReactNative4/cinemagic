@@ -1,33 +1,22 @@
-import React, {useState} from 'react';
+import React, {useRouter} from 'react';
 import styled from 'styled-components';
-// import {useRouter} from 'next/router';
-// import { NavigationContainer, useNavigation } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const CloseBut = styled.div`
+const Cont = styled.div`
     display: flex;
-    align-items: center;
-    width: 22px;
-    height: 22px;
-
+    padding: 20px;
 `;
+const CloseBtnImg = styled.img`
+    height: 20px;
+    width: 20px;
+`
 
 const CloseBtn = ({
-    backicon = "/close_but.png",
+    CloseSrc="/close.svg",
+    onPressCloseBtn = () =>{}
 }) => {
-    //const router = useRouter();
-
-    // const Stack = createNativeStackNavigator();
-    // const navigation = useNavigation();
-  
-    // const [nav, setNav] = useState(0)
-
-    // onPressClose=()=>{
-    //     setNav(0)
-    //     navigation.navigate('Fave')
-    //   },
-
-    return <CloseBut backicon={backicon}/>
+    return <Cont onClick={onPressCloseBtn}>
+        <CloseBtnImg src={CloseSrc}></CloseBtnImg>
+    </Cont>
 }
 
 export default CloseBtn;

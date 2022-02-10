@@ -2,18 +2,18 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import {useRouter} from 'next/router';
 
-const DotNavBarContainer = styled.div`
+const Cont = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 90px;
-    height: 20px;
+    width: 70px;
+    height: 10px;
 `;
 
 const NavBarDot = styled.div`
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     background-color: ${props=>props.dotcolour};
     border-radius: 90px;
 `;
@@ -27,13 +27,13 @@ const DotNavBar = ({
     onClick4 = ()=>{},
     onClick5 = ()=>{},
 }) => {
-    return <DotNavBarContainer>
+    return <Cont>
         <NavBarDot onClick={onClick1} dotcolour={clickcolour}></NavBarDot>
         <NavBarDot onClick={onClick2} dotcolour={colour}></NavBarDot>
         <NavBarDot onClick={onClick3} dotcolour={colour}></NavBarDot>
         <NavBarDot onClick={onClick4} dotcolour={colour}></NavBarDot>
         <NavBarDot onClick={onClick5} dotcolour={colour}></NavBarDot>
-    </DotNavBarContainer>
+    </Cont>
 }
 
 export default DotNavBar;
