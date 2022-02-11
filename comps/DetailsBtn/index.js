@@ -3,11 +3,10 @@ import styled from 'styled-components';
 
 const Cont = styled.div`
     display: flex;
-    padding: 20px;
 `;
 const Button = styled.button`
-    height: 35px;
-    width: 80px;
+    height: 30px;
+    width: 75px;
     background-color: #D02A1C;
     border: none;
     border-radius: 20px;
@@ -17,7 +16,8 @@ const BtnText = styled.div`
     display: flex;
     justify-content: center;
     font-family:'Sen', sans-serif;
-    font-size: 15px;
+    font-weight: 700;
+    font-size: 13px;
 `
 
 const DetailsBtn = ({
@@ -25,7 +25,7 @@ const DetailsBtn = ({
 }) => {
     return <Cont onClick={onClickDetailsBtn}>
         <Button>
-            <BtnText>Details</BtnText>
+            <BtnText>DETAILS</BtnText>
         </Button>
     </Cont>
 }

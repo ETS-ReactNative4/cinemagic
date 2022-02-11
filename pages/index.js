@@ -9,12 +9,16 @@ import DotNavBar from '@/comps/DotNavBar'
 import Logo from '@/comps/Logo'
 import NavBar from '@/comps/NavBar'
 import SearchBar from '@/comps/SearchBar'
+import TextUI from '@/comps/TextUI'
+import Card from '@/comps/Card'
+import PopUpCont from '@/comps/PopUpCont'
+import ListCard from '@/comps/ListCard'
+import PopUpFavCont from '@/comps/PopUpFavCont'
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <SearchBar />
-
+      <PopUpCont />
     </div>
   )
 }

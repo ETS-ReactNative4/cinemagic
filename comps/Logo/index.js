@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const Cont = styled.div`
     display: flex;
-    padding: 20px;
 `;
 const LogoText = styled.div`
     font-size: 18px;

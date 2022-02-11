@@ -6,7 +6,6 @@ const Cont = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
     width: 300px;
     height: 65px;
     background-color: #303234;
