@@ -1,22 +1,29 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 
+const Cont = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
 const TitleTextUI = styled.div`
-font-size: ${props=>props.fontsize};
-font-weight:  ${props=>props.fontweight};
-color:  ${props=>props.color};
-font-family:
+    font-size: ${props=>props.TextUISize};
+    font-weight:  ${props=>props.TextUIWeight};
+    color:  ${props=>props.TextUIColor};
 `;
 
-const TitleText = ({
-    fontsize = "15px",
-    fontweight = "bold",
-    color="#E0E0E0",
-    text="Trending"
+const TextUI = ({
+    TextUISize = "15px",
+    TextUIWeight = "700",
+    TextUIColor="#E0E0E0",
+    Title="SEARCH"
 }) => {
 
-    return <TitleTextUI fontsize={fontsize} fontweight={fontweight} color={color}>{text}</TitleTextUI>
+    return <Cont>
+        <TitleTextUI TextUISize={TextUISize} TextUIWeight={TextUIWeight} TextUIColor={TextUIColor}>{Title}</TitleTextUI>
+    </Cont>
 }
 
-export default TitleText;
+export default TextUI;
 

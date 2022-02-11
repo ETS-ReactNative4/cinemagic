@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const Cont = styled.div`
     display: flex;
-    padding: 20px;
 `;
 const CloseBtnImg = styled.img`
     height: 20px;
