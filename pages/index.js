@@ -13,14 +13,8 @@ import SearchBar from '@/comps/SearchBar'
 export default function Home() {
   return (
     <div className={styles.container}>
-      <BackBtn />
-      <CloseBtn />
-      <DetailsBtn />
-      <DotNavBar />
-      <Logo />
-      <NavBar />
-      <br></br>
       <SearchBar />
+
     </div>
   )
 }

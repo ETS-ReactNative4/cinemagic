@@ -15,6 +15,7 @@ const NavBarDot = styled.div`
     width: 8px;
     height: 8px;
     background-color: ${props=>props.dotcolour};
+    background-color: ${props=>props.dotcolour};
     border-radius: 90px;
 `;
 
