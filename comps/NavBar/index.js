@@ -5,16 +5,18 @@ const Cont = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    width: 300px;
+    justify-content: space-around;
+    width: 100vw;
     height: 65px;
     background-color: #303234;
-    border-radius: 5px 5px 25px 25px;
+    border-radius: 30px 30px 0px 0px;
+    position: fixed;
+    bottom: 0px;
 `;
 
 const NavBarIcon = styled.img`
     width: ${props=>props.width};
-    heigth: ${props=>props.height};
+    height: ${props=>props.height};
 `
 
 const NavBar = ({
