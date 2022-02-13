@@ -11,6 +11,7 @@ import DotNavBar from '@/comps/DotNavBar';
 import NavBar from '@/comps/NavBar';
 import fakeData from '@/data/fakeData.json';
 import DropDownPicker from '@/comps/DropDownPicker';
+import Carousel from '@/comps/ImageCarousel';
 
 
 export default function Home() {
@@ -38,87 +39,33 @@ export default function Home() {
           <TextUI Title="TRENDING" />
         </div>
 
-        
+        <div style={ styles.carouselCont }>
+          <Carousel />
+        </div>
+
+        <div style={ styles.subHeadingCont }>
+          <TextUI Title="GENRE" />
+        </div>
+
+        <div style={ styles.carouselCont }>
+          <Carousel />
+        </div>
+
+        <div style={ styles.subHeadingCont }>
+          <TextUI Title="2021 MOVIES" />
+        </div>
+
+        <div style={ styles.carouselCont }>
+          <Carousel />
+        </div>
+
+        <div style={ styles.navBarCont }>
+          <NavBar />
+        </div>
       </div>
     </div>
-
-    // <HomeCont>
-    //   <div className='marginTop'>
-    //     <Logo/>
-    //   </div>
-    //   <div className='margin'>
-    //     <SearchBar/>
-    //   </div>
-    //   <div className='margin'>
-    //     <div style={{height:"30px", backgroundColor:"#FAB"}}>FilterButton</div>
-    //   </div>
-    //   <div className='margin'>
-    //     <TextUI Title='TRENDING'/>
-    //   </div>
-    //   <div className='card'>
-    //     {fakeData.map((data, card)=><Card key={card} CardImgHeight='175px' CardImgWidth='160px' CardTitle={data.CardTitle} CardImgSrc={data.CardImgSrc}/>)}
-    //   </div>
-    //     <DotNavBar/>
-    //   <div className='section'>
-    //     <TextUI Title='GENRE'/>
-    //   </div>
-    //   <div className='card'>
-    //     {fakeData.map((data, card)=><Card key={card} CardTitle={data.CardTitle} CardImgSrc={data.CardImgSrc}/>)}
-    //   </div>
-    //   <div className='section'>
-    //     <TextUI Title='2021 Movies'/>
-    //   </div>
-    //   <div className='marginBot'>
-    //     <div className='card'>
-    //       {fakeData.map((data, card)=><Card key={card} CardTitle={data.CardTitle} CardImgSrc={data.CardImgSrc}/>)}
-    //     </div>
-    //   </div>
-    //   <NavBar/>
-    // </HomeCont>
   )
 }
-  
-const HomeCont = styled.div`
-margin:0;
-display: flex;
-flex-direction: column;
-align-items: center;
-background-color: #252525;
-overflow-x: hidden;
-width: 100vw;
-
-.section{
-  display: flex;
-  width: 100vw;
-  margin-left: 25px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.card{
-  display: flex;
-  width: 100vw;
-  overflow-x: auto;
-}
-
-.card::-webkit-scrollbar{
-  width:0;
-}
-
-.marginTop{
-  margin-top: 25px;
-  margin-bottom: 10px;
-}
-
-.margin{
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.marginBot{
-  margin-bottom: 70px;
-}
-`;
 
 var styles = {
 // entire window container
@@ -179,6 +126,31 @@ var styles = {
 
     width: "100%",
     height: "68px"
-  }
+  },
 
+// movie image gallery container
+  carouselCont: {
+    display: "flex",
+    justifyContent: "center",
+    
+    width: "100%",
+    height: "175px",
+  },
+
+// sub headings conts
+  subHeadingCont: {
+    display: "flex",
+    justifyContent: "start",
+    alignItems: "center",
+
+    width: "90%",
+    height: "68px"
+  },
+
+// nav bar container
+  navBarCont: {
+    display: "flex",
+    position: "fixed",
+    justifyContent: "center",
+  }
 }

@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import "@/node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "swiper/css/bundle";
 import AppProvider from "@/util/provider";
 
 function MyApp({ Component, pageProps }) {
