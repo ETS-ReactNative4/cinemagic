@@ -15,6 +15,8 @@ const HomeCont = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #252525;
+  width: 100vw;
+  height: 100vh;
 
   .section{
     display: flex;
@@ -29,10 +31,12 @@ const HomeCont = styled.div`
     max-height: 220px;
     width: 100vw;
     overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .card::-webkit-scrollbar{
     width:0;
+    height:0;
   }
 
   .marginTop{
