@@ -65,21 +65,21 @@ export default function Home() {
       <TextUI Title='TRENDING'/>
     </div>
     <div className='card'>
-      {fakeData.map((key)=><Card CardImgHeight='175px' CardImgWidth='160px' CardTitle={key.CardTitle} CardImgSrc={key.CardImgSrc}/>)}
+      {fakeData.map((data, card)=><Card key={card} CardImgHeight='175px' CardImgWidth='160px' CardTitle={data.CardTitle} CardImgSrc={data.CardImgSrc}/>)}
     </div>
       <DotNavBar/>
     <div className='section'>
       <TextUI Title='GENRE'/>
     </div>
     <div className='card'>
-      {fakeData.map((key)=><Card CardTitle={key.CardTitle} CardImgSrc={key.CardImgSrc}/>)}
+      {fakeData.map((data, card)=><Card key={card} CardTitle={data.CardTitle} CardImgSrc={data.CardImgSrc}/>)}
     </div>
     <div className='section'>
       <TextUI Title='2021 Movies'/>
     </div>
     <div className='marginBot'>
       <div className='card'>
-        {fakeData.map((key)=><Card CardTitle={key.CardTitle} CardImgSrc={key.CardImgSrc}/>)}
+        {fakeData.map((data, card)=><Card key={card} CardTitle={data.CardTitle} CardImgSrc={data.CardImgSrc}/>)}
       </div>
     </div>
     <NavBar/>
