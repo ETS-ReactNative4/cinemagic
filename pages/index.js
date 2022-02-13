@@ -19,15 +19,20 @@ const HomeCont = styled.div`
   .section{
     display: flex;
     width: 100vw;
-    margin-left: 50px;
+    margin-left: 25px;
     margin-top: 10px;
     margin-bottom: 10px;
   }
 
   .card{
     display: flex;
-    flex-direction: row;
-    width:100vw;
+    max-height: 220px;
+    width: 100vw;
+    overflow-x: auto;
+  }
+
+  .card::-webkit-scrollbar{
+    width:0;
   }
 
   .marginTop{
@@ -41,7 +46,7 @@ const HomeCont = styled.div`
   }
 
   .marginBot{
-    margin-bottom: 100px;
+    margin-bottom: 80px;
   }
 `;
 
@@ -59,10 +64,10 @@ export default function Home() {
     <div className='margin'>
       <TextUI Title='TRENDING'/>
     </div>
-    <div style={{height:"175px", backgroundColor:"#FAB"}}>TRENDING card</div>
-    <div className='margin'>
-      <DotNavBar/>
+    <div className='card'>
+      {fakeData.map((o,i)=><Card CardImgHeight='175px' CardImgWidth='160px' CardTitle={o.CardTitle} CardImgSrc={o.CardImgSrc}/>)}
     </div>
+      <DotNavBar/>
     <div className='section'>
       <TextUI Title='GENRE'/>
     </div>
@@ -73,7 +78,9 @@ export default function Home() {
       <TextUI Title='2021 Movies'/>
     </div>
     <div className='marginBot'>
-      <Card/>
+      <div className='card'>
+        {fakeData.map((o,i)=><Card CardTitle={o.CardTitle} CardImgSrc={o.CardImgSrc}/>)}
+      </div>
     </div>
     <NavBar/>
     </HomeCont>
