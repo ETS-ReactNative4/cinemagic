@@ -5,6 +5,7 @@ const Cont = styled.div`
     display: flex;
     margin-left: 10px;
     margin-right: 10px;
+    margin-bottom: ${props=>props.marginBot};
 `;
 
 const CardCont = styled.div`
@@ -39,9 +40,10 @@ const Card = ({
     CardTitle = "Yibo <3",
     CardTextColor = "#E0E0E0",
     CardTextSize ="14px",
+    marginBot = "0px",
     onClickCard = () =>{}
 }) => {
-    return <Cont onClick={onClickCard}>
+    return <Cont onClick={onClickCard} marginBot={marginBot}>
         <CardCont width={CardWidth} height={CardHeight}>
             <CardImg width={CardImgWidth} height={CardImgHeight} src={CardImgSrc}></CardImg>
             <CardText CardTextSize={CardTextSize} CardTextColor={CardTextColor}>{CardTitle}</CardText>
