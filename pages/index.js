@@ -15,8 +15,8 @@ const HomeCont = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #252525;
+  overflow-x: hidden;
   width: 100vw;
-  height: 100vh;
 
   .section{
     display: flex;
@@ -28,15 +28,12 @@ const HomeCont = styled.div`
 
   .card{
     display: flex;
-    max-height: 220px;
     width: 100vw;
     overflow-x: auto;
-    overflow-y: hidden;
   }
 
   .card::-webkit-scrollbar{
     width:0;
-    height:0;
   }
 
   .marginTop{
@@ -50,7 +47,7 @@ const HomeCont = styled.div`
   }
 
   .marginBot{
-    margin-bottom: 80px;
+    margin-bottom: 70px;
   }
 `;
 
