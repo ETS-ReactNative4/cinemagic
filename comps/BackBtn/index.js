@@ -10,7 +10,7 @@ const BackBtnImg = styled.img`
 `
 
 const BackBtn = ({
-    imgSrc="/back.svg",
+    imgSrc="/back-dark.svg",
     onPressBackBtn = () =>{}
 }) => {
     return <Cont onClick={onPressBackBtn}>

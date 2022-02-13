@@ -17,20 +17,19 @@ const Card = styled.button`
 `
 const InfoIcon = styled.img`
     width: ${props=>props.width};
-    heigth: ${props=>props.height};
-    icon: ${props=>props.icon};
+    height: ${props=>props.height};
 `
 const Title = styled.div`
-font-size: 11px;
-font-weight:400;
-color: #C6C3C3;
-font-family: 'Sen', sans-serif;
+    font-size: 11px;
+    font-weight:400;
+    color: #C6C3C3;
+    font-family: 'Sen', sans-serif;
 `
 const Text = styled.div`
-font-size: 13px;
-font-weight:700;
-color: #FAFAFA;
-font-family: 'Sen', sans-serif;
+    font-size: 13px;
+    font-weight:700;
+    color: #FAFAFA;
+    font-family: 'Sen', sans-serif;
 `
 
 const Info = ({

@@ -27,7 +27,7 @@ const ListCardImg = styled.img`
 `;
 
 const ListCardInfo = styled.div`
-    display: flex
+    display: flex;
     flex-direction: column;
     padding-top: 7px;
     margin-left: 20px;
@@ -44,7 +44,7 @@ const ListCardIcon = styled.img`
 `;
 
 const DetailButton = styled.div`
-    display: flex
+    display: flex;
     flex-direction: column;
     padding-top: 10px;
     margin-left: 5px;
