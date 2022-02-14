@@ -58,6 +58,12 @@ const HomeCont = styled.div`
   .marginBot{
     margin-bottom: 70px;
   }
+
+  .titleMargin{
+    margin-top:10px;
+    margin-bottom:20px;
+
+  }
 `;
 
 export default function Home() {
@@ -74,11 +80,11 @@ export default function Home() {
     <div className='margin'>
       <div style={{height:"30px", backgroundColor:"#FAB"}}>sortButton</div>
     </div>
-    <div className='margin'>
+    <div className='titleMargin'>
       <TextUI Title='YOUR RESEARCH'/>
     </div>
     <div className='card'>
-      {fakeData.map((data, card)=><Card key={card} marginBot="15px" CardImgHeight="244px" CardImgWidth='180px' CardTitle={data.CardTitle} CardImgSrc={data.CardImgSrc}/>)}
+      {fakeData.map((data, card)=><Card key={card} marginBot="15px" CardImgHeight="200px" CardImgWidth='146px' CardTitle={data.CardTitle} CardImgSrc={data.CardImgSrc}/>)}
     </div>
     <NavBar/>
     </HomeCont>

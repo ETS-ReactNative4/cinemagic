@@ -24,6 +24,7 @@ const HomeCont = styled.div`
     margin-left: 25px;
     margin-top: 10px;
     margin-bottom: 10px;
+    padding:20px;
   }
 
   .card{
@@ -45,6 +46,8 @@ const HomeCont = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
   }
+
+  
 
   .marginBot{
     margin-bottom: 70px;

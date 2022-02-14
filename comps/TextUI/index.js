@@ -14,7 +14,7 @@ const TitleTextUI = styled.div`
 `;
 
 const TextUI = ({
-    TextUISize = "15px",
+    TextUISize = "17px",
     TextUIWeight = "700",
     TextUIColor="#E0E0E0",
     Title="SEARCH"
