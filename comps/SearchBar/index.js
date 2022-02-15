@@ -6,7 +6,7 @@ const Cont = styled.div`
     flex-direction: row;
     justify-content:space-between;
     align-items:center;
-    width:288px;
+    width:300px;
     height:42px;
     background-color: #303234;
     border: none;
@@ -18,11 +18,11 @@ const SearchBarInput = styled.input`
     justify-content: center;
     color: #ABABAB;
     height:30px;
-    width:220px;
+    width:250px;
     margin-left:20px;
     background-color: #303234;
     border: none;
-    font-size:13px;
+    font-size:15px;
 `
 const SearchBarIcon = styled.img`
     width: 20px;

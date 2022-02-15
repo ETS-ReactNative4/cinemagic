@@ -1,5 +1,5 @@
 import { useContext, createContext, useState } from "react";
-import { themes } from "@/util/themes";
+import { themes } from "@/utils/themes";
 
 const initialStates = {
   theme: "default",

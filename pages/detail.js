@@ -82,7 +82,7 @@ export default function Detail() {
         <TextUI Title='MOVIE DETAIL'/>
     </div>
     <div className='top'>
-        <Card CardImgHeight='320px' CardImgWidth='220px'/>
+        <Card CardTitle="" CardImgHeight='320px' CardImgWidth='220px'/>
         <div className='infoCard'>
             <Info infoSrc='/video-dark.svg' title='Genre'/>
             <Info text='1h 20m'/>

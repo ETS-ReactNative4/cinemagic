@@ -25,8 +25,8 @@ const Title = styled.text`
 `
 
 const Icon = styled.img`
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
 `
 const Bot = styled.div`
     display: flex;
@@ -36,7 +36,7 @@ const Bot = styled.div`
 const InfoText = styled.text`
     margin-top: 20px;
     width:320px;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 14px;
     color: #FAFAFA;
 `
