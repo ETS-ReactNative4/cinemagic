@@ -30,35 +30,42 @@ export default function Home() {
 
         {/* drop down filter menus */}
         <div style={ styles.dropDownCont }>
-          <DropDownPicker />
-          <DropDownPicker />
-          <DropDownPicker />
+          <DropDownPicker dropDownTitle='Action'/>
+          <DropDownPicker dropDownTitle='Year'/>
+          <DropDownPicker dropDownTitle='Duration'/>
         </div>
 
+        {/* TRENDING subheading */}
         <div style={ styles.trendingHeadingCont }>
           <TextUI Title="TRENDING" />
         </div>
 
+        {/* movie carousel */}
         <div style={ styles.carouselCont }>
           <Carousel />
         </div>
 
+        {/* GENRE subheading */}
         <div style={ styles.subHeadingCont }>
           <TextUI Title="GENRE" />
         </div>
 
+        {/* movie carousel */}
         <div style={ styles.carouselCont }>
           <Carousel />
         </div>
 
+        {/* 2021 movies subheading */}
         <div style={ styles.subHeadingCont }>
           <TextUI Title="2021 MOVIES" />
         </div>
 
+        {/* movie carousel */}
         <div style={ styles.carouselCont }>
           <Carousel />
         </div>
 
+        {/* nav bar */}
         <div style={ styles.navBarCont }>
           <NavBar />
         </div>
@@ -74,7 +81,7 @@ var styles = {
     justifyContent: "center",
 
     width: "100vw",
-    height: "100vh"
+    height: "115vh"
   },
 
 // 428px iPhone 13 Max container
@@ -134,7 +141,7 @@ var styles = {
     justifyContent: "center",
     
     width: "100%",
-    height: "175px",
+    minHeight: "212px",
   },
 
 // sub headings conts
@@ -152,5 +159,7 @@ var styles = {
     display: "flex",
     position: "fixed",
     justifyContent: "center",
+
+    zIndex: 2
   }
 }

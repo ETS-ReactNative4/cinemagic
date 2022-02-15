@@ -3,6 +3,6 @@ export const themes = {
     body: "#252525",
   },
   light: {
-
+    body: "#FAFAFA",
   }
 }

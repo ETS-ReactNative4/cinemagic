@@ -1,6 +1,11 @@
 import "@/styles/globals.css";
+
+// Reactjs Bootstrap css
 import "@/node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "swiper/css/bundle";
+
+// Custom Reactjs Swiper css
+import "@/comps/ImageCarousel/customCarouselStyles.css";
+
 import AppProvider from "@/util/provider";
 
 function MyApp({ Component, pageProps }) {

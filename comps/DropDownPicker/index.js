@@ -19,7 +19,7 @@ export default function DropDownPicker({
           id={`dropdown-button-drop-${idx}`}
           size="sm"
           title={ dropDownTitle }
-          menuVariant="dark"
+          variant='dark'
         >
           <Dropdown.Item eventKey={ itemAction1 }>{ itemText1 }</Dropdown.Item>
           <Dropdown.Item eventKey={ itemAction2 }>{ itemText2 }</Dropdown.Item>
