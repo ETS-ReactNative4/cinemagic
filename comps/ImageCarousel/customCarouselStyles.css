@@ -4,3 +4,25 @@
   height: 9px;
 }
 
+.customSwiper .swiper-slide .carouselText {
+  display: flex;
+  justify-content: center;
+
+  width: 160px;
+  padding-top: 13px;
+
+  color: white;
+  font-size: 12pt;
+}
+
+.customSwiper2 .swiper-slide .carousel2text {
+  display: flex;
+  justify-content: center;
+  
+  width: 123px;
+  padding-top: 13px;
+  /* margin-top: 13px; */
+  
+  color: white;
+  font-size: 12pt;
+}

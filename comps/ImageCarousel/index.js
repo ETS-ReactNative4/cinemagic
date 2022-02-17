@@ -19,6 +19,10 @@ export default function Carousel(){
           alt={ `Slide ${ i }` }
           style={ styles.image }
         />
+
+        <p className='carouselText'>
+          Movie Title
+        </p>
       </SwiperSlide>
     )
   }
@@ -34,8 +38,8 @@ export default function Carousel(){
         }}
         slidesPerView={3}
         slidesPerGroup={3}
-        spaceBetween={150}
-        loop={true}
+        spaceBetween={100}
+        loop={false}
         // loopFillGroupWithBlank={true}
       >
         { slides }

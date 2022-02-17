@@ -12,6 +12,7 @@ import NavBar from '@/comps/NavBar';
 import fakeData from '@/data/fakeData.json';
 import DropDownPicker from '@/comps/DropDownPicker';
 import Carousel from '@/comps/ImageCarousel';
+import Carousel2 from '@/comps/ImageCarousel/version2';
 
 
 export default function Home() {
@@ -52,7 +53,7 @@ export default function Home() {
 
         {/* movie carousel */}
         <div className='carouselCont'>
-          <Carousel />
+          <Carousel2 />
         </div>
 
         {/* 2021 movies subheading */}
@@ -62,7 +63,7 @@ export default function Home() {
 
         {/* movie carousel */}
         <div className='carouselCont2'>
-          <Carousel />
+          <Carousel2 />
         </div>
 
         {/* nav bar */}
