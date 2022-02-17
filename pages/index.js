@@ -12,154 +12,65 @@ import NavBar from '@/comps/NavBar';
 import fakeData from '@/data/fakeData.json';
 import DropDownPicker from '@/comps/DropDownPicker';
 import Carousel from '@/comps/ImageCarousel';
+import Carousel2 from '@/comps/ImageCarousel/version2';
 
 
 export default function Home() {
   return (
-    <div style={ styles.windowCont }>
-      <div style={ styles.phoneSizeCont }>
+    <div className='windowCont'>
+      <div className='phoneSizeCont'>
         {/* cinemagic logo/title */}
-        <div style={ styles.titleCont }>
+        <div className='titleCont'>
           <Logo />
         </div>
 
         {/* search bar */}
-        <div style={ styles.searchBarCont }>
+        <div className='searchBarCont'>
           <SearchBar />
         </div>
 
         {/* drop down filter menus */}
-        <div style={ styles.dropDownCont }>
+        <div className='dropDownCont'>
           <DropDownPicker dropDownTitle='Action'/>
           <DropDownPicker dropDownTitle='Year'/>
           <DropDownPicker dropDownTitle='Duration'/>
         </div>
 
         {/* TRENDING subheading */}
-        <div style={ styles.trendingHeadingCont }>
+        <div className='trendingHeadingCont'>
           <TextUI Title="TRENDING" />
         </div>
 
         {/* movie carousel */}
-        <div style={ styles.carouselCont }>
+        <div className='carouselCont'>
           <Carousel />
         </div>
 
         {/* GENRE subheading */}
-        <div style={ styles.subHeadingCont }>
+        <div className='subHeadingCont'>
           <TextUI Title="GENRE" />
         </div>
 
         {/* movie carousel */}
-        <div style={ styles.carouselCont }>
-          <Carousel />
+        <div className='carouselCont'>
+          <Carousel2 />
         </div>
 
         {/* 2021 movies subheading */}
-        <div style={ styles.subHeadingCont }>
+        <div className='subHeadingCont'>
           <TextUI Title="2021 MOVIES" />
         </div>
 
         {/* movie carousel */}
-        <div style={ styles.carouselCont }>
-          <Carousel />
+        <div className='carouselCont2'>
+          <Carousel2 />
         </div>
 
         {/* nav bar */}
-        <div style={ styles.navBarCont }>
+        <div className='navBarCont'>
           <NavBar />
         </div>
       </div>
     </div>
   )
-}
-
-var styles = {
-// entire window container
-  windowCont: {
-    display: "flex",
-    justifyContent: "center",
-
-    width: "100vw",
-    height: "115vh"
-  },
-
-// 428px iPhone 13 Max container
-  phoneSizeCont: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-
-    width: "428px"
-  },
-
-// cinemagic title container
-  titleCont: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "end",
-
-    width: "100%",
-    height: "50px"
-  },
-
-// search bar container
-  searchBarCont: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "end",
-
-    width: "100%",
-    height: "55px"
-  },
-
-// drop down menu container
-  dropDownCont: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "end",
-
-    // width: "288px",
-    width: "75%",
-    height: "43px"
-  },
-
-// TRENDING header container
-  trendingHeadingCont: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-
-    width: "100%",
-    height: "68px"
-  },
-
-// movie image gallery container
-  carouselCont: {
-    display: "flex",
-    justifyContent: "center",
-    
-    width: "100%",
-    minHeight: "212px",
-  },
-
-// sub headings conts
-  subHeadingCont: {
-    display: "flex",
-    justifyContent: "start",
-    alignItems: "center",
-
-    width: "90%",
-    height: "68px"
-  },
-
-// nav bar container
-  navBarCont: {
-    display: "flex",
-    position: "fixed",
-    justifyContent: "center",
-
-    zIndex: 2
-  }
 }
