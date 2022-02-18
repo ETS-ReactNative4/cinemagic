@@ -1,3 +1,5 @@
+
+/* Swiper JS styling override =============================== */
 .customSwiper .swiper-pagination-bullet {
   background: #C4C4C4;
   width: 9px;
@@ -21,8 +23,16 @@
   
   width: 123px;
   padding-top: 13px;
-  /* margin-top: 13px; */
   
   color: white;
   font-size: 12pt;
+}
+
+/* React Bootstrap styling override =============================== */
+.dropdown.btn-group .btn-sm {
+  border: 1px solid #494949;
+  border-radius: 20px;
+  
+  width: 85px;
+  height: 30px;
 }

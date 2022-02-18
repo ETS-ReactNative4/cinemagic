@@ -4,10 +4,10 @@ import "@/styles/globals.css";
 import "@/node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 // Custom Reactjs Swiper css
-import "@/comps/ImageCarousel/customCarouselStyles.css";
+import "@/styles/styleOverrides.css";
 
 // Homepage (index.js) css
-import "@/styles/homepage.css";
+import "@/styles/pageStyles/homepage.css";
 
 import AppProvider from "@/utils/provider";
 

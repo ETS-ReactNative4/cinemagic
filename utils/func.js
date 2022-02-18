@@ -1,4 +1,4 @@
-function filtering(
+export function filtering(
     arr=[],
     config={genre:null, year:null, duration:null,} 
 ){
@@ -38,7 +38,7 @@ var f_movies = filtering(movies, {
 // console.log(f_movies)
 
 //----------------------------------sorting--------------------------------------
-function sortArr(
+export function sortArr(
     arr=[],
     config={key:null, type:null}
 ){

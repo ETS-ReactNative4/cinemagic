@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import * as React from 'react';
+import React, { useEffect } from 'react';
 
 // components
 import Logo from '@/comps/Logo';
@@ -11,8 +11,14 @@ import DotNavBar from '@/comps/DotNavBar';
 import NavBar from '@/comps/NavBar';
 import fakeData from '@/data/fakeData.json';
 import DropDownPicker from '@/comps/DropDownPicker';
+import GenreDropdownMenu from '@/comps/DropDownPicker/genre';
+import YearDropdownMenu from '@/comps/DropDownPicker/year';
+import DurationDropdownMenu from '@/comps/DropDownPicker/duration';
 import Carousel from '@/comps/ImageCarousel';
 import Carousel2 from '@/comps/ImageCarousel/version2';
+
+// functions
+import { filtering, sortArr } from '@/utils/func';
 
 
 export default function Home() {
@@ -31,9 +37,9 @@ export default function Home() {
 
         {/* drop down filter menus */}
         <div className='dropDownCont'>
-          <DropDownPicker dropDownTitle='Action'/>
-          <DropDownPicker dropDownTitle='Year'/>
-          <DropDownPicker dropDownTitle='Duration'/>
+          <GenreDropdownMenu />
+          <YearDropdownMenu />
+          <DurationDropdownMenu />
         </div>
 
         {/* TRENDING subheading */}
