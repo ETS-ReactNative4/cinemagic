@@ -1,31 +1,11 @@
 import React from "react";
 import { Dropdown, DropdownButton, DropdownType, DropdownText, ButtonGroup, Button } from "react-bootstrap";
 
-export default class GenreDropdownMenu extends React.Component {
-  genreTypes = {
-    genres: [
-      "Action",
-      "Adventure",
-      "Animation",
-      "Biography",
-      "Comedy",
-      "Crime",
-      "Drama",
-      "Family",
-      "Fantasy",
-      "Film Noir",
-      "History",
-      "Horror",
-      "Music",
-      "Musical",
-      "Mystery",
-      "Romance",
-      "Sci-Fi",
-      "Short",
-      "Sport",
-      "Thriller",
-      "War",
-      "Western"
+export default class DurationDropdownMenu extends React.Component {
+  duration = {
+    durations: [
+      "Less than 90min",
+      "More than 90min"
     ]
   }
 
@@ -38,14 +18,14 @@ export default class GenreDropdownMenu extends React.Component {
             key={idx}
             id={`dropdown-button-drop-${idx}`}
             size="sm"
-            title="Genre"
+            title="Duration"
             variant='dark'
           >
 
-            { this.genreTypes.genres.map( data => (
+            { this.duration.durations.map( data => (
               <Dropdown.Item title={ data }>{ data }</Dropdown.Item>
             )) }
-
+            
           </DropdownType>
         ))}
       </>

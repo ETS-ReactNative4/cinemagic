@@ -1,35 +1,16 @@
 import React from "react";
 import { Dropdown, DropdownButton, DropdownType, DropdownText, ButtonGroup, Button } from "react-bootstrap";
 
-export default class GenreDropdownMenu extends React.Component {
-  genreTypes = {
-    genres: [
-      "Action",
-      "Adventure",
-      "Animation",
-      "Biography",
-      "Comedy",
-      "Crime",
-      "Drama",
-      "Family",
-      "Fantasy",
-      "Film Noir",
-      "History",
-      "Horror",
-      "Music",
-      "Musical",
-      "Mystery",
-      "Romance",
-      "Sci-Fi",
-      "Short",
-      "Sport",
-      "Thriller",
-      "War",
-      "Western"
-    ]
+export default class YearDropdownMenu extends React.Component {
+  year = {
+    years: []
   }
 
   render() {
+    for(let i = 1996; i <= 2021; i++){
+      this.year.years.push(i);
+    }
+
     return (
       <>
         {[DropdownButton].map((DropdownType, idx) => (
@@ -38,14 +19,14 @@ export default class GenreDropdownMenu extends React.Component {
             key={idx}
             id={`dropdown-button-drop-${idx}`}
             size="sm"
-            title="Genre"
+            title="Year"
             variant='dark'
           >
 
-            { this.genreTypes.genres.map( data => (
+            { this.year.years.map( data => (
               <Dropdown.Item title={ data }>{ data }</Dropdown.Item>
             )) }
-
+            
           </DropdownType>
         ))}
       </>
