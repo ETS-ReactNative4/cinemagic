@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 
@@ -27,6 +27,31 @@ export default function Carousel(){
     )
   }
 
+// Screen dimension check
+  if(typeof window !== "undefined"){
+    if(window.innerWidth === 375){
+      return (
+        <React.Fragment>
+        <Swiper 
+          className='customSwiper' 
+          wrapperTag='ul'
+          modules={[Pagination]}
+          pagination={{
+            clickable: true,
+          }}
+          slidesPerView={3}
+          slidesPerGroup={3}
+          spaceBetween={150}
+          loop={false}
+        >
+          { slides }
+        </Swiper>
+      </React.Fragment>
+      )
+    }
+  }
+
+// default return for desktop screen
   return (
     <React.Fragment>
       <Swiper 
@@ -40,7 +65,6 @@ export default function Carousel(){
         slidesPerGroup={3}
         spaceBetween={100}
         loop={false}
-        // loopFillGroupWithBlank={true}
       >
         { slides }
       </Swiper>

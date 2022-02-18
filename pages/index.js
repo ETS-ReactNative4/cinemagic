@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import * as React from 'react';
+import React, { useEffect } from 'react';
 
 // components
 import Logo from '@/comps/Logo';
@@ -16,6 +16,9 @@ import YearDropdownMenu from '@/comps/DropDownPicker/year';
 import DurationDropdownMenu from '@/comps/DropDownPicker/duration';
 import Carousel from '@/comps/ImageCarousel';
 import Carousel2 from '@/comps/ImageCarousel/version2';
+
+// functions
+import { filtering, sortArr } from '@/utils/func';
 
 
 export default function Home() {
