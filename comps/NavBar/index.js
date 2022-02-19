@@ -21,13 +21,13 @@ const NavBarIcon = styled.img`
 
 const NavBar = ({
     width = "30px",
-    heigth = "30px",
+    height = "30px",
     onClickNavBar = () =>{}
 }) => {
     return <Cont>
         <NavBarIcon onClick={onClickNavBar} src="/favorite-dark.svg" width='35px' height='35px'></NavBarIcon>
-        <NavBarIcon onClick={onClickNavBar} src="/home-dark.svg" width={width} height={heigth}></NavBarIcon>
-        <NavBarIcon onClick={onClickNavBar} src="/setting-dark.svg" width={width} height={heigth}></NavBarIcon>
+        <NavBarIcon onClick={onClickNavBar} src="/home-dark.svg" width={width} height={height}></NavBarIcon>
+        <NavBarIcon onClick={onClickNavBar} src="/setting-dark.svg" width={width} height={height}></NavBarIcon>
     </Cont>
 }
 
