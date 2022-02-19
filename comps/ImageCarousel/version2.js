@@ -32,21 +32,21 @@ export default function Carousel() {
     if(window.innerWidth === 375){
       return (
         <React.Fragment>
-        <Swiper 
-          className='customSwiper' 
-          wrapperTag='ul'
-          modules={[Pagination]}
-          pagination={{
-            clickable: true,
-          }}
-          slidesPerView={3}
-          slidesPerGroup={3}
-          spaceBetween={50}
-          loop={false}
-        >
-          { slides }
-        </Swiper>
-      </React.Fragment>
+          <Swiper 
+            className='customSwiper' 
+            wrapperTag='ul'
+            modules={[Pagination]}
+            pagination={{
+              clickable: true,
+            }}
+            slidesPerView={3}
+            slidesPerGroup={3}
+            spaceBetween={50}
+            loop={false}
+          >
+            { slides }
+          </Swiper>
+        </React.Fragment>
       )
     }
   }

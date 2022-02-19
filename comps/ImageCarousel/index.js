@@ -1,17 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
-// import "swiper/css/navigation";
+
+import movies from '@/utils/imdbTop250.json';
 
 SwiperCore.use([Pagination]);
 
 export default function Carousel(){
-  const slides = [];
+  const [movieData, setMovieData] = useState(movies);
   
+  const titles = [];
+  const slides = [];
+
+// array pushes 15 movie slides to SwiperJS
   for(let i = 0; i < 15; i += 1){
+    if(movieData[i].Title){
+      titles.push(movieData[i].Title);
+    }
+
     slides.push(
       <SwiperSlide key={ `slide-${ i }` } tag='li'>
         <img 
@@ -20,11 +29,12 @@ export default function Carousel(){
           style={ styles.image }
         />
 
-        <p className='carouselText'>
-          Movie Title
-        </p>
+        { titles.map((o) => <p className='carouselText'>{ o }</p>) }
+        {/* { titles.at((o) => <p className='carouselText'>{ o }</p>) } */}
       </SwiperSlide>
     )
+
+
   }
 
 // Screen dimension check
@@ -32,21 +42,21 @@ export default function Carousel(){
     if(window.innerWidth === 375){
       return (
         <React.Fragment>
-        <Swiper 
-          className='customSwiper' 
-          wrapperTag='ul'
-          modules={[Pagination]}
-          pagination={{
-            clickable: true,
-          }}
-          slidesPerView={3}
-          slidesPerGroup={3}
-          spaceBetween={150}
-          loop={false}
-        >
-          { slides }
-        </Swiper>
-      </React.Fragment>
+          <Swiper 
+            className='customSwiper' 
+            wrapperTag='ul'
+            modules={[Pagination]}
+            pagination={{
+              clickable: true,
+            }}
+            slidesPerView={3}
+            slidesPerGroup={3}
+            spaceBetween={150}
+            loop={false}
+          >
+            { slides }
+          </Swiper>
+        </React.Fragment>
       )
     }
   }
