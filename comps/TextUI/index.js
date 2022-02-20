@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { useTheme } from "@/utils/provider";
+import { comp_themes } from "@/utils/themes";
 
 const Cont = styled.div`
     display: flex;
@@ -16,12 +18,11 @@ const TitleTextUI = styled.div`
 const TextUI = ({
     TextUISize = "17px",
     TextUIWeight = "700",
-    TextUIColor="#E0E0E0",
     Title="SEARCH"
 }) => {
-
+    const {theme} = useTheme();
     return <Cont>
-        <TitleTextUI TextUISize={TextUISize} TextUIWeight={TextUIWeight} TextUIColor={TextUIColor}>{Title}</TitleTextUI>
+        <TitleTextUI TextUISize={TextUISize} TextUIWeight={TextUIWeight} TextUIColor={comp_themes[theme].TextUI}>{Title}</TitleTextUI>
     </Cont>
 }
 
