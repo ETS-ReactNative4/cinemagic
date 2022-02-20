@@ -1,12 +1,19 @@
-import React, {useRouter} from 'react';
+import React, { useRouter } from 'react';
 import styled from 'styled-components';
-import TextUI from '../TextUI';
+import { useTheme } from "@/utils/provider";
+import { comp_themes } from "@/utils/themes";
 
 const Cont = styled.div`
-   display: ${props=>props.display};
+   display: ${props => props.display};
    position: fixed;
    bottom: 0;
    z-index: 99;
+`;
+
+const TitleText = styled.div`
+    font-size: "17px";
+    font-weight: "700";
+    color: ${props => props.textColor};
 `;
 
 const Box = styled.div`
@@ -14,7 +21,7 @@ const Box = styled.div`
     flex-direction: column;
     width: 100vw;
     height: 400px;
-    background-color: #2C2C2C;
+    background-color: ${props=>props.boxColor};
     border-radius: 25px 25px 20px 20px;
 `
 
@@ -46,7 +53,7 @@ const Mid = styled.div`
 const Button = styled.div`
     width: 43px;
     height: 16px;
-    background: #464748;
+    background: ${props=>props.butColor};
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -55,9 +62,9 @@ const Toggle = styled.div`
     position: relative;
     width: 18px;
     height: 18px;
-    background: #FAFAFA;
+    background: ${props=>props.toggleColor};
     border-radius: 10px;
-    left: ${props=>props.left};
+    left: ${props => props.left};
 `
 
 const Item = styled.div`
@@ -67,37 +74,37 @@ const Item = styled.div`
 `
 
 const PopUpCont = ({
-    onPressCloseBtn = () =>{},
-    darkLight = () =>{},
-    gridList = () =>{},
-    CloseSrc="/close-dark.svg",
-    position1="0px",
-    position2="0px",
-    display="none"
+    onPressCloseBtn = () => { },
+    darkLight = () => { },
+    gridList = () => { },
+    position1 = "0px",
+    position2 = "0px",
+    display = "none"
 }) => {
-    return <Cont display={display}> 
-        <Box>
+    const { theme } = useTheme();
+    return <Cont display={display}>
+        <Box boxColor={comp_themes[theme].popUpSettingBg}>
             <Top>
-                <Empty/>
-                <TextUI Title='SETTING' TextUISize='20px'/>
-                <CloseBtnImg src={CloseSrc} onClick={onPressCloseBtn}></CloseBtnImg>
+                <Empty />
+                <TitleText textColor={comp_themes[theme].popUpSettingText}>SETTING</TitleText>
+                <CloseBtnImg src={comp_themes[theme].popUpSettingImg} onClick={onPressCloseBtn}></CloseBtnImg>
             </Top>
             <Mid>
                 <Item>
-                    <TextUI Title='Dark Mode:'/>
-                    <Button>
-                        <Toggle onClick={darkLight} left={position1}/>
+                    <TitleText textColor={comp_themes[theme].popUpSettingText}>Dark Mode:</TitleText>
+                    <Button butColor={comp_themes[theme].popUpSettingButton}>
+                        <Toggle toggleColor={comp_themes[theme].popUpSettingText} onClick={darkLight} left={position1} />
                     </Button>
                 </Item>
                 <Item>
-                    <TextUI Title='Grid View:'/>
-                    <Button>
-                        <Toggle onClick={gridList} left={position2}/>
+                    <TitleText textColor={comp_themes[theme].popUpSettingText}>Grid View:</TitleText>
+                    <Button butColor={comp_themes[theme].popUpSettingButton}>
+                        <Toggle toggleColor={comp_themes[theme].popUpSettingText} onClick={gridList} left={position2} />
                     </Button>
                 </Item>
             </Mid>
         </Box>
-        
+
     </Cont>
 }
 
