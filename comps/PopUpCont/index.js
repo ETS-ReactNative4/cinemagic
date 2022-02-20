@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import TextUI from '../TextUI';
 
 const Cont = styled.div`
-   
+   display: ${props=>props.display};
+   position: fixed;
+   bottom: 0;
+   z-index: 99;
 `;
 
 const Box = styled.div`
@@ -70,8 +73,9 @@ const PopUpCont = ({
     CloseSrc="/close-dark.svg",
     position1="0px",
     position2="0px",
+    display="none"
 }) => {
-    return <Cont> 
+    return <Cont display={display}> 
         <Box>
             <Top>
                 <Empty/>
