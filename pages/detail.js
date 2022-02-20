@@ -6,8 +6,8 @@ import TextUI from '@/comps/TextUI';
 import Card from '@/comps/Card';
 import Info from '@/comps/Info';
 import Description from '@/comps/Description'
-import fakeData from '@/data/fakeData.json'
 import NavBar from '@/comps/NavBar';
+import Carousel2 from '@/comps/ImageCarousel/version2';
 
 const DetailCont = styled.div`
   margin:0;
@@ -60,6 +60,7 @@ const DetailCont = styled.div`
 
   .card{
     display: flex;
+    flex-direction: row;
     width: 100vw;
     overflow-x: auto;
   }
@@ -93,11 +94,9 @@ export default function Detail() {
     <div className='bot'>
         <TextUI Title='ACTORS'/>
     </div>
-    <div className='marginBot'>
-        <div className='card'>
-        {fakeData.map((data, card)=><Card key={card} CardTitle={data.CardTitle} CardImgSrc={data.CardImgSrc}/>)}
+    <div className='carouselCont2'>
+          <Carousel2/>
         </div>
-    </div>
     <NavBar/>
     </DetailCont>
     
