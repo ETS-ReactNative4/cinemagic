@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 
 // components
 import Logo from '@/comps/Logo';
@@ -15,12 +15,29 @@ import YearDropdownMenu from '@/comps/DropDownPicker/year';
 import DurationDropdownMenu from '@/comps/DropDownPicker/duration';
 import Carousel from '@/comps/ImageCarousel';
 import Carousel2 from '@/comps/ImageCarousel/version2';
+import PopUpCont from '@/comps/PopUpCont';
 
 // functions
 import { filtering, sortArr } from '@/utils/func';
 
 
 export default function Home() {
+  const [mode, setMode] = useState(false);
+  const [view, setView] = useState(false);
+  const [setPop, setSetPop] = useState(false);
+
+  const changeTheme = () => {
+    setMode(!mode);
+  }
+
+  const changeView = () => {
+    setView(!view);
+  }
+
+  const setting = () =>{
+    setSetPop(!setPop);
+  }
+
   return (
     <div className='windowCont'>
       <div className='phoneSizeCont'>
@@ -73,8 +90,11 @@ export default function Home() {
 
         {/* nav bar */}
         <div className='navBarCont'>
-          <NavBar />
+          <NavBar onClickSetting={setting} />
         </div>
+
+         {/* Setting pop up */}
+        <PopUpCont darkLight={changeTheme} gridList={changeView} onPressCloseBtn={setting} display={setPop === true? "block" : "none"} position1={mode === true ? "0px" : "27px"} position2={view === true ? "0px" : "27px"}/>
       </div>
     </div>
   )
