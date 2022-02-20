@@ -1,5 +1,7 @@
 import React, {useRouter} from 'react';
 import styled from 'styled-components';
+import { useTheme } from "@/utils/provider";
+import { comp_themes } from "@/utils/themes";
 
 const Cont = styled.div`
     display: flex;
@@ -8,7 +10,7 @@ const Cont = styled.div`
     align-items:center;
     width:300px;
     height:42px;
-    background-color: #303234;
+    background-color: ${props=>props.bgColor};
     border: none;
     box-shadow: -4px -3px 10px rgba(0, 0, 0, 0.25), 3px 3px 10px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
@@ -20,23 +22,23 @@ const SearchBarInput = styled.input`
     height:30px;
     width:250px;
     margin-left:20px;
-    background-color: #303234;
+    background-color: ${props=>props.bgColor};
     border: none;
     font-size:15px;
 `
 const SearchBarIcon = styled.img`
     width: 20px;
-    heigth: 20px;  
+    height: 20px;  
     margin-right:20px;
 `;
 
 const SearchBar = ({
-    SearchBarSrc = '/search-dark.svg',
     onClickSearch = () => {},
 }) => {
-    return <Cont>
-        <SearchBarInput placeholder="Search by title, casts, and director "></SearchBarInput>
-        <SearchBarIcon src={SearchBarSrc} onClick={onClickSearch}/>
+    const {theme} = useTheme();
+    return <Cont bgColor={comp_themes[theme].search_bar}>
+        <SearchBarInput bgColor={comp_themes[theme].search_bar} placeholder="Search by title, casts, and director "></SearchBarInput>
+        <SearchBarIcon src={comp_themes[theme].search_bar_img} onClick={onClickSearch}/>
     </Cont>
 }
 

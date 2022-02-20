@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import styled from 'styled-components';
 import React, { useState } from 'react';
+import { useTheme } from "@/utils/provider";
 
 // components
 import Logo from '@/comps/Logo';
@@ -22,19 +23,23 @@ import { filtering, sortArr } from '@/utils/func';
 
 
 export default function Home() {
+  const { theme, setTheme } = useTheme();
   const [mode, setMode] = useState(false);
   const [view, setView] = useState(false);
   const [setPop, setSetPop] = useState(false);
 
   const changeTheme = () => {
     setMode(!mode);
+    setTheme(theme === 'light' ? 'default' : 'light')
+    console.log("Theme", mode)
   }
 
   const changeView = () => {
     setView(!view);
+    console.log("View", view)
   }
 
-  const setting = () =>{
+  const setting = () => {
     setSetPop(!setPop);
   }
 
@@ -93,8 +98,8 @@ export default function Home() {
           <NavBar onClickSetting={setting} />
         </div>
 
-         {/* Setting pop up */}
-        <PopUpCont darkLight={changeTheme} gridList={changeView} onPressCloseBtn={setting} display={setPop === true? "block" : "none"} position1={mode === true ? "0px" : "27px"} position2={view === true ? "0px" : "27px"}/>
+        {/* Setting pop up */}
+        <PopUpCont darkLight={changeTheme} gridList={changeView} onPressCloseBtn={setting} display={setPop === true ? "block" : "none"} position1={mode === true ? "0px" : "27px"} position2={view === true ? "0px" : "27px"} />
       </div>
     </div>
   )
