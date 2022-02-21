@@ -20,7 +20,7 @@ export default function Carousel(){
           style={ styles.image }
         />
 
-        <p className='carouselText'>
+        <p className='carouselText' style={{marginBottom:"25px"}}>
           Movie Title
         </p>
       </SwiperSlide>
