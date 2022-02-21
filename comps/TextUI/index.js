@@ -22,7 +22,7 @@ const TextUI = ({
 }) => {
     const {theme} = useTheme();
     return <Cont>
-        <TitleTextUI TextUISize={TextUISize} TextUIWeight={TextUIWeight} TextUIColor={comp_themes[theme].TextUI}>{Title}</TitleTextUI>
+        <TitleTextUI TextUISize={TextUISize} TextUIWeight={TextUIWeight} TextUIColor={comp_themes[theme].textUI}>{Title}</TitleTextUI>
     </Cont>
 }
 

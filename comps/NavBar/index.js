@@ -25,12 +25,13 @@ const NavBar = ({
     width = "30px",
     height = "30px",
     onClickSetting = () =>{},
+    onClickHome = () =>{},
     onClickNavBar= () =>{},
 }) => {
     const { theme } = useTheme();
     return <Cont bgColor={comp_themes[theme].navbar}>
-        <NavBarIcon onClick={onClickNavBar} src={comp_themes[theme].navbar_fav} width='35px' height='35px'></NavBarIcon>
-        <NavBarIcon onClick={onClickNavBar} src={comp_themes[theme].navbar_home} width={width} height={height}></NavBarIcon>
+        <NavBarIcon onClick={onClickNavBar} src={comp_themes[theme].navbar_fav} width='30px' height='30px'></NavBarIcon>
+        <NavBarIcon onClick={onClickHome} src={comp_themes[theme].navbar_home} width={width} height={height}></NavBarIcon>
         <NavBarIcon onClick={onClickSetting} src={comp_themes[theme].navbar_setting} width={width} height={height}></NavBarIcon>
     </Cont>
 }

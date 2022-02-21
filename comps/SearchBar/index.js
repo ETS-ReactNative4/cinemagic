@@ -20,11 +20,11 @@ const SearchBarInput = styled.input`
     justify-content: center;
     color: #ABABAB;
     height:30px;
-    width:250px;
+    width:230px;
     margin-left:20px;
     background-color: ${props=>props.bgColor};
     border: none;
-    font-size:15px;
+    font-size:14px;
 `
 const SearchBarIcon = styled.img`
     width: 20px;

@@ -69,7 +69,7 @@ export default function Home() {
         </div>
 
         {/* movie carousel */}
-        <div className='carouselCont'>
+        <div className='carouselCont' style={{}}>
           <Carousel />
         </div>
 

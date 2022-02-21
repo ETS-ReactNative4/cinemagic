@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import { useTheme } from "@/utils/provider";
 import { themes } from "@/utils/themes";
+import { comp_themes } from "@/utils/themes";
 import styled from 'styled-components';
 import React, { useState } from 'react';
+import { useRouter } from 'next/router'
 import BackBtn from '@/comps/BackBtn';
 import TextUI from '@/comps/TextUI';
 import Card from '@/comps/Card';
@@ -78,6 +80,7 @@ const DetailCont = styled.div`
 `;
 
 export default function Detail() {
+  const router = useRouter()
 
   const { theme, setTheme } = useTheme();
   const [mode, setMode] = useState(false);
@@ -99,26 +102,30 @@ export default function Detail() {
     setSetPop(!setPop);
   }
 
+  const home = () =>{
+    router.push('/');
+  }
+
   return <DetailCont bgColor={themes[theme].body}>
     <div className='backBtm'>
-      <BackBtn />
+      <BackBtn onPressBackBtn={home}/>
     </div>
     <div className='title'>
-      <TextUI Title='MOVIE DETAIL' />
+      <TextUI Title='MOVIE DETAIL' TextUIColor={comp_themes[theme].TextUI}/>
     </div>
     <div className='top'>
       <Card CardTitle="" CardImgHeight='320px' CardImgWidth='220px' />
       <div className='infoCard'>
-        <Info infoSrc='/video-dark.svg' title='Genre' />
-        <Info text='1h 20m' />
-        <Info infoSrc='/star-black.svg' title='Rating' text='8/10' />
+        <Info infoSrc={comp_themes[theme].info_genre} title='Genre' />
+        <Info infoSrc={comp_themes[theme].info_duration} text='1h 20m' />
+        <Info infoSrc={comp_themes[theme].info_rating} title='Rating' text='8/10' />
       </div>
     </div>
     <Description title='Yi Bo Number 1' />
     <div className='bot'>
       <TextUI Title='ACTORS' />
     </div>
-    <NavBar onClickSetting={setting} />
+    <NavBar onClickSetting={setting} onClickHome={home}/>
     {/* Setting pop up */}
     <PopUpCont darkLight={changeTheme} gridList={changeView} onPressCloseBtn={setting} display={setPop === true ? "block" : "none"} position1={mode === true ? "0px" : "27px"} position2={view === true ? "0px" : "27px"} />
   </DetailCont>

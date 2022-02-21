@@ -1,5 +1,7 @@
-import React, {useRouter} from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { useTheme } from "@/utils/provider";
+import { comp_themes } from "@/utils/themes";
 
 const Cont = styled.div`
     display: flex;
@@ -7,7 +9,7 @@ const Cont = styled.div`
 const Card = styled.button`
     height: 78px;
     width: 80px;
-    border: 2px solid #C8C8C8; 
+    border: ${props=>props.border}; 
     border-radius: 20px;
     background-color:transparent;
     display:flex;
@@ -22,13 +24,13 @@ const InfoIcon = styled.img`
 const Title = styled.div`
     font-size: 11px;
     font-weight:400;
-    color: #C6C3C3;
+    color: ${props=>props.titleColor};
     font-family: 'Sen', sans-serif;
 `
 const Text = styled.div`
     font-size: 13px;
     font-weight:700;
-    color: #FAFAFA;
+    color:  ${props=>props.textColor};
     font-family: 'Sen', sans-serif;
 `
 
@@ -39,13 +41,13 @@ const Info = ({
     title="Duration",
     text="Action",
 }) => {
-
+    const { theme } = useTheme();
     return <Cont>
-        <Card>
+        <Card border={comp_themes[theme].info_border}>
             <InfoIcon/>
             <InfoIcon width={width} height={height} src={infoSrc}></InfoIcon>
-            <Title>{title}</Title>
-            <Text>{text}</Text>
+            <Title titleColor={comp_themes[theme].info_title}>{title}</Title>
+            <Text textColor={comp_themes[theme].info_text}>{text}</Text>
         </Card>
     </Cont>
 }
