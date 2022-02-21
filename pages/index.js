@@ -10,11 +10,7 @@ import TextUI from '@/comps/TextUI';
 import Card from '@/comps/Card';
 import DotNavBar from '@/comps/DotNavBar';
 import NavBar from '@/comps/NavBar';
-<<<<<<< HEAD
-import fakeData from '@/data/fakeData.json';
-=======
 import DropDownPicker from '@/comps/DropDownPicker';
->>>>>>> 85800652542f0eea1cb00c16ecc70b9b1d17c536
 import GenreDropdownMenu from '@/comps/DropDownPicker/genre';
 import YearDropdownMenu from '@/comps/DropDownPicker/year';
 import DurationDropdownMenu from '@/comps/DropDownPicker/duration';

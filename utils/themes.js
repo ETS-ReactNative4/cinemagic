@@ -21,6 +21,7 @@ export const comp_themes = {
     navbar_home:"/home-dark.svg",
     navbar_setting:"/setting-dark.svg",
     backBtn:"/back-dark.svg",
+    carouselText01: "white",
   },
   light: {
     search_bar: '#FFFFFF',
@@ -35,5 +36,6 @@ export const comp_themes = {
     navbar_home:"/home.svg",
     navbar_setting:"/setting.svg",
     backBtn:"/back.svg",
+    carouselText01: "black",
   },
 }
