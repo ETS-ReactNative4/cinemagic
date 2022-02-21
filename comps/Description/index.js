@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTheme } from "@/utils/provider";
+import { comp_themes } from "@/utils/themes";
 
 const Cont = styled.div`
     display: flex;
@@ -19,7 +21,7 @@ const Title = styled.text`
     font-weight: bold;
     font-size: 18px;
     line-height: 28px;
-    color: #FAFAFA;
+    color: ${props => props.textColor};
     inline-size: 200px;
     overflow-wrap: break-word;
 `
@@ -38,7 +40,7 @@ const InfoText = styled.text`
     width:320px;
     font-size: 14px;
     line-height: 14px;
-    color: #FAFAFA;
+    color: ${props => props.textColor};
 `
 
 const Description = ({
@@ -46,13 +48,14 @@ const Description = ({
     title="Spider Man: No Way Home",
     info="With Spider-Man's identity now revealed, our friendly neighborhood web-slinger is unmasked and no longer able to separate his normal life as Peter Parker from the high stakes of being a superhero. When Peter asks for help from Doctor Strange, the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man."
 }) => {
+    const { theme } = useTheme();
     return <Cont>
         <Top>
-            <Title>{title}</Title>
-            <Icon src={src}/>
+            <Title textColor={comp_themes[theme].popUpSettingText}>{title}</Title>
+            <Icon src={comp_themes[theme].navbar_fav}/>
         </Top>
         <Bot>
-            <InfoText>{info}</InfoText>
+            <InfoText textColor={comp_themes[theme].popUpSettingText}>{info}</InfoText>
         </Bot>
     </Cont>
 }

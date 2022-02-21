@@ -1,5 +1,7 @@
-import React, {useRouter} from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { useTheme } from "@/utils/provider";
+import { comp_themes } from "@/utils/themes";
 
 const Cont = styled.div`
     display: flex;
@@ -8,7 +10,7 @@ const Cont = styled.div`
     justify-content: space-around;
     width: 100vw;
     height: 65px;
-    background-color: #303234;
+    background-color: ${props=>props.bgColor};
     border-radius: 30px 30px 0px 0px;
     position: fixed;
     bottom: 0px;
@@ -21,13 +23,15 @@ const NavBarIcon = styled.img`
 
 const NavBar = ({
     width = "30px",
-    heigth = "30px",
-    onClickNavBar = () =>{}
+    height = "30px",
+    onClickSetting = () =>{},
+    onClickNavBar= () =>{},
 }) => {
-    return <Cont>
-        <NavBarIcon onClick={onClickNavBar} src="/favorite-dark.svg" width='35px' height='35px'></NavBarIcon>
-        <NavBarIcon onClick={onClickNavBar} src="/home-dark.svg" width={width} height={heigth}></NavBarIcon>
-        <NavBarIcon onClick={onClickNavBar} src="/setting-dark.svg" width={width} height={heigth}></NavBarIcon>
+    const { theme } = useTheme();
+    return <Cont bgColor={comp_themes[theme].navbar}>
+        <NavBarIcon onClick={onClickNavBar} src={comp_themes[theme].navbar_fav} width='35px' height='35px'></NavBarIcon>
+        <NavBarIcon onClick={onClickNavBar} src={comp_themes[theme].navbar_home} width={width} height={height}></NavBarIcon>
+        <NavBarIcon onClick={onClickSetting} src={comp_themes[theme].navbar_setting} width={width} height={height}></NavBarIcon>
     </Cont>
 }
 

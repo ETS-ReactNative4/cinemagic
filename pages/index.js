@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
+import { useTheme } from "@/utils/provider";
 
 // components
 import Logo from '@/comps/Logo';
@@ -9,18 +10,43 @@ import TextUI from '@/comps/TextUI';
 import Card from '@/comps/Card';
 import DotNavBar from '@/comps/DotNavBar';
 import NavBar from '@/comps/NavBar';
+<<<<<<< HEAD
 import fakeData from '@/data/fakeData.json';
+=======
+import DropDownPicker from '@/comps/DropDownPicker';
+>>>>>>> 85800652542f0eea1cb00c16ecc70b9b1d17c536
 import GenreDropdownMenu from '@/comps/DropDownPicker/genre';
 import YearDropdownMenu from '@/comps/DropDownPicker/year';
 import DurationDropdownMenu from '@/comps/DropDownPicker/duration';
 import Carousel from '@/comps/ImageCarousel';
 import Carousel2 from '@/comps/ImageCarousel/version2';
+import PopUpCont from '@/comps/PopUpCont';
 
 // functions
 import { filtering, sortArr } from '@/utils/func';
 
 
 export default function Home() {
+  const { theme, setTheme } = useTheme();
+  const [mode, setMode] = useState(false);
+  const [view, setView] = useState(false);
+  const [setPop, setSetPop] = useState(false);
+
+  const changeTheme = () => {
+    setMode(!mode);
+    setTheme(theme === 'light' ? 'default' : 'light')
+    console.log("Theme", mode)
+  }
+
+  const changeView = () => {
+    setView(!view);
+    console.log("View", view)
+  }
+
+  const setting = () => {
+    setSetPop(!setPop);
+  }
+
   return (
     <div className='windowCont'>
       <div className='phoneSizeCont'>
@@ -73,8 +99,11 @@ export default function Home() {
 
         {/* nav bar */}
         <div className='navBarCont'>
-          <NavBar />
+          <NavBar onClickSetting={setting} />
         </div>
+
+        {/* Setting pop up */}
+        <PopUpCont darkLight={changeTheme} gridList={changeView} onPressCloseBtn={setting} display={setPop === true ? "block" : "none"} position1={mode === true ? "0px" : "27px"} position2={view === true ? "0px" : "27px"} />
       </div>
     </div>
   )
