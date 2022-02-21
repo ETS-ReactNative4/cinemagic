@@ -1,6 +1,3 @@
-ul {
-  list-style-type: none;
-}
 
 
 /* Swiper JS styling override =============================== */
@@ -30,6 +27,11 @@ ul {
   
   color: white;
   font-size: 12pt;
+}
+
+ul.swiper-wrapper {
+  padding: 0;
+  list-style-type: none;
 }
 
 /* React Bootstrap styling override =============================== */

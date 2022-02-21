@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination } from 'swiper';
+import SwiperCore, { Pagination } from 'swiper';
 import { useTheme } from "@/utils/provider";
 import { comp_themes } from "@/utils/themes";
 
@@ -12,9 +11,7 @@ import movies from '@/utils/imdbTop250.json';
 
 SwiperCore.use([Pagination]);
 
-
-
-export default function Carousel() {
+export default function TrendingCarousel() {
   const { theme } = useTheme();  
   const [movieData, setMovieData] = useState(movies);
   const titles = [];
@@ -41,13 +38,15 @@ export default function Carousel() {
         { titles.map((o) => <p style={{
           display: 'flex',
           justifyContent: 'center',
+          textAlign: 'center',
         
           width: '160px',
           paddingTop: '13px',
         
-          color: comp_themes[theme].carouselText01,
+          color: comp_themes[theme].carouselTextColour,
           fontSize: '12pt',
-        }}>{ o }</p>) }
+        }}
+        >{ o }</p>) }
       </SwiperSlide>
     )
 

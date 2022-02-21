@@ -12,7 +12,7 @@ import Info from '@/comps/Info';
 import Description from '@/comps/Description'
 import NavBar from '@/comps/NavBar';
 import PopUpCont from '@/comps/PopUpCont';
-import Carousel2 from '@/comps/ImageCarousel/version2';
+import Carousel2 from '@/comps/ImageCarousel/genreTypes';
 
 const DetailCont = styled.div`
   margin:0;
