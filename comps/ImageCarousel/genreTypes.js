@@ -1,30 +1,68 @@
 import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination } from 'swiper';
+import { Pagination } from 'swiper';
+import { useTheme } from "@/utils/provider";
+import { comp_themes } from "@/utils/themes";
 
 import 'swiper/css';
-// import 'swiper/css/pagination';
-// import "swiper/css/navigation";
 
-// SwiperCore.use([Pagination]);
+export default function GenreCarousel() {
+  const { theme } = useTheme();
 
-export default function Carousel() {
   const slides = [];
+  const genreLabel = [];
 
-  for (let i = 0; i < 15; i += 1) {
+  const genres = [
+    "Action",
+    "Adventure",
+    "Animation",
+    "Biography",
+    "Comedy",
+    "Crime",
+    "Drama",
+    "Family",
+    "Fantasy",
+    "Film Noir",
+    "History",
+    "Horror",
+    "Music",
+    "Musical",
+    "Mystery",
+    "Romance",
+    "Sci-Fi",
+    "Short",
+    "Sport",
+    "Thriller",
+    "War",
+    "Western"
+  ];
+
+  for(let i = 0; i < 21; i += 1) {
+    genreLabel.push(genres[i]);
+
     slides.push(
-      <SwiperSlide key={`slide-${i}`} tag='li'>
+      <SwiperSlide key={ `slide-${i}` } tag='li'>
         <img
           src='http://placekitten.com/123/179'
-          alt={`Slide ${i}`}
-          style={styles.image}
+          alt={ `Slide ${i}` }
+          style={ styles.image }
         />
 
-        <p className='carousel2text' style={{marginLeft:"-10px"}}>
-          Genre Type
-        </p>
+        { genreLabel.map((o) => <p style={{
+          display: 'flex',
+          justifyContent: 'center',
+          
+          width: '123px',
+          paddingTop: '13px',
+          
+          color: comp_themes[theme].carouselTextColour,
+          fontSize: '12pt'
+        }}
+        >{ o }</p>) }
       </SwiperSlide>
     )
+
+    genreLabel.pop(i);
   }
 
 // Screen dimension check
@@ -71,6 +109,6 @@ export default function Carousel() {
 var styles = {
   image: {
     borderRadius: "20px",
-    marginLeft: "-10px"
+    // marginLeft: "-10px"
   }
 }

@@ -14,8 +14,9 @@ import DropDownPicker from '@/comps/DropDownPicker';
 import GenreDropdownMenu from '@/comps/DropDownPicker/genre';
 import YearDropdownMenu from '@/comps/DropDownPicker/year';
 import DurationDropdownMenu from '@/comps/DropDownPicker/duration';
-import Carousel from '@/comps/ImageCarousel';
-import Carousel2 from '@/comps/ImageCarousel/version2';
+import TrendingCarousel from '@/comps/ImageCarousel/trending';
+import GenreCarousel from '@/comps/ImageCarousel/genreTypes';
+import YearlyCarousel from '@/comps/ImageCarousel/2021movies';
 import PopUpCont from '@/comps/PopUpCont';
 
 // functions
@@ -70,7 +71,7 @@ export default function Home() {
 
         {/* movie carousel */}
         <div className='carouselCont' style={{}}>
-          <Carousel />
+          <TrendingCarousel />
         </div>
 
         {/* GENRE subheading */}
@@ -80,7 +81,7 @@ export default function Home() {
 
         {/* movie carousel */}
         <div className='carouselCont'>
-          <Carousel2 />
+          <GenreCarousel />
         </div>
 
         {/* 2021 movies subheading */}
@@ -90,7 +91,7 @@ export default function Home() {
 
         {/* movie carousel */}
         <div className='carouselCont2'>
-          <Carousel2 />
+          <YearlyCarousel />
         </div>
 
         {/* nav bar */}

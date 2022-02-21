@@ -13,7 +13,7 @@ export function filtering(
             }
     
             if(year){
-                cond = cond && Number(o.IMDByear) === Number(year);
+                cond = cond && Number(o.Date) === Number(year);
             }
     
             if(duration){
