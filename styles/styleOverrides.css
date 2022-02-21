@@ -1,3 +1,7 @@
+ul {
+  list-style-type: none;
+}
+
 
 /* Swiper JS styling override =============================== */
 .customSwiper .swiper-pagination-bullet {

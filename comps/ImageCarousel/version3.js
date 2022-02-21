@@ -20,20 +20,20 @@ export default function Carousel() {
           style={styles.image}
         />
 
-        <p className='carousel2text' style={{marginLeft:"-10px"}}>
+        <p className='carousel2text'>
           Genre Type
         </p>
       </SwiperSlide>
     )
   }
 
-// Screen dimension check
-  if(typeof window !== "undefined"){
-    if(window.innerWidth === 375){
+  // Screen dimension check
+  if (typeof window !== "undefined") {
+    if (window.innerWidth === 375) {
       return (
         <React.Fragment>
-          <Swiper 
-            className='customSwiper' 
+          <Swiper
+            className='customSwiper'
             wrapperTag='ul'
             modules={[Pagination]}
             pagination={{
@@ -44,14 +44,14 @@ export default function Carousel() {
             spaceBetween={50}
             loop={false}
           >
-            { slides }
+            {slides}
           </Swiper>
         </React.Fragment>
       )
     }
   }
 
-// default return for desktop screen
+  // default return for desktop screen
   return (
     <React.Fragment>
       <Swiper
@@ -71,6 +71,5 @@ export default function Carousel() {
 var styles = {
   image: {
     borderRadius: "20px",
-    marginLeft: "-10px"
   }
 }
