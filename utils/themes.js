@@ -3,7 +3,7 @@ export const themes = {
     body: "#252525",
   },
   light: {
-    body: "#FAFAFA",
+    body: "#E5E5E5",
   }
 }
 
@@ -17,7 +17,7 @@ export const comp_themes = {
     popUpSettingButton:"#464748",
     popUpSettingImg:"/close-dark.svg",
     navbar:"#303234",
-    navbar_fav:"/favorite-dark.svg",
+    navbar_fav:"/heart-dark.svg",
     navbar_home:"/home-dark.svg",
     navbar_setting:"/setting-dark.svg",
     backBtn:"/back-dark.svg",
@@ -37,7 +37,7 @@ export const comp_themes = {
     popUpSettingButton:"#BCBCBC",
     popUpSettingImg:"/close.svg",
     navbar:"#FFFFFF",
-    navbar_fav:"/favorite.svg",
+    navbar_fav:"/heart.svg",
     navbar_home:"/home.svg",
     navbar_setting:"/setting.svg",
     backBtn:"/back.svg",

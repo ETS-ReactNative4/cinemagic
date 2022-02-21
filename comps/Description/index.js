@@ -39,7 +39,8 @@ const InfoText = styled.text`
     margin-top: 20px;
     width:320px;
     font-size: 14px;
-    line-height: 14px;
+    line-height: 17px;
+    font-weight: lighter;
     color: ${props => props.textColor};
 `
 
