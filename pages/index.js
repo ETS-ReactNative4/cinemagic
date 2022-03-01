@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useTheme } from "@/utils/provider";
+import { filtering, sortArr } from '@/utils/func';
 
 // components
 import Logo from '@/comps/Logo';
@@ -19,15 +21,18 @@ import GenreCarousel from '@/comps/ImageCarousel/genreTypes';
 import YearlyCarousel from '@/comps/ImageCarousel/2021movies';
 import PopUpCont from '@/comps/PopUpCont';
 
-// functions
-import { filtering, sortArr } from '@/utils/func';
-
+var timer = null;
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
   const [mode, setMode] = useState(false);
   const [view, setView] = useState(false);
   const [setPop, setSetPop] = useState(false);
+
+  const [sbGenre, setSbGenre] = useState(false);
+  const [sbYear, setSbYear] = useState(false);
+  const [sbDuration, setSbDuration] = useState(false);
+  const [movieDataGenre, setMovieDataGenre] = useState([]);
 
   const changeTheme = () => {
     setMode(!mode);
@@ -42,6 +47,29 @@ export default function Home() {
 
   const setting = () => {
     setSetPop(!setPop);
+  }
+
+  useEffect(() => {
+    filteringMoviesByGenre();
+  }, []);
+
+  const filteringMoviesByGenre = async (genre) => {
+    if(timer){
+      clearTimeout(timer);
+      timer = null;
+    }
+
+    if(timer === null){
+      timer = setTimeout( async () => {
+        const res = await axios.get("/api/movies", {
+          params: {
+            genre: genre,
+          }
+        })
+        setMovieDataGenre(res.movieDataGenre);
+        timer = null;
+      }, 1000);
+    }
   }
 
   return (
@@ -59,7 +87,7 @@ export default function Home() {
 
         {/* drop down filter menus */}
         <div className='dropDownCont'>
-          <GenreDropdownMenu />
+          <GenreDropdownMenu selected={ (e) => filteringMoviesByGenre(e.target.value) } />
           <YearDropdownMenu />
           <DurationDropdownMenu />
         </div>

@@ -9,18 +9,22 @@ import 'swiper/css';
 
 import movies from '@/utils/imdbTop250.json';
 
-export default function YearlyCarousel() {
+export default function YearlyCarousel({
+  movieTitles = []
+}) {
   const { theme } = useTheme();
   const [movieData, setMovieData] = useState(movies);
   const slides = [];
   var movieDates = [];
-  var movieTitles = [];
+  // var movieTitles = [];
 
   for(let i = 0; i < 20; i += 1) {
     // if(movieData) {
-    //   movieDates = filtering(movieData, {
-    //       year: 2021
-    //     });
+    //   movieDates = filtering(movies, {
+    //     // genre: null,  
+    //     year: 2021
+    //     // duration:null,
+    //   });
 
     //   movieTitles.push(movieDates[i]);
     // }
