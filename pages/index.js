@@ -4,6 +4,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useTheme } from "@/utils/provider";
 import { filtering, sortArr } from '@/utils/func';
+import { movieJsonDataArr } from '@/comps/ImageCarousel/trending';
+
+//data
+import movies from '@/utils/imdbTop250.json';
 
 // components
 import Logo from '@/comps/Logo';
@@ -20,6 +24,21 @@ import TrendingCarousel from '@/comps/ImageCarousel/trending';
 import GenreCarousel from '@/comps/ImageCarousel/genreTypes';
 import YearlyCarousel from '@/comps/ImageCarousel/2021movies';
 import PopUpCont from '@/comps/PopUpCont';
+
+const dataArrSlicing = () => {
+  // for(let i = 0; i < 15; i++){
+    // console.log("THIS IS THE SLICED ARRAY: " + movieJsonDataArr[i]);
+  // }
+  // var movieJsonDataArrSliced = [];
+  // movieJsonDataArrSliced = movieJsonDataArr.slice(0, 15);
+  movieJsonDataArr.splice(0, 15);
+
+  { movieJsonDataArr.map(() => {
+    for(let i = 0; i < 15; i++){
+      console.log("THIS IS THE IMPORTED ARRAY: " + movieJsonDataArr[i]);
+    }
+  }) }
+}
 
 var timer = null;
 
@@ -48,6 +67,10 @@ export default function Home() {
   const setting = () => {
     setSetPop(!setPop);
   }
+
+  useEffect(() => {
+    dataArrSlicing();
+  }, [movieJsonDataArr]);
 
   useEffect(() => {
     filteringMoviesByGenre();
@@ -128,7 +151,14 @@ export default function Home() {
         </div>
 
         {/* Setting pop up */}
-        <PopUpCont darkLight={changeTheme} gridList={changeView} onPressCloseBtn={setting} display={setPop === true ? "block" : "none"} position1={mode === true ? "0px" : "27px"} position2={view === true ? "0px" : "27px"} />
+        <PopUpCont 
+          darkLight={changeTheme} 
+          gridList={changeView} 
+          onPressCloseBtn={setting} 
+          display={setPop === true ? "block" : "none"} 
+          position1={mode === true ? "0px" : "27px"} 
+          position2={view === true ? "0px" : "27px"} 
+        />
       </div>
     </div>
   )

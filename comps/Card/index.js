@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const Cont = styled.div`
     display: flex;
-    margin-left: 10px;
-    margin-right: 10px;
+    // margin-left: 10px;
+    // margin-right: 10px;
     margin-bottom: ${props=>props.marginBot};
 `;
 
