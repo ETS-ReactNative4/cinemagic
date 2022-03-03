@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useTheme } from "@/utils/provider";
 import { filtering, sortArr } from '@/utils/func';
 import { movieJsonDataArr } from '@/comps/ImageCarousel/trending';
+import { useRouter } from 'next/router';
 
 //data
 import movies from '@/utils/imdbTop250.json';
@@ -42,16 +43,20 @@ const dataArrSlicing = () => {
 
 var timer = null;
 
+
 export default function Home() {
   const { theme, setTheme } = useTheme();
   const [mode, setMode] = useState(false);
   const [view, setView] = useState(false);
   const [setPop, setSetPop] = useState(false);
-
+  
   const [sbGenre, setSbGenre] = useState(false);
   const [sbYear, setSbYear] = useState(false);
   const [sbDuration, setSbDuration] = useState(false);
   const [movieDataGenre, setMovieDataGenre] = useState([]);
+  const [inputSearchData, setInputSearchData] = useState([]);
+  
+  const router = useRouter();
 
   const changeTheme = () => {
     setMode(!mode);
@@ -91,7 +96,31 @@ export default function Home() {
         })
         setMovieDataGenre(res.movieDataGenre);
         timer = null;
-      }, 1000);
+      }, 3000);
+    }
+  }
+
+  const inputSearch = async (search) => {
+    if( timer ){
+      clearTimeout(timer);
+      timer = null;
+    }
+
+    if( timer === null ){
+      timer = setTimeout( async () => {
+        console.log("async call");
+
+        const res = await axios.get("/api/movies", {
+          params: {
+            text: search,
+          }
+        })
+
+        console.log(res.inputSearchData);
+        setInputSearchData(res.inputSearchData);
+        timer = null;
+        router.push('/search');
+      }, 3000);
     }
   }
 
@@ -105,7 +134,7 @@ export default function Home() {
 
         {/* search bar */}
         <div className='searchBarCont'>
-          <SearchBar />
+          <SearchBar onChange={ (e) => inputSearch(e.target.value) }/>
         </div>
 
         {/* drop down filter menus */}

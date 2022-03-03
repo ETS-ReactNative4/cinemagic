@@ -2,13 +2,21 @@ import movies from '@/utils/imdbTop250.json'
 
 export function filtering(
     arr=[],
-    config={genre:null, year:null, duration:null,} 
+    config={
+      genre:null, 
+      year:null, 
+      duration:null,
+      title:null
+    } 
 ){
-    const {genre, year, duration} = config;
+    const {title, genre, year, duration} = config;
 
-    if(genre || year || duration){
+    if(title || genre || year || duration){
     const filtered_arr = arr.filter((o)=>{
         var cond = true;
+            if(title){
+              cond = cond && o.Title.includes(title);
+            }
 
             if(genre){
                 cond = cond && o.Genre.includes(genre);

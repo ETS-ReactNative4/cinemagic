@@ -3,6 +3,25 @@ import styled from 'styled-components';
 import { useTheme } from "@/utils/provider";
 import { comp_themes } from "@/utils/themes";
 
+
+
+const SearchBar = ({
+    onClickSearch = () => {},
+    onChange = () => {}
+}) => {
+    const {theme} = useTheme();
+    return <Cont bgColor={ comp_themes[theme].search_bar }>
+        <SearchBarInput 
+          bgColor={ comp_themes[theme].search_bar } 
+          placeholder="Search by title, casts, and director "
+          onChange={ onChange }  
+        ></SearchBarInput>
+        <SearchBarIcon src={ comp_themes[theme].search_bar_img } onClick={ onClickSearch }/>
+    </Cont>
+}
+
+export default SearchBar;
+
 const Cont = styled.div`
     display: flex;
     flex-direction: row;
@@ -31,15 +50,3 @@ const SearchBarIcon = styled.img`
     height: 20px;  
     margin-right:20px;
 `;
-
-const SearchBar = ({
-    onClickSearch = () => {},
-}) => {
-    const {theme} = useTheme();
-    return <Cont bgColor={comp_themes[theme].search_bar}>
-        <SearchBarInput bgColor={comp_themes[theme].search_bar} placeholder="Search by title, casts, and director "></SearchBarInput>
-        <SearchBarIcon src={comp_themes[theme].search_bar_img} onClick={onClickSearch}/>
-    </Cont>
-}
-
-export default SearchBar;
