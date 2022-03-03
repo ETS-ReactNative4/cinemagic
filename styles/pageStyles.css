@@ -1,0 +1,210 @@
+/* BASE PAGE LAYOUT ======================================= */
+
+/* entire window container */
+  .windowCont {
+    display: flex;
+    justify-content: center;
+
+    /* width: 100vw; */
+    min-height: 100vh;
+  }
+
+/* 428px iPhone 13 Max container */
+  .phoneSizeCont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-width: 428px;
+    max-width: 428px;
+  }
+
+/* cinemagic title container */
+  .titleCont {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    width: 100%;
+    min-height: 50px;
+  }
+
+/* nav bar container */
+  .navBarCont {
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    
+    width: 100vw;
+    z-index: 2;
+  }
+
+/* BASE PAGE LAYOUT END ===================================== */
+
+
+/* HOMEPAGE (index.js) ====================================== */
+
+/* search bar container */
+  .searchBarCont {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    width: 100%;
+    min-height: 55px
+  }
+
+/* drop down menu container */
+  .dropDownCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+
+    /* width: 288px; */
+    width: 75%;
+    min-height: 43px
+  }
+
+/* TRENDING header container */
+  .trendingHeadingCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    min-height: 68px
+  }
+
+/* movie image gallery container */
+  .carouselCont {
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    min-height: 212px;
+  }
+
+/* movie image gallery container 2 (the one placed at the bottom of the page; leaving some extra margin room for the nav bar) */
+  .carouselCont2 {
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 68px;
+
+    width: 95%;
+    min-height: 212px;
+  }
+
+/* sub headings conts */
+  .subHeadingCont {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 95%;
+    min-height: 68px
+  }
+
+
+
+
+
+/* HOMEPAGE (index.js) END =================================== */
+
+/* DETAIL (detail.js) ======================================== */
+
+  .detail-headerCont {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 50px;
+  }
+
+  .detail-backBtnCont {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: flex-end;
+
+    padding-bottom: 4px;
+    padding-left: 20px;
+  }
+
+  .detail-title {
+    margin-left: -20px;
+  }
+
+  .detail-mainCont {
+    display: flex;
+    /* justify-content: center; */
+    align-content: center;
+
+    flex-grow: 1;
+    max-width: 382px;
+    max-height: 405px;
+
+    margin-top: 25px;
+  }
+
+  .detail-moviePhoto {
+    max-width: 279px;
+    max-height: 405px;
+  }
+
+  .detail-squaresCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    flex-grow: 1;
+    min-width: 103px;
+    max-width: 103px;
+  }
+
+  .detail-descCont {
+    display: flex;
+    flex-grow: 1;
+    width: 377px;
+    max-width: 377px;
+    max-height: 181px;
+
+    margin-top: 50px;
+    margin-bottom: 85px;
+  }
+
+/* DETAIL (detail.js) END ==================================== */
+
+/* RESPONSIVE STYLING ======================================== */
+  @media screen and (max-width: 375px) {
+    
+    /* medium phone size */
+      .phoneSizeCont {
+        min-width: 375px;
+        max-width: 375px;
+      }
+
+      .swiper-wrapper {
+        padding-left: 1.25rem;
+      }
+
+      .detail-mainCont {
+        max-width: 355px;
+      }
+
+      .detail-backBtnCont {
+        padding-left: 10px;
+      }
+
+      .detail-title {
+        margin-left: -20px;
+      }
+
+      .detail-moviePhoto {
+        max-width: 255px;
+      }
+
+      .detail-descCont {
+        max-width: 350px;
+      }
+  }

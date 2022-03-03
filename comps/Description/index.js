@@ -3,46 +3,7 @@ import styled from 'styled-components';
 import { useTheme } from "@/utils/provider";
 import { comp_themes } from "@/utils/themes";
 
-const Cont = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    font-family: 'Sen';
-`;
 
-const Top = styled.div`
-    display: flex;
-    justify-content: space-around;
-    align-items:center;
-    width: 100vw;
-`
-const Title = styled.text`
-    display: flex;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 28px;
-    color: ${props => props.textColor};
-    inline-size: 200px;
-    overflow-wrap: break-word;
-`
-
-const Icon = styled.img`
-    width: 35px;
-    height: 35px;
-`
-const Bot = styled.div`
-    display: flex;
-    justify-content: center;
-`
-
-const InfoText = styled.text`
-    margin-top: 20px;
-    width:320px;
-    font-size: 14px;
-    line-height: 17px;
-    font-weight: lighter;
-    color: ${props => props.textColor};
-`
 
 const Description = ({
     src="/favorite-dark.svg",
@@ -62,3 +23,44 @@ const Description = ({
 }
 
 export default Description;
+
+const Cont = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-family: 'Sen';
+`;
+
+const Top = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    // width: 100vw;
+`
+const Title = styled.text`
+    display: flex;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    color: ${props => props.textColor};
+    // inline-size: 200px;
+    // overflow-wrap: break-word;
+`
+
+const Icon = styled.img`
+    width: 35px;
+    height: 35px;
+`
+const Bot = styled.div`
+    display: flex;
+    justify-content: center;
+`
+
+const InfoText = styled.text`
+    margin-top: 20px;
+    // width:320px;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: lighter;
+    color: ${props => props.textColor};
+`

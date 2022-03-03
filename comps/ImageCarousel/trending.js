@@ -11,6 +11,8 @@ import movies from '@/utils/imdbTop250.json';
 
 SwiperCore.use([Pagination]);
 
+export var movieJsonDataArr = [];
+
 export default function TrendingCarousel() {
   const { theme } = useTheme();  
   const [movieData, setMovieData] = useState(movies);
@@ -21,6 +23,7 @@ export default function TrendingCarousel() {
   for(let i = 0; i < 15; i += 1){
     if(movieData[i].Title){
       titles.push(movieData[i].Title);
+      movieJsonDataArr.push(movieData[i]);
     }
 
     // if(titles[i].String.length > 35){
@@ -28,7 +31,7 @@ export default function TrendingCarousel() {
     // }
 
     slides.push(
-      <SwiperSlide key={ `slide-${ i }` } tag='li'>
+      <SwiperSlide key={ `slide-${ i }` } tag='li' >
         <img 
           src='http://placekitten.com/160/175' 
           alt={ `Slide ${ i }` }
@@ -51,6 +54,8 @@ export default function TrendingCarousel() {
     )
 
     titles.pop(i);
+    movieJsonDataArr.slice(0, 15);
+    console.log(movieJsonDataArr);
   }
 
 // Screen dimension check

@@ -1,3 +1,5 @@
+import movies from '@/utils/imdbTop250.json'
+
 export function filtering(
     arr=[],
     config={genre:null, year:null, duration:null,} 
@@ -27,13 +29,13 @@ export function filtering(
     }
 }
 
-const movies = require('./imdbTop250.json')
+// const movies = require('./imdbTop250.json')
 
-var f_movies = filtering(movies, {
-    genre:"Action",
-    year: 1996,
-    duration:180
-})
+// var f_movies = filtering(movies, {
+//     genre:"Action",
+//     year: 1996,
+//     duration:180
+// })
 
 // console.log(f_movies)
 
@@ -74,9 +76,9 @@ export function sortArr(
    return arr;
 }
 
-var f_movies = sortArr(f_movies, {
-    key:"Ranking",
-    type:"desc"
-})
+// var f_movies = sortArr(f_movies, {
+//     key:"Ranking",
+//     type:"desc"
+// })
 
-console.log(f_movies)
+// console.log(f_movies)

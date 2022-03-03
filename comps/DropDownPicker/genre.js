@@ -2,7 +2,7 @@ import React from "react";
 import { Dropdown, DropdownButton, DropdownType, DropdownText, ButtonGroup, Button } from "react-bootstrap";
 import { filtering } from "@/utils/func";
 
-export default class GenreDropdownMenu extends React.Component {
+class GenreDropdownMenuTest extends React.Component {
   genreTypes = {
     genres: [
       "Action",
@@ -30,7 +30,9 @@ export default class GenreDropdownMenu extends React.Component {
     ]
   }
 
-  render() {
+  render({
+    selected = () => {}
+  }) {
     return (
       <>
         {[DropdownButton].map((DropdownType, idx) => (
@@ -46,7 +48,7 @@ export default class GenreDropdownMenu extends React.Component {
             { this.genreTypes.genres.map( data => (
               <Dropdown.Item 
                 title={ data } 
-                eventKey={ () => { filtering(data, {genre}) } }
+                eventKey={ selected }
               >
                 { data }
               </Dropdown.Item>
@@ -58,3 +60,62 @@ export default class GenreDropdownMenu extends React.Component {
     )
   }
 }
+
+const GenreDropdownMenu = ({
+  selected = () => {}
+}) => {
+  const genreTypes = {
+    genres: [
+      "Action",
+      "Adventure",
+      "Animation",
+      "Biography",
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "Film Noir",
+      "History",
+      "Horror",
+      "Music",
+      "Musical",
+      "Mystery",
+      "Romance",
+      "Sci-Fi",
+      "Short",
+      "Sport",
+      "Thriller",
+      "War",
+      "Western"
+    ]
+  }
+
+  return (
+    <>
+      {[DropdownButton].map((DropdownType, idx) => (
+        <DropdownType
+          as={ButtonGroup}
+          key={idx}
+          id={`dropdown-button-drop-${idx}`}
+          size="sm"
+          title="Genre"
+          variant='dark'
+        >
+
+          {genreTypes.genres.map(data => (
+            <Dropdown.Item
+              title={data}
+              eventKey={selected}
+            >
+              {data}
+            </Dropdown.Item>
+
+          ))}
+        </DropdownType>
+      ))}
+    </>
+  )
+}
+
+export default GenreDropdownMenu;

@@ -5,10 +5,14 @@ import { comp_themes } from "@/utils/themes";
 
 const Cont = styled.div`
     display: flex;
+
+    &:hover {
+      cursor: pointer;
+    }
 `;
 const BackBtnImg = styled.img`
-    height: 18px;
-    width: 18px;
+    height: 20px;
+    width: 20px;
 `
 
 const BackBtn = ({
@@ -16,7 +20,7 @@ const BackBtn = ({
     onPressBackBtn = () =>{}
 }) => {
     const { theme } = useTheme();
-    return <Cont onClick={onPressBackBtn}>
+    return <Cont>
         <BackBtnImg src={comp_themes[theme].backBtn}></BackBtnImg>
     </Cont>
 }
