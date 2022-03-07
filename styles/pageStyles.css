@@ -172,6 +172,40 @@
 
 /* DETAIL (detail.js) END ==================================== */
 
+
+/* GENRE FILTERED (/search/[filteredPage].js ================= */
+
+  .genreFilter-ContentContainer {
+    display: flex;
+    /* flex-direction: column; */
+    width: auto;
+    max-width: 375px;
+    flex-wrap: wrap;
+  }
+
+  .genreFilter-ContentRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+
+
+/* SEARCH page =============================================== */
+
+  .search-contentCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    max-width: 355px;
+  }
+
+
 /* RESPONSIVE STYLING ======================================== */
   @media screen and (max-width: 375px) {
     

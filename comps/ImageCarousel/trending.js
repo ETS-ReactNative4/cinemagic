@@ -55,7 +55,7 @@ export default function TrendingCarousel() {
 
     titles.pop(i);
     movieJsonDataArr.slice(0, 15);
-    console.log(movieJsonDataArr);
+    // console.log(movieJsonDataArr);
   }
 
 // Screen dimension check

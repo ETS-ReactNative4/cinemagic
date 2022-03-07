@@ -1,6 +1,5 @@
-import Head from 'next/head';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useTheme } from "@/utils/provider";
 import { filtering, sortArr } from '@/utils/func';
@@ -26,20 +25,20 @@ import GenreCarousel from '@/comps/ImageCarousel/genreTypes';
 import YearlyCarousel from '@/comps/ImageCarousel/2021movies';
 import PopUpCont from '@/comps/PopUpCont';
 
-const dataArrSlicing = () => {
-  // for(let i = 0; i < 15; i++){
-    // console.log("THIS IS THE SLICED ARRAY: " + movieJsonDataArr[i]);
-  // }
-  // var movieJsonDataArrSliced = [];
-  // movieJsonDataArrSliced = movieJsonDataArr.slice(0, 15);
-  movieJsonDataArr.splice(0, 15);
+// const dataArrSlicing = () => {
+//   // for(let i = 0; i < 15; i++){
+//     // console.log("THIS IS THE SLICED ARRAY: " + movieJsonDataArr[i]);
+//   // }
+//   // var movieJsonDataArrSliced = [];
+//   // movieJsonDataArrSliced = movieJsonDataArr.slice(0, 15);
+//   movieJsonDataArr.splice(0, 15);
 
-  { movieJsonDataArr.map(() => {
-    for(let i = 0; i < 15; i++){
-      console.log("THIS IS THE IMPORTED ARRAY: " + movieJsonDataArr[i]);
-    }
-  }) }
-}
+//   { movieJsonDataArr.map(() => {
+//     for(let i = 0; i < 15; i++){
+//       console.log("THIS IS THE IMPORTED ARRAY: " + movieJsonDataArr[i]);
+//     }
+//   }) }
+// }
 
 var timer = null;
 
@@ -55,6 +54,8 @@ export default function Home() {
   const [sbDuration, setSbDuration] = useState(false);
   const [movieDataGenre, setMovieDataGenre] = useState([]);
   const [inputSearchData, setInputSearchData] = useState([]);
+
+  const [searchPage, setSearchPage] = useState(false);
   
   const router = useRouter();
 
@@ -73,56 +74,78 @@ export default function Home() {
     setSetPop(!setPop);
   }
 
-  useEffect(() => {
-    dataArrSlicing();
-  }, [movieJsonDataArr]);
+  // useEffect(() => {
+  //   dataArrSlicing();
+  // }, [movieJsonDataArr]);
 
-  useEffect(() => {
-    filteringMoviesByGenre();
-  }, []);
+  // useEffect(() => {
+  //   inputSearch();
+  // }, [SearchBar]);
 
-  const filteringMoviesByGenre = async (genre) => {
-    if(timer){
-      clearTimeout(timer);
-      timer = null;
-    }
-
-    if(timer === null){
-      timer = setTimeout( async () => {
-        const res = await axios.get("/api/movies", {
-          params: {
-            genre: genre,
-          }
-        })
-        setMovieDataGenre(res.movieDataGenre);
-        timer = null;
-      }, 3000);
-    }
+  const filteringMoviesByGenre = (genre) => {
+    console.log(genre);
+    router.push(`/search/${genre}`);
   }
 
-  const inputSearch = async (search) => {
-    if( timer ){
-      clearTimeout(timer);
-      timer = null;
-    }
+  // const inputSearch = async (search) => {
+  //   setSearchPage(true);
 
-    if( timer === null ){
-      timer = setTimeout( async () => {
-        console.log("async call");
+  //   if( timer ){
+  //     clearTimeout(timer);
+  //     timer = null;
+  //   }
 
-        const res = await axios.get("/api/movies", {
-          params: {
-            text: search,
-          }
-        })
+  //   // if( timer === null ){
+  //   //   timer = setTimeout( async () => {
+  //   //     console.log("async call");
 
-        console.log(res.inputSearchData);
-        setInputSearchData(res.inputSearchData);
-        timer = null;
-        router.push('/search');
-      }, 3000);
-    }
-  }
+  //   //     const res = await axios.get("/api/movies", {
+  //   //       params: {
+  //   //         text: search,
+  //   //       }
+  //   //     })
+
+  //   //     console.log(res.inputSearchData);
+  //   //     setInputSearchData(res.inputSearchData);
+  //   //     timer = null;
+  //   //     router.push('/search');
+  //   //   }, 3000);
+  //   // }
+
+  //   if( searchPage === true ){
+  //     return (
+  //       <div className='windowCont'>
+  //         <div className='phoneSizeCont'>
+  //           {/* cinemagic logo/title */}
+  //           <div className='titleCont'>
+  //             <Logo />
+  //           </div>
+  //           {/* search bar */}
+  //           <div className='searchBarCont'>
+  //             <SearchBar onChange={ (e) => inputSearch(e.target.value) } />
+  //           </div>
+  //           {/* drop down filter menus */}
+  //           <div className='dropDownCont'>
+  //             <GenreDropdownMenu selected={ (e) => filteringMoviesByGenre(e.target.value) } />
+  //             <YearDropdownMenu />
+  //             <DurationDropdownMenu />
+  //           </div>
+  //           {/* Your Search subheading */}
+  //           <div className='trendingHeadingCont'>
+  //             <TextUI Title="YOUR SEARCH" />
+  //           </div>
+
+  //           <section>
+  //             <div className='search-contentCont'>
+
+  //             </div>
+  //           </section>
+
+  //         </div>
+  //       </div>
+  //     )
+  //   }
+  // }
 
   return (
     <div className='windowCont'>
@@ -139,7 +162,7 @@ export default function Home() {
 
         {/* drop down filter menus */}
         <div className='dropDownCont'>
-          <GenreDropdownMenu selected={ (e) => filteringMoviesByGenre(e.target.value) } />
+          <GenreDropdownMenu onSelection={ sel => filteringMoviesByGenre(`${sel}`) } />
           <YearDropdownMenu />
           <DurationDropdownMenu />
         </div>
