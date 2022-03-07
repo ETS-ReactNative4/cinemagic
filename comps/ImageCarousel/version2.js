@@ -20,7 +20,7 @@ export default function Carousel() {
           style={styles.image}
         />
 
-        <p className='carousel2text' style={{marginLeft:"-10px"}}>
+        <p className='carousel2text' style={{marginLeft:"10px"}}>
           Genre Type
         </p>
       </SwiperSlide>
