@@ -27,8 +27,8 @@ const Title = styled.text`
 `
 
 const Icon = styled.img`
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
 `
 const Bot = styled.div`
     display: flex;
