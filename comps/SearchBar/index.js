@@ -25,6 +25,7 @@ const SearchBarInput = styled.input`
     background-color: ${props=>props.bgColor};
     border: none;
     font-size:14px;
+    outline: none;
 `
 const SearchBarIcon = styled.img`
     width: 20px;
