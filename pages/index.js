@@ -15,6 +15,8 @@ import TrendingCarousel from '@/comps/ImageCarousel/trending';
 import GenreCarousel from '@/comps/ImageCarousel/genreTypes';
 import YearlyCarousel from '@/comps/ImageCarousel/2021movies';
 import PopUpCont from '@/comps/PopUpCont';
+import FuncIcons from '@/comps/FuncIcons';
+
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
@@ -56,6 +58,13 @@ export default function Home() {
         <div className={scss.titleCont}>
           <Logo />
         </div>
+
+        {/* Functional Icons - Chat & Drag */}
+        <div>
+          <FuncIcons />
+        </div>
+       
+
         {/* search bar */}
         <div className={scss.searchBarCont}>
           <SearchBar onChange={ (e) => inputSearch(e.target.value) }/>
