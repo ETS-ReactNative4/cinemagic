@@ -24,9 +24,8 @@ import TrendingCarousel from '@/comps/ImageCarousel/trending';
 import GenreCarousel from '@/comps/ImageCarousel/genreTypes';
 import YearlyCarousel from '@/comps/ImageCarousel/2021movies';
 import PopUpCont from '@/comps/PopUpCont';
-
-//test
 import FuncIcons from '@/comps/FuncIcons';
+
 
 const dataArrSlicing = () => {
   // for(let i = 0; i < 15; i++){
@@ -106,8 +105,11 @@ export default function Home() {
           <Logo />
         </div>
 
-
-        <FuncIcons />
+        {/* Functional Icons - Chat & Drag */}
+        <div>
+          <FuncIcons />
+        </div>
+       
 
         {/* search bar */}
         <div className='searchBarCont'>
