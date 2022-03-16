@@ -25,6 +25,9 @@ import GenreCarousel from '@/comps/ImageCarousel/genreTypes';
 import YearlyCarousel from '@/comps/ImageCarousel/2021movies';
 import PopUpCont from '@/comps/PopUpCont';
 
+//test
+import FuncIcons from '@/comps/FuncIcons';
+
 const dataArrSlicing = () => {
   // for(let i = 0; i < 15; i++){
     // console.log("THIS IS THE SLICED ARRAY: " + movieJsonDataArr[i]);
@@ -102,6 +105,9 @@ export default function Home() {
         <div className='titleCont'>
           <Logo />
         </div>
+
+
+        <FuncIcons />
 
         {/* search bar */}
         <div className='searchBarCont'>
