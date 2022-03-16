@@ -34,7 +34,7 @@ export default function FilteredPage({
       return (
         <div className={scss.contentRow}>
           {slicedArr.map(data => (
-            <GridCard movieName={data.Title} elementKey={data.Title}/>
+            <GridCard movieName={data.Title} key={data.Title}/>
           ))}
         </div>
       )
