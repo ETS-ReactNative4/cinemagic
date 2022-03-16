@@ -1,0 +1,81 @@
+@use "@/styles/mixins.scss";
+@use "@/styles/variables.scss";
+
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+/* entire window container */
+.windowCont {
+  @include windowWrapper();
+
+  /* 428px iPhone 13 Max container */
+  .phoneSizeCont {
+    @include phoneWrapper();
+
+    /* cinemagic title container */
+    .titleCont {
+      @include titleWrapper();
+    }
+
+    /* search bar container */
+    .searchBarCont {
+      @include flexCenterAlignEnd();
+
+      width: 100%;
+      min-height: 55px
+    }
+
+    /* drop down menu container */
+    .dropDownCont {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: flex-end;
+
+      width: 75%;
+      min-height: 43px
+    }
+
+    /* TRENDING header container */
+    .trendingHeadingCont {
+      @include flexCenterAlignCenter();
+
+      width: 100%;
+      min-height: 68px
+    }
+
+    /* movie image gallery container */
+    .carouselCont {
+      display: flex;
+      justify-content: center;
+      width: 95%;
+      min-height: 212px;
+    }
+
+    /* movie image gallery container 2 (the one placed at the bottom of the page; leaving some extra margin room for the nav bar) */
+    .carouselCont2 {
+      display: flex;
+      justify-content: center;
+
+      margin-bottom: 68px;
+
+      width: 95%;
+      min-height: 212px;
+    }
+
+    /* sub headings conts */
+    .subHeadingCont {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      width: 95%;
+      min-height: 68px
+    }
+  }
+}
+
+/* nav bar container */
+.navBarCont {
+  @include navBar();
+}

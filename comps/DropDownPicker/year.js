@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown, DropdownButton, DropdownType, DropdownText, ButtonGroup, Button } from "react-bootstrap";
 
-export default class YearDropdownMenu extends React.Component {
+class YearDropdownMenuTest extends React.Component {
   year = {
     years: []
   }
@@ -33,3 +33,50 @@ export default class YearDropdownMenu extends React.Component {
     )
   }
 }
+
+const YearDropdownMenu = ({
+  onSelection,
+}) => {
+  const years = [];
+
+  for(let i = 1996; i < 2021; i++){
+    years.push([i]);
+  }
+
+  const DropdownKeys = () => {
+    for(let i = 0; i < years.length; i++){
+      return (
+        <>
+          {years.map(data => (
+            <Dropdown.Item
+              title={years[i]}
+              eventKey={data}
+            >
+              {data}
+            </Dropdown.Item>
+          ))}
+        </>
+      )
+    }
+  }
+
+  return (
+    <>
+      {[DropdownButton].map((DropdownType, idx) => (
+        <DropdownType
+          as={ButtonGroup}
+          key={idx}
+          id={`dropdown-button-drop-${idx}`}
+          size="sm"
+          title="Year"
+          variant='dark'
+          onSelect={onSelection}
+        >
+          <DropdownKeys />
+        </DropdownType>
+      ))}
+    </>
+  )
+}
+
+export default YearDropdownMenu;

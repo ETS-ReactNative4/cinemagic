@@ -3,62 +3,34 @@ import { useRouter } from 'next/router';
 import { filtering, sortArr } from '@/utils/func';
 import movies from '@/utils/imdbTop250.json';
 import PageLayout from '@/styles/pageLayout';
+import scss from '@/styles/pageStyles/genreFiltered.module.scss';
 
 // components
-import Logo from '@/comps/Logo';
-import SearchBar from '@/comps/SearchBar';
-import NavBar from '@/comps/NavBar';
-import GenreDropdownMenu from '@/comps/DropDownPicker/genre';
-import YearDropdownMenu from '@/comps/DropDownPicker/year';
-import DurationDropdownMenu from '@/comps/DropDownPicker/duration';
 import TextUI from '@/comps/TextUI';
 import GridCard from '@/comps/GridCard';
 
 export default function FilteredPage({
 
 }){
-  const changeTheme = () => {
-    setMode(!mode);
-    setTheme(theme === 'light' ? 'default' : 'light')
-    console.log("Theme", mode)
-  }
-
-  const changeView = () => {
-    setView(!view);
-    console.log("View", view)
-  }
-
-  const setting = () => {
-    setSetPop(!setPop);
-  }
-
   const router = useRouter();
   const { asPath } = useRouter();
-  var cutURL = asPath.substring(8);
+  var cutURL = asPath.substring(7);
 
   var movieFilteredArr = [];
 
-  const filteringMoviesByGenre = (genre) => {
-    console.log(genre);
-    router.push(`/search/${genre}`);
-  }
-
-  useEffect(() => {
-    FilterMoviesByQuery();
-  }, [])
+  const handleCardClick = sel => router.push(`/detail/${sel}`);
 
   const FilterMoviesByQuery = () => {
     movieFilteredArr = filtering(movies, {
       genre: cutURL
     });
+    var slicedArr = movieFilteredArr.slice(0, 20);
 
-    // console.log(movieFilteredArr);
-
-    for(let i = 0; i < movieFilteredArr.length; i++){
+    for(let i = 0; i < slicedArr.length; i++){
       return (
-        <div className='genreFilter-ContentRow'>
-          {movieFilteredArr.map(data => (
-            <GridCard movieName={movieFilteredArr[i].Title} elementKey={data.Title}/>
+        <div className={scss.contentRow}>
+          {slicedArr.map(data => (
+            <GridCard movieName={data.Title} elementKey={data.Title} onCardClick={ () => handleCardClick(`${data.Title}`)} />
           ))}
         </div>
       )
@@ -82,12 +54,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -96,12 +68,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -110,12 +82,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -124,12 +96,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -138,12 +110,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -152,12 +124,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -166,12 +138,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -180,12 +152,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -194,12 +166,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -208,12 +180,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -222,12 +194,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -236,12 +208,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -250,12 +222,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -264,12 +236,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -278,12 +250,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -292,12 +264,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -306,12 +278,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -320,12 +292,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -334,12 +306,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -348,12 +320,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -362,12 +334,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>
@@ -376,12 +348,12 @@ export default function FilteredPage({
         return (
           <PageLayout>
             {/* subheading */}
-            <div className='trendingHeadingCont'>
+            <div className={scss.trendingHeadingCont}>
               <TextUI Title={`${cutURLUpperCase} MOVIES`} />
             </div>
 
             {/* filtered movies */}
-            <div className='genreFilter-ContentContainer'>
+            <div className={scss.contentContainer}>
               <FilterMoviesByQuery />
             </div>
           </PageLayout>

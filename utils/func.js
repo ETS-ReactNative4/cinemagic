@@ -6,12 +6,13 @@ export function filtering(
       genre:null, 
       year:null, 
       duration:null,
-      title:null
+      title:null,
+      gross:null
     } 
 ){
-    const {title, genre, year, duration} = config;
+    const {title, genre, year, duration, gross} = config;
 
-    if(title || genre || year || duration){
+    if(title || genre || year || duration || gross){
     const filtered_arr = arr.filter((o)=>{
         var cond = true;
             if(title){
@@ -28,6 +29,10 @@ export function filtering(
     
             if(duration){
                 cond = cond && Number(o.RunTime) >= Number(duration);
+            }
+
+            if(gross){
+              cond = cond && Number(o.Gross) >= Number(gross);
             }
             return cond;
         })

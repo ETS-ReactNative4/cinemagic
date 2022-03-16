@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown, DropdownButton, DropdownType, DropdownText, ButtonGroup, Button } from "react-bootstrap";
 
-export default class DurationDropdownMenu extends React.Component {
+class DurationDropdownMenuTest extends React.Component {
   duration = {
     durations: [
       "Less than 90min",
@@ -32,3 +32,49 @@ export default class DurationDropdownMenu extends React.Component {
     )
   }
 }
+
+const DurationDropdownMenu = ({
+  onSelection,
+}) => {
+  const duration = [
+    "Less than 90mins",
+    "More than 90mins"
+  ];
+
+  const DropdownKeys = () => {
+    for(let i = 0; i < duration.length; i++){
+      return (
+        <>
+          {duration.map(data => (
+            <Dropdown.Item
+              title={duration[i]}
+              eventKey={data}
+            >
+              {data}
+            </Dropdown.Item>
+          ))}
+        </>
+      )
+    }
+  }
+
+  return (
+    <>
+      {[DropdownButton].map((DropdownType, idx) => (
+        <DropdownType
+          as={ButtonGroup}
+          key={idx}
+          id={`dropdown-button-drop-${idx}`}
+          size="sm"
+          title="Duration"
+          variant='dark'
+          onSelect={onSelection}
+        >
+          <DropdownKeys />
+        </DropdownType>
+      ))}
+    </>
+  )
+}
+
+export default DurationDropdownMenu;

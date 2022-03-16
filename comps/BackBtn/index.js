@@ -1,28 +1,17 @@
 import React, {useRouter} from 'react';
 import styled from 'styled-components';
+import scss from './backBtn.module.scss';
 import { useTheme } from "@/utils/provider";
 import { comp_themes } from "@/utils/themes";
 
-const Cont = styled.div`
-    display: flex;
+export default function backBtn({
+  onBackBtnClick = () => {}
+}){
+  const { theme } = useTheme();
 
-    &:hover {
-      cursor: pointer;
-    }
-`;
-const BackBtnImg = styled.img`
-    height: 20px;
-    width: 20px;
-`
-
-const BackBtn = ({
-    imgSrc="/back-dark.svg",
-    onPressBackBtn = () =>{}
-}) => {
-    const { theme } = useTheme();
-    return <Cont>
-        <BackBtnImg src={comp_themes[theme].backBtn}></BackBtnImg>
-    </Cont>
+  return (
+    <div className={scss.container} onClick={onBackBtnClick}>
+      <img src={comp_themes[theme].backBtn} />
+    </div>
+  )
 }
-
-export default BackBtn;

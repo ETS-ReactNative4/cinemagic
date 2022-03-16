@@ -1,0 +1,16 @@
+@use "@/styles/variables.scss";
+@use "@/styles/mixins.scss";
+
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.logo {
+  font-family: 'Sen', sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: #D02A1C;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

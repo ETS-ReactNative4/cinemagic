@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 import { useTheme } from "@/utils/provider";
@@ -8,9 +9,8 @@ import 'swiper/css';
 
 export default function GenreCarousel() {
   const { theme } = useTheme();
-
+  const router = useRouter();
   const slides = [];
-  const genreLabel = [];
 
   const genres = [
     "Action",
@@ -37,18 +37,23 @@ export default function GenreCarousel() {
     "Western"
   ];
 
-  for(let i = 0; i < 21; i += 1) {
-    genreLabel.push(genres[i]);
+  const handleCarouselItemClick = sel => router.push(`/genre/${sel}`);
 
+  genres.map(genre => {
     slides.push(
-      <SwiperSlide key={ `slide-${i}` } tag='li'>
+      <SwiperSlide 
+        key={ genre } 
+        tag='li'
+        onClick={ () => handleCarouselItemClick(genre) }   
+        style={{ cursor: "pointer" }}
+      >
         <img
           src='http://placekitten.com/123/179'
-          alt={ `Slide ${i}` }
+          alt={ genre }
           style={ styles.image }
         />
 
-        { genreLabel.map((o) => <p style={{
+        <p style={{
           display: 'flex',
           justifyContent: 'center',
           
@@ -57,13 +62,12 @@ export default function GenreCarousel() {
           
           color: comp_themes[theme].carouselTextColour,
           fontSize: '12pt'
-        }}
-        >{ o }</p>) }
+        }}>
+          {genre}
+        </p>
       </SwiperSlide>
     )
-
-    genreLabel.pop(i);
-  }
+  })
 
 // Screen dimension check
   if(typeof window !== "undefined"){
@@ -99,6 +103,8 @@ export default function GenreCarousel() {
         slidesPerGroup={3}
         spaceBetween={0}
         loop={false}
+        observeParents={true}
+        observer={true}
       >
         {slides}
       </Swiper>

@@ -1,22 +1,19 @@
-import React, {useRouter} from 'react';
+import React from 'react';
+import { useRouter } from 'next/router';
+import scss from './logo.module.scss';
 import styled from 'styled-components';
 
-const Cont = styled.div`
-    display: flex;
-`;
-const LogoText = styled.div`
-    font-size: 18px;
-    color: #D02A1C;
-    font-family: 'Sen', sans-serif;
-    font-weight: 900;
-`
+export default function logo(){
+  const router = useRouter();
 
-const Logo = ({
-    onClickLogo = () =>{}
-}) => {
-    return <Cont onClick={onClickLogo}>
-        <LogoText>CINEMAGIC</LogoText>
-    </Cont>
+  return (
+    <>
+      <h1 
+        className={scss.logo}
+        onClick={() => router.push("/")}
+      >
+        CINEMAGIC
+      </h1>
+    </>
+  )
 }
-
-export default Logo;

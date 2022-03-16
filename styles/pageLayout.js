@@ -1,28 +1,15 @@
 import React, { useEffect, useState, useRef } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
 import { useTheme } from "@/utils/provider";
-import { filtering, sortArr } from '@/utils/func';
-import { movieJsonDataArr } from '@/comps/ImageCarousel/trending';
 import { useRouter } from 'next/router';
-
-//data
-import movies from '@/utils/imdbTop250.json';
+import scss from '@/styles/pageStyles/genreFiltered.module.scss';
 
 // components
 import Logo from '@/comps/Logo';
 import SearchBar from '@/comps/SearchBar';
-import TextUI from '@/comps/TextUI';
-import Card from '@/comps/Card';
-import DotNavBar from '@/comps/DotNavBar';
 import NavBar from '@/comps/NavBar';
-import DropDownPicker from '@/comps/DropDownPicker';
 import GenreDropdownMenu from '@/comps/DropDownPicker/genre';
 import YearDropdownMenu from '@/comps/DropDownPicker/year';
 import DurationDropdownMenu from '@/comps/DropDownPicker/duration';
-import TrendingCarousel from '@/comps/ImageCarousel/trending';
-import GenreCarousel from '@/comps/ImageCarousel/genreTypes';
-import YearlyCarousel from '@/comps/ImageCarousel/2021movies';
 import PopUpCont from '@/comps/PopUpCont';
 
 export default function PageLayout({ children }) {
@@ -30,14 +17,6 @@ export default function PageLayout({ children }) {
   const [mode, setMode] = useState(false);
   const [view, setView] = useState(false);
   const [setPop, setSetPop] = useState(false);
-  
-  const [sbGenre, setSbGenre] = useState(false);
-  const [sbYear, setSbYear] = useState(false);
-  const [sbDuration, setSbDuration] = useState(false);
-  const [movieDataGenre, setMovieDataGenre] = useState([]);
-  const [inputSearchData, setInputSearchData] = useState([]);
-
-  const [searchPage, setSearchPage] = useState(false);
   
   const router = useRouter();
 
@@ -57,34 +36,40 @@ export default function PageLayout({ children }) {
   }
 
   const filteringMoviesByGenre = (genre) => {
-    console.log(genre);
-    router.push(`/search/${genre}`);
+    router.push(`/genre/${genre}`);
+  }
+  const filteringMoviesByYear = (year) => {
+    router.push(`/year/${year}`);
+  }  
+  const filteringMoviesByDuration = (dur) => {
+    var trimmedStr = dur.split(' ').join('');
+    router.push(`/duration/${trimmedStr}`);
   }
   
   return (
-    <div className='windowCont'>
-      <div className='phoneSizeCont'>
+    <div className={scss.windowCont}>
+      <div className={scss.phoneSizeCont}>
         {/* cinemagic logo/title */}
-        <div className='titleCont'>
+        <div className={scss.titleCont}>
           <Logo />
         </div>
 
         {/* search bar */}
-        <div className='searchBarCont'>
+        <div className={scss.searchBarCont}>
           <SearchBar onChange={ (e) => inputSearch(e.target.value) }/>
         </div>
 
         {/* drop down filter menus */}
-        <div className='dropDownCont'>
+        <div className={scss.dropDownCont}>
           <GenreDropdownMenu onSelection={ sel => filteringMoviesByGenre(`${sel}`) } />
-          <YearDropdownMenu />
-          <DurationDropdownMenu />
+          <YearDropdownMenu onSelection={ sel => filteringMoviesByYear(`${sel}`) } />
+          <DurationDropdownMenu onSelection={ sel => filteringMoviesByDuration(`${sel}`) } />
         </div>
 
         { children }
 
         {/* nav bar */}
-        <div className='navBarCont'>
+        <div className={scss.navBarCont}>
           <NavBar onClickSetting={setting} />
         </div>
 
