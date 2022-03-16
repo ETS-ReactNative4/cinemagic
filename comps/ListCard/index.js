@@ -3,6 +3,30 @@ import styled from 'styled-components';
 import TextUI from '../TextUI';
 import DetailsBtn from '../DetailsBtn';
 
+const ListCard = ({
+    CardListImgSrc="https://i.pinimg.com/564x/02/be/85/02be8597e6265fcbc9eb90501600ea18.jpg",
+    AddFavList='/favorite-dark.svg',
+    onClickCard = () =>{},
+    onClickAddFav = () =>{},
+}) => {
+  return <Cont onClick={onClickCard}>
+    <CardCont>
+      <ListCardImg src={CardListImgSrc}></ListCardImg>
+      <ListCardInfo>
+        <TextUI TextUISize="14px" TextUIWeight="600" TextUIColor="#E0E0E0" Title="Shangchi"></TextUI>
+        <TextUI TextUISize="12px" TextUIWeight="lighter" TextUIColor="#E0E0E0" Title="Rating: 4/5"></TextUI>
+        <TextUI TextUISize="12px" TextUIWeight="lighter" TextUIColor="#E0E0E0" Title="1hr 20mins"></TextUI>
+        <DetailButton>
+          <DetailsBtn />
+        </DetailButton>
+      </ListCardInfo>
+      <ListCardIcon onClick={onClickAddFav} src={AddFavList}/>
+    </CardCont>
+  </Cont>
+}
+
+export default ListCard;
+
 const Cont = styled.div`
     display: flex;
 `;
@@ -49,27 +73,3 @@ const DetailButton = styled.div`
     padding-top: 10px;
     margin-left: 5px;
 `;
-
-const ListCard = ({
-    CardListImgSrc="https://i.pinimg.com/564x/02/be/85/02be8597e6265fcbc9eb90501600ea18.jpg",
-    AddFavList='/favorite-dark.svg',
-    onClickCard = () =>{},
-    onClickAddFav = () =>{},
-}) => {
-    return <Cont onClick={onClickCard}>
-        <CardCont>
-            <ListCardImg src={CardListImgSrc}></ListCardImg>
-            <ListCardInfo>
-                <TextUI TextUISize="14px" TextUIWeight="600" TextUIColor="#E0E0E0" Title="Shangchi"></TextUI>
-                <TextUI TextUISize="12px" TextUIWeight="lighter" TextUIColor="#E0E0E0" Title="Rating: 4/5"></TextUI>
-                <TextUI TextUISize="12px" TextUIWeight="lighter" TextUIColor="#E0E0E0" Title="1hr 20mins"></TextUI>
-                <DetailButton>
-                    <DetailsBtn />
-                </DetailButton>
-            </ListCardInfo>
-            <ListCardIcon onClick={onClickAddFav} src={AddFavList}/>
-        </CardCont>
-    </Cont>
-}
-
-export default ListCard;

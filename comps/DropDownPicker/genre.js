@@ -62,33 +62,48 @@ class GenreDropdownMenuTest extends React.Component {
 }
 
 const GenreDropdownMenu = ({
-  selected = () => {}
+  onSelection,
 }) => {
-  const genreTypes = {
-    genres: [
-      "Action",
-      "Adventure",
-      "Animation",
-      "Biography",
-      "Comedy",
-      "Crime",
-      "Drama",
-      "Family",
-      "Fantasy",
-      "Film Noir",
-      "History",
-      "Horror",
-      "Music",
-      "Musical",
-      "Mystery",
-      "Romance",
-      "Sci-Fi",
-      "Short",
-      "Sport",
-      "Thriller",
-      "War",
-      "Western"
-    ]
+  const genreTypes = [
+    "Action",
+    "Adventure",
+    "Animation",
+    "Biography",
+    "Comedy",
+    "Crime",
+    "Drama",
+    "Family",
+    "Fantasy",
+    "Film Noir",
+    "History",
+    "Horror",
+    "Music",
+    "Musical",
+    "Mystery",
+    "Romance",
+    "Sci-Fi",
+    "Short",
+    "Sport",
+    "Thriller",
+    "War",
+    "Western"
+  ]
+
+  const DropdownKeys = () => {
+    for(let i = 0; i < genreTypes.length; i++){
+      return (
+        <>
+          {genreTypes.map(data => (
+            <Dropdown.Item
+              title={genreTypes[i]}
+              eventKey={data}
+            >
+              {data}
+            </Dropdown.Item>
+          ))}
+        </>
+      )
+    }
   }
 
   return (
@@ -101,17 +116,9 @@ const GenreDropdownMenu = ({
           size="sm"
           title="Genre"
           variant='dark'
+          onSelect={onSelection}
         >
-
-          {genreTypes.genres.map(data => (
-            <Dropdown.Item
-              title={data}
-              eventKey={selected}
-            >
-              {data}
-            </Dropdown.Item>
-
-          ))}
+          <DropdownKeys />
         </DropdownType>
       ))}
     </>

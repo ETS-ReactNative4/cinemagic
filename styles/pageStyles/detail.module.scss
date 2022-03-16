@@ -1,0 +1,80 @@
+@use "@/styles/mixins.scss";
+@use "@/styles/variables.scss";
+
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+.windowCont {
+  @include windowWrapper();
+
+  .phoneSizeCont {
+    @include phoneWrapper();
+
+    .headerCont {
+      display: flex;
+      justify-content: space-between;
+    
+      width: 100%;
+      height: 50px;
+    
+      .backBtnCont {
+        display: flex;
+        align-items: flex-end;
+      
+        padding-bottom: 4px;
+        padding-left: 20px;
+      }
+    
+      /* cinemagic title container */
+      .titleCont {
+        @include titleWrapper();
+      }
+      
+      .detailTitle {
+        margin-left: -20px;
+      }
+    }
+  }
+}
+
+.mainCont {
+  display: flex;
+  align-content: center;
+
+  flex-grow: 1;
+  max-width: 382px;
+  max-height: 405px;
+
+  margin-top: 25px;
+
+  .moviePhoto {
+    max-width: 279px;
+    max-height: 405px;
+  }
+
+  .squaresCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  
+    flex-grow: 1;
+    min-width: 103px;
+    max-width: 103px;
+  }
+}
+
+.descCont {
+  display: flex;
+  flex-grow: 1;
+  width: 377px;
+  max-width: 377px;
+  max-height: 181px;
+
+  margin-top: 50px;
+  margin-bottom: 85px;
+}
+
+.navBarCont {
+  @include navBar();
+}

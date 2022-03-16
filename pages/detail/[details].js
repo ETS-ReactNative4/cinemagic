@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useTheme } from "@/utils/provider";
 import { comp_themes, themes } from "@/utils/themes";
 import { useRouter } from 'next/router'
+import scss from '@/styles/pageStyles/detail.module.scss';
 
 // components
 import BackBtn from '@/comps/BackBtn';
@@ -14,12 +15,13 @@ import Description from '@/comps/Description'
 import NavBar from '@/comps/NavBar';
 import PopUpCont from '@/comps/PopUpCont';
 
-
-
 export default function Detail({
 
 }) {
-  const router = useRouter()
+  const router = useRouter();
+  const { asPath } = useRouter();
+  const cutURL = asPath.substring(8);
+  const fixedURL = cutURL.replace(/%20/g, ' ');
 
   const { theme, setTheme } = useTheme();
   const [mode, setMode] = useState(false);
@@ -42,32 +44,32 @@ export default function Detail({
   }
 
   return (
-    <div className='windowCont'>
-      <div className='phoneSizeCont'>
+    <div className={scss.windowCont}>
+      <div className={scss.phoneSizeCont}>
         {/* detail page header container */}
-        <div className='detail-headerCont'>
-          <div className='detail-backBtnCont'>
+        <div className={scss.headerCont}>
+          <div className={scss.backBtnCont}>
             {/* back button in header */}
-            <BackBtn onClick={ () => router.push('/index.js') } />
+            <BackBtn onBackBtnClick={ () => router.push('/') } />
           </div>
-          <div className='titleCont detail-title'>
+          <div className={`${scss.titleCont} ${scss.detailTitle}`}>
             {/* movie heading */}
             <TextUI 
-              Title='MOVIE DETAIL' 
+              Title={fixedURL} 
               TextUIColor={ comp_themes[theme].TextUI } 
             />
           </div>          
         </div>
         {/* main movie detail content container */}
-        <section className='detail-mainCont'>
+        <section className={scss.mainCont}>
           {/* movie photo */}
-          <div className='detail-moviePhoto'>
+          <div className={scss.moviePhoto}>
             <Card 
               CardImgHeight='405px' 
               CardImgWidth='279px' 
             />
           </div>
-          <div className='detail-squaresCont'>
+          <div className={scss.squaresCont}>
             <Info 
               infoSrc={ comp_themes[theme].info_genre } 
               title='Genre'
@@ -84,11 +86,11 @@ export default function Detail({
           </div>
         </section>
         {/* movie description */}
-        <section className='detail-descCont'>
-          <Description title='Placeholder' />
+        <section className={scss.descCont}>
+          <Description title={fixedURL} />
         </section>
 
-        <section className='navBarCont'>
+        <section className={scss.navBarCont}>
           <NavBar 
             onClickSetting={ setting } 
             onClickHome={ () => router.push('/') } 

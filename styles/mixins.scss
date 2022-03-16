@@ -1,0 +1,60 @@
+@use "@/styles/variables.scss";
+
+@import "@/styles/variables.scss";
+
+@mixin flexCenterAlignCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexCenterAlignEnd {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* nav bar mixin */
+@mixin navBar {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  
+  width: 100vw;
+  z-index: 2;
+}
+
+/* title, header, screen size container */
+@mixin windowWrapper {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+@mixin phoneWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-width: 428px;
+  max-width: 428px;
+}
+
+@mixin titleWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  min-height: 50px;
+}
+
+/* swiper js carousel text mixins */
+@mixin carouselText {
+  display: flex;
+  justify-content: center;
+        
+  color: white;
+  font-size: 12pt;
+
+  padding-top: 13px;
+}

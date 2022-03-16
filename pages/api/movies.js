@@ -2,24 +2,30 @@ import movies from '@/utils/imdbTop250.json';
 import { filtering, sortArr } from '@/utils/func';
 
 export default async function handler(req, res) {
-  const { genre, year, duration } = req.query;
+  const { text, genre, year, duration } = req.query;
   var moviesList = [];
+
+  if(text){
+    moviesList = filtering(movies, {
+      title: text
+    })
+  }
 
   if(genre){
     moviesList = filtering(movies, {
-      Genre: genre
+      genre: genre
     })
   }
 
   if(year){
     moviesList = filtering(movies, {
-      Date: year
+      date: year
     })
   }
 
   if(duration){
     moviesList = filtering(movies, {
-      RunTime: duration
+      duration: duration
     })
   }
 

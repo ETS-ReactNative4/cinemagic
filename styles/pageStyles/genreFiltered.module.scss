@@ -1,0 +1,73 @@
+@use "@/styles/mixins.scss";
+@use "@/styles/variables.scss";
+
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+/* entire window container */
+.windowCont {
+  @include windowWrapper();
+
+  /* 428px iPhone 13 Max container */
+  .phoneSizeCont {
+    @include phoneWrapper();
+
+    /* cinemagic title container */
+    .titleCont {
+      @include titleWrapper();
+    }
+
+    /* search bar container */
+    .searchBarCont {
+      @include flexCenterAlignEnd();
+
+      width: 100%;
+      min-height: 55px
+    }
+
+    /* drop down menu container */
+    .dropDownCont {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: flex-end;
+
+      width: 75%;
+      min-height: 43px
+    }
+
+    /* TRENDING header container */
+    .trendingHeadingCont {
+      @include flexCenterAlignCenter();
+
+      width: 100%;
+      min-height: 68px
+    }
+
+    .contentContainer {
+      display: flex;
+      /* flex-direction: column; */
+      width: auto;
+      max-width: 375px;
+      flex-wrap: wrap;
+
+      margin-bottom: 68px;
+    }
+  
+    .contentRow {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+  
+      width: 100%;
+      max-width: 100%;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+/* nav bar container */
+.navBarCont {
+  @include navBar();
+}

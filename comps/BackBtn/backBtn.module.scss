@@ -1,0 +1,19 @@
+@use "@/styles/variables.scss";
+@use "@/styles/mixins.scss";
+
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.container {
+  display: flex;
+  z-index: 2;
+  
+  &:hover {
+    cursor: pointer;
+  }
+
+  img {
+    height: 20px;
+    width: 20px;
+  }
+}

@@ -1,13 +1,13 @@
-import "@/styles/globals.css";
+import "@/styles/globals.scss";
 
 // Reactjs Bootstrap css
 import "@/node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-// Custom Reactjs Swiper css
-import "@/styles/styleOverrides.css";
+// comp framework styling overrides
+import "@/styles/compStyleOverrides.scss";
 
-// page styling css
-import "@/styles/pageStyles.css";
+// // page styling css
+// import "@/styles/pageStyles.css";
 
 import AppProvider from "@/utils/provider";
 

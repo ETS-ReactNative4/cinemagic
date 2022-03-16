@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination } from 'swiper';
 import { useTheme } from "@/utils/provider";
@@ -8,6 +9,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import movies from '@/utils/imdbTop250.json';
+import { filtering } from '@/utils/func';
 
 SwiperCore.use([Pagination]);
 
@@ -15,30 +17,39 @@ export var movieJsonDataArr = [];
 
 export default function TrendingCarousel() {
   const { theme } = useTheme();  
-  const [movieData, setMovieData] = useState(movies);
-  const titles = [];
+  const [movieData, setMovieData] = useState([]);
+  const router = useRouter();
   const slides = [];
 
-// array pushes 15 movie slides to SwiperJS
-  for(let i = 0; i < 15; i += 1){
-    if(movieData[i].Title){
-      titles.push(movieData[i].Title);
-      movieJsonDataArr.push(movieData[i]);
-    }
+  useEffect(() => {
+    filterMovies();
+  }, []);
 
-    // if(titles[i].String.length > 35){
-    //   return String.subtr(0, 32) + '&hellip;';
-    // }
+  const handleCarouselItemClick = sel => router.push(`/detail/${sel}`);
 
+  const filterMovies = () => {
+    var movieFilteredArr = filtering(movies, {
+      gross: 300
+    });
+
+    setMovieData(movieFilteredArr);
+  }
+
+  movieData.slice(0, 15).map(movie => {
     slides.push(
-      <SwiperSlide key={ `slide-${ i }` } tag='li' >
+      <SwiperSlide 
+        key={ movie.Title } 
+        tag='li' 
+        onClick={() => handleCarouselItemClick(`${movie.Title}`)} 
+        style={{ cursor: "pointer" }} 
+      >
         <img 
           src='http://placekitten.com/160/175' 
-          alt={ `Slide ${ i }` }
+          alt={ movie.Title }
           style={{ borderRadius: "20px" }}
         />
 
-        { titles.map((o) => <p style={{
+        <p style={{
           display: 'flex',
           justifyContent: 'center',
           textAlign: 'center',
@@ -48,15 +59,12 @@ export default function TrendingCarousel() {
         
           color: comp_themes[theme].carouselTextColour,
           fontSize: '12pt',
-        }}
-        >{ o }</p>) }
+        }}>
+          {movie.Title}
+        </p>
       </SwiperSlide>
     )
-
-    titles.pop(i);
-    movieJsonDataArr.slice(0, 15);
-    console.log(movieJsonDataArr);
-  }
+  })
 
 // Screen dimension check
   if(typeof window !== "undefined"){
@@ -84,7 +92,6 @@ export default function TrendingCarousel() {
 
 // default return for desktop screen
   return (
-    <React.Fragment>
       <Swiper 
         className='customSwiper' 
         wrapperTag='ul'
@@ -96,9 +103,10 @@ export default function TrendingCarousel() {
         slidesPerGroup={3}
         spaceBetween={100}
         loop={false}
+        observer={true}
+        observeParents={true}
       >
-        { slides }
+        {slides}
       </Swiper>
-    </React.Fragment>
   )
 }
