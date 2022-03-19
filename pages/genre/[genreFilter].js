@@ -30,7 +30,7 @@ export default function FilteredPage({
       return (
         <div className={scss.contentRow}>
           {slicedArr.map(data => (
-            <GridCard movieName={data.Title} key={data.Title} onCardClick={ () => handleCardClick(`${data.Title}`)} />
+            <GridCard movieName={data.Title} imageSrc={ data.Poster } key={data.Title} onCardClick={ () => handleCardClick(`${data.Title}`)} />
           ))}
         </div>
       )
