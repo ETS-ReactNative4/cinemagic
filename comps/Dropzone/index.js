@@ -2,14 +2,17 @@
 import styled from 'styled-components';
 
 const Cont = styled.div`
-display:flex;
+display: ${props => props.display};
+z-index:7;
+position:fixed;
+bottom:90px;
 ` 
 const Drop = styled.div`
 background:${({bg})=>bg || '#4A4A4A'};
 border-radius: 20px;
 border: 1px solid lightgrey;
 width:386px;
-height:183px;
+height:150px;
 position:relative;
 display:flex;
     flex-direction:column;
@@ -27,7 +30,8 @@ font-family: 'Sen', sans-serif;
 const Dropzone = ({
   children=null,
   text="Drag and Drop a Movie Here",
-  onDropItem=()=>{}
+  onDropItem=()=>{},
+  display = "none"
 }) => {
 // 	const [{ canDrop, isOver }, drop] = useDrop(() => ({
 //     // The type (or types) to accept - strings or symbols
@@ -42,7 +46,7 @@ const Dropzone = ({
 //     })
 //   }))
 
-  return <Cont>
+  return <Cont display ={display}>
   <Drop
 	// 		ref={drop}
     //   bg={canDrop && isOver ? 'pink' : 'peachpuff'}

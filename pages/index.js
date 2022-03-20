@@ -15,13 +15,15 @@ import TrendingCarousel from '@/comps/ImageCarousel/trending';
 import GenreCarousel from '@/comps/ImageCarousel/genreTypes';
 import YearlyCarousel from '@/comps/ImageCarousel/2021movies';
 import PopUpCont from '@/comps/PopUpCont';
-import FuncIcons from '@/comps/FuncIcons';
+import DragIcons from '@/comps/DragIcon';
+import Dropzone from '@/comps/Dropzone';
 
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
   const [mode, setMode] = useState(false);
   const [view, setView] = useState(false);
+  const [dropzonePop, setDropzonePop] = useState(false);
   const [setPop, setSetPop] = useState(false);
   
   const router = useRouter();
@@ -37,6 +39,10 @@ export default function Home() {
     console.log("View", view)
   }
 
+  const dropzone = () => {
+    setDropzonePop(!dropzonePop);
+  }
+  
   const setting = () => {
     setSetPop(!setPop);
   }
@@ -58,13 +64,7 @@ export default function Home() {
         <div className={scss.titleCont}>
           <Logo />
         </div>
-
-        {/* Functional Icons - Chat & Drag */}
-        <div>
-          <FuncIcons />
-        </div>
        
-
         {/* search bar */}
         <div className={scss.searchBarCont}>
           <SearchBar onChange={ (e) => inputSearch(e.target.value) }/>
@@ -99,6 +99,17 @@ export default function Home() {
         <div className={scss.carouselCont2}>
           <YearlyCarousel />
         </div>
+
+        {/* Drag icon*/}
+        <div>
+          <DragIcons onClickDrag={dropzone}/>
+        </div>
+
+        {/* Dropzone pop up */}
+        <Dropzone 
+          display={dropzonePop === true ? "block" : "none"} 
+        />
+
         {/* nav bar */}
         <div className={scss.navBarCont}>
           <NavBar onClickSetting={setting} />

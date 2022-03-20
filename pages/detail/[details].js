@@ -14,6 +14,8 @@ import Info from '@/comps/Info';
 import Description from '@/comps/Description'
 import NavBar from '@/comps/NavBar';
 import PopUpCont from '@/comps/PopUpCont';
+import ChatIcons from '@/comps/ChatIcon';
+import ChatBox from '@/comps/ChatBox';
 
 export default function Detail({
 
@@ -26,6 +28,7 @@ export default function Detail({
   const { theme, setTheme } = useTheme();
   const [mode, setMode] = useState(false);
   const [view, setView] = useState(false);
+  const [chatPop, setChatPop] = useState(false);
   const [setPop, setSetPop] = useState(false);
 
   const changeTheme = () => {
@@ -37,6 +40,10 @@ export default function Detail({
   const changeView = () => {
     setView(!view);
     console.log("View", view)
+  }
+
+  const chatbox = () => {
+    setChatPop(!chatPop);
   }
 
   const setting = () => {
@@ -57,7 +64,12 @@ export default function Detail({
             <TextUI 
               Title={fixedURL} 
               TextUIColor={ comp_themes[theme].TextUI } 
+              
             />
+                    {/* D icon*/}
+        <div>
+          <ChatIcons/>
+        </div>
           </div>          
         </div>
         {/* main movie detail content container */}
@@ -89,6 +101,16 @@ export default function Detail({
         <section className={scss.descCont}>
           <Description title={fixedURL} />
         </section>
+
+        {/* Chat icon*/}
+        <div>
+        <ChatIcons onClickChat={chatbox}/>
+        </div>
+
+        {/* Chatbox pop up */}
+        <ChatBox 
+          display={chatPop === true ? "block" : "none"} 
+        />
 
         <section className={scss.navBarCont}>
           <NavBar 

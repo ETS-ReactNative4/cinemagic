@@ -1,16 +1,20 @@
 import React, { useRouter } from 'react';
 import styled from 'styled-components';
 
-const Cont = styled.div``;
+const Cont = styled.div`
+display: ${props => props.display};
+position:fixed;
+margin-top:240px;
+`;
 
 const BoxCont = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100vw; 
-    height: 592px;
+    width: 400px; 
+    height: 400px;
     background: #383838;
     border-radius: 20px;
-    position: fixed;
+    position: relative;
     bottom: 0;
     z-index:2;
 `;
@@ -18,7 +22,7 @@ const BoxCont = styled.div`
 const Top = styled.div`
     display: flex;
     align-items:center;
-    width: 100vw;
+    width: 400px;
     background-color: #383838;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
@@ -27,26 +31,26 @@ const Top = styled.div`
 `
 const BoxText = styled.h1`
     color: #E0E0E0;
-    font-size: 20px;
+    font-size: 18px;
     flex:1;
     text-align:center;
 `;
 
 const Mid = styled.div`
-    flex:6;
+    flex:5;
 `
 
 const ChatClose = styled.img`
-    width: 27px;
-    height: 27px;
+    width: 25px;
+    height: 25px;
     flex:1;
-    margin-left:10px;
+    margin-left:6px;
 `;
 
 const ChatCont = styled.div`
     display: flex;
     flex-direction: column;
-    width:100vw;
+    width:400px;
     background-color:#383838;
     margin-bottom:3px;
 `;
@@ -57,19 +61,19 @@ const ChatTime = styled.p`
     align-items: center;
     justify-content: center;
     color: #767676;
-    font-size: 16px;
+    font-size: 14px;
 `;
 
 const Comment = styled.h4`
     margin-left: 20px;
     color: #E0E0E0;
-    font-size: 18px;
+    font-size: 14px;
 `;
 
 const Bot = styled.div`
     display:flex;
     justify-content:center;
-    flex:1;
+    flex:2;
 `;
 
 const TextBoard = styled.div`
@@ -77,37 +81,40 @@ const TextBoard = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 95vw;
-    height: 69px;
+    margin-top:53px;
+    width: 400px;
+    height: 45px;
     background: rgba(37, 38, 38);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
 `;
 
 const ChatInput = styled.input`
     width: 75vw;
     height: 39px;
+    margin-left:10px;
     background: none;
     border: none;
     border-radius: 10px;
     color: #E0E0E0;
-    font-size: 14px;
+    font-size: 12px;
     outline: none;
 `;
 
 const MsgSent = styled.img`
-    width: 27px;
-    height: 27px;
+    width: 20px;
+    height: 20px;
+    margin-right:20px;
 `;
 
 
 const ChatBox = ({
     onPressCloseCB = () => { },
     onPressSend = () => {},
+    display = "none",
     cmt = "ShuShu Gang:)",
     time = "2:22AM"
 }) => {
-    return <Cont>
+    return <Cont  display ={display}>
         <BoxCont>
             <Top>
                 <div style={{flex:1}}></div>
