@@ -141,7 +141,7 @@ const LogIn = ({
         </TextCont>
 
         <LogInInputCont>
-            <LogInput onChange={inputEmail} type="email" placeholder='Enter Username'></LogInput>
+            <LogInput onChange={inputEmail} type="email" placeholder='Enter Email'></LogInput>
             <LogInput onChange={inputPassword} type="Password" placeholder='Password'></LogInput>
 
             <LogInBtn onClick={onClickLogIn} >{LoginBtn}</LogInBtn>
