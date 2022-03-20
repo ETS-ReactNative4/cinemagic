@@ -11,6 +11,7 @@ import SignUp from '@/comps/SignUp';
 export default function Signup() {
   const r = useRouter (); 
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: ""
   })
@@ -32,6 +33,7 @@ export default function Signup() {
         {/* Login - Welcome */}
         <div className={scss.titleCont}>
           <SignUp 
+          inputName={e => setFormData({ ...formData, name: e.target.value })}
           inputEmail={e => setFormData({ ...formData, email: e.target.value })}
           inputPassword={e => setFormData({ ...formData, password: e.target.value })}
           onClickSignUp={sendForm}

@@ -132,6 +132,7 @@ const LogIn = ({
     inputEmail = () => {},
     inputPassword = () => {},
     onClickSignUp = () => {},
+    google = () => {}
 }) => {
     return <Cont>
         <TextCont>
@@ -153,7 +154,7 @@ const LogIn = ({
         </SpaceCont>
 
         <LoginChoiceCont>
-            <LogInChoice>
+            <LogInChoice onClick={google}>
                 <LogInChoiceImg src="/google.png"></LogInChoiceImg>
             </LogInChoice>
         </LoginChoiceCont>

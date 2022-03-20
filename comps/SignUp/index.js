@@ -66,7 +66,7 @@ const SignUpBtn = styled.button`
 const SignUpIn = styled.p`
     font-size: 17px;
     color: white;
-    margin-top: 10rem;
+    margin-top: 5rem;
     font-weight: 400;
 `;
 
@@ -78,6 +78,7 @@ const SignInNow = styled.span`
 const SignUp = ({
     onClickLogIn = () => {},
     onClickSignUp = () => {},
+    inputName = () => {},
     inputEmail = () => {},
     inputPassword = () => {},
 }) => {
@@ -88,6 +89,7 @@ const SignUp = ({
         </TextCont>
 
         <SignUpInputCont>
+            <SignUpInput onChange={inputName} type="text" placeholder='Enter Name'></SignUpInput>
             <SignUpInput onChange={inputEmail} type="email" placeholder='Enter Email'></SignUpInput>
             <SignUpInput onChange={inputPassword} type="Password" placeholder='Password'></SignUpInput>
 
