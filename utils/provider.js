@@ -1,18 +1,27 @@
 import { useContext, createContext, useState } from "react";
 import { themes } from "@/utils/themes";
 
+//setting 
 const initialStates = {
   theme: "default",
-  setTheme: () => {}
+  setTheme: () => {},
+  view:"default",
+  setView: () => {},
 }
 
 const themeContext = createContext(initialStates);
 
 export default function AppProvider({ children }){
   const [theme, setTheme] = useState(initialStates.theme);
+  const [view, setView] = useState(initialStates.view);
 
   return (
-    <themeContext.Provider value={{ theme, setTheme }}>
+    <themeContext.Provider value={{ 
+      theme, 
+      setTheme,
+      view,
+      setView 
+      }}>
       <style jsx global>
         {
           `
@@ -32,4 +41,9 @@ export default function AppProvider({ children }){
 export function useTheme(){
   const { theme, setTheme } = useContext(themeContext);
   return { theme, setTheme };
+}
+
+export function useView(){
+  const { theme, setView } = useContext(themeContext);
+  return { theme, setView };
 }

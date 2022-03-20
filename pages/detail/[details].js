@@ -81,17 +81,19 @@ export default function Detail({
               CardImgWidth='279px' 
             />
           </div>
+          {/* movie info */}
           <div className={scss.squaresCont}>
             <Info 
               infoSrc={ comp_themes[theme].info_genre } 
               title='Genre'
             />          
             <Info 
-              infoSrc={ comp_themes[theme].info_genre } 
-              title='1h 20m'
+              infoSrc={ comp_themes[theme].info_duration } 
+              title='Duration'
+              text='1h 20m'
             />          
             <Info 
-              infoSrc={ comp_themes[theme].info_genre } 
+              infoSrc={ comp_themes[theme].info_rating} 
               title='Rating'
               text='8/10'
             />
@@ -109,14 +111,16 @@ export default function Detail({
 
         {/* Chatbox pop up */}
         <ChatBox 
-          display={chatPop === true ? "block" : "none"} 
+          display={chatPop === true ? "block" : "none"}
+          onPressCloseCB={chatbox} 
         />
-
+        {/* Navbar setting */}
         <section className={scss.navBarCont}>
           <NavBar 
             onClickSetting={ setting } 
             onClickHome={ () => router.push('/') } 
           />
+          {/* setting popup */}
           <PopUpCont 
             darkLight={changeTheme} 
             gridList={changeView} 

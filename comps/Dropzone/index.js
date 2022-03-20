@@ -1,5 +1,8 @@
 //import { useDrag, useDrop } from 'react-dnd'
 import styled from 'styled-components';
+import { useTheme } from "@/utils/provider";
+import { comp_themes } from "@/utils/themes";
+//background:${({dropzonebg})=>dropzonebg || '#4A4A4A'};
 
 const Cont = styled.div`
 display: ${props => props.display};
@@ -8,7 +11,7 @@ position:fixed;
 bottom:90px;
 ` 
 const Drop = styled.div`
-background:${({bg})=>bg || '#4A4A4A'};
+background-color: ${props=>props.dropzonebg};
 border-radius: 20px;
 border: 1px solid lightgrey;
 width:386px;
@@ -22,7 +25,7 @@ display:flex;
 const Text = styled.div`
 font-size: 14px;
 font-weight:400;
-color: #FFFFFF;
+color: ${props=>props.dropzoneText};
 font-family: 'Sen', sans-serif;
 
 `
@@ -33,6 +36,7 @@ const Dropzone = ({
   onDropItem=()=>{},
   display = "none"
 }) => {
+  const { theme } = useTheme();
 // 	const [{ canDrop, isOver }, drop] = useDrop(() => ({
 //     // The type (or types) to accept - strings or symbols
 //     accept: 'notes',
@@ -47,11 +51,11 @@ const Dropzone = ({
 //   }))
 
   return <Cont display ={display}>
-  <Drop
+  <Drop dropzonebg={comp_themes[theme].dropzone_bg} 
 	// 		ref={drop}
     //   bg={canDrop && isOver ? 'pink' : 'peachpuff'}
 		>
-       <Text>{text}</Text>
+       <Text dropzoneText={comp_themes[theme].dropzone_text}>{text}</Text>
       {children}
 		</Drop>
         </Cont>
