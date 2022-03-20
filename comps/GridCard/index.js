@@ -6,6 +6,7 @@ import { comp_themes } from '@/utils/themes';
 export default function GridCard({
   movieName = "movie title",
   elementKey,
+  imageSrc,
   onCardClick = () => {}
 }){
   const { theme } = useTheme();
@@ -18,7 +19,7 @@ export default function GridCard({
       // onSelect={elementKey}
     >
       <img 
-        src='http://placekitten.com/180/230'
+        src={ imageSrc }
         style={ styles.image }
       />
       <p style={{
@@ -48,6 +49,9 @@ var styles = {
     cursor: "pointer",
   },
   image: {
-    borderRadius: "20px"
+    borderRadius: "20px",
+    backgroundSize: "cover",
+    width: "160px",
+    height: "237px"
   }
 }

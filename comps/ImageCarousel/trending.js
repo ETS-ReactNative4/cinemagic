@@ -44,9 +44,14 @@ export default function TrendingCarousel() {
         style={{ cursor: "pointer" }} 
       >
         <img 
-          src='http://placekitten.com/160/175' 
+          src={ movie.Poster } 
           alt={ movie.Title }
-          style={{ borderRadius: "20px" }}
+          style={{ 
+            borderRadius: "20px",
+            backgroundSize: "cover",
+            width: "160px",
+            height: "auto"
+          }}
         />
 
         <p style={{

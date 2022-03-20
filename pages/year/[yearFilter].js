@@ -18,11 +18,14 @@ import GridCard from '@/comps/GridCard';
 export default function FilteredPage({
 
 }){
+  const router = useRouter();
   const { asPath } = useRouter();
   var cutURL = asPath.substring(6);
   var cutURLUpperCase = cutURL.toUpperCase();
 
   var movieFilteredArr = [];
+
+  const handleCardClick = sel => router.push(`/detail/${sel}`);
 
   const FilterMoviesByQuery = () => {
     movieFilteredArr = filtering(movies, {
@@ -34,7 +37,7 @@ export default function FilteredPage({
       return (
         <div className={scss.contentRow}>
           {slicedArr.map(data => (
-            <GridCard movieName={data.Title} key={data.Title}/>
+            <GridCard movieName={data.Title} imageSrc={ data.Poster } key={data.Title} onCardClick={ () => handleCardClick(`${data.Title}`)} />
           ))}
         </div>
       )
