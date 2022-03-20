@@ -12,7 +12,7 @@ const TextCont = styled.h1`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 17vh;
+    margin-top: 12vh;
 `;
 
 const LogInTitle = styled.h1`
@@ -39,7 +39,7 @@ const LogInInputCont = styled.div`
 
 const LogInput = styled.input`
     height: 60px;
-    width: 365px;
+    width: 340px;
     background: #3F4142;
     border: none;
     border-radius: 10px;
@@ -47,11 +47,12 @@ const LogInput = styled.input`
     outline: none;
     font-size: 17px;
     margin-bottom: 20px;
+    padding-left: 15px;
 `
 
 const LogInBtn = styled.button`
     height: 60px;
-    width: 365px;
+    width: 340px;
     font-size: 20px;
     border: none;
     border-radius: 10px;
@@ -127,8 +128,10 @@ const LogIn = ({
     LoginTitle = "Hello Again!",
     LoginText = "Welcome back, you've been missed!",
     LoginBtn = "Sign In",
-    onClickSignUp = () => {},
     onClickLogIn = () => {},
+    inputEmail = () => {},
+    inputPassword = () => {},
+    onClickSignUp = () => {},
 }) => {
     return <Cont>
         <TextCont>
@@ -137,10 +140,10 @@ const LogIn = ({
         </TextCont>
 
         <LogInInputCont>
-            <LogInput type="text" placeholder='Enter Username'></LogInput>
-            <LogInput type="Password" placeholder='Password'></LogInput>
+            <LogInput onChange={inputEmail} type="email" placeholder='Enter Username'></LogInput>
+            <LogInput onChange={inputPassword} type="Password" placeholder='Password'></LogInput>
 
-            <LogInBtn onClickLogIn={onClickLogIn} >{LoginBtn}</LogInBtn>
+            <LogInBtn onClick={onClickLogIn} >{LoginBtn}</LogInBtn>
         </LogInInputCont>
 
         <SpaceCont>
@@ -155,7 +158,7 @@ const LogIn = ({
             </LogInChoice>
         </LoginChoiceCont>
 
-        <SignUp>Not a member? <SignUpNow onClickSignUp={onClickSignUp}>Register now</SignUpNow ></SignUp>
+        <SignUp>Not a member? <SignUpNow onClick={onClickSignUp}>Register now</SignUpNow ></SignUp>
 
         {/* <DragIcon onClickDrag={onClickDrag} src="/Drag.png"></DragIcon> */}
 

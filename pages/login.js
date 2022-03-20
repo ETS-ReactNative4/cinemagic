@@ -1,14 +1,13 @@
-import React, { useEffect, useState, useRef } from 'react';
+ import React, { useEffect, useState, useRef } from 'react';
 import { useTheme } from "@/utils/provider";
 import { useRouter } from 'next/router';
 import scss from '@/styles/pageStyles/home.module.scss';
-import axios from 'axios'
+import axios from 'axios';
 
 // components
-import SignUp from '@/comps/SignUp';
+import LogIn from '@/comps/LogIn';
 
-
-export default function Signup() {
+export default function Login() {
   const r = useRouter (); 
   const [formData, setFormData] = useState({
     email: "",
@@ -17,7 +16,7 @@ export default function Signup() {
 
   async function sendForm() {
     try {
-      const res = await axios.post("http://localhost:3000/signup", formData)
+      const res = await axios.post("http://localhost:3000/login", formData)
       // console.log("Res:", res)
       alert(res.data);
       window.location.replace("http://localhost:3001");
@@ -31,11 +30,11 @@ export default function Signup() {
       <div className={scss.phoneSizeCont}>
         {/* Login - Welcome */}
         <div className={scss.titleCont}>
-          <SignUp 
+          <LogIn 
           inputEmail={e => setFormData({ ...formData, email: e.target.value })}
           inputPassword={e => setFormData({ ...formData, password: e.target.value })}
-          onClickSignUp={sendForm}
-          onClickLogIn={()=>r.push(`/login`)}
+          onClickLogIn={sendForm}
+          onClickSignUp={()=>r.push(`/signup`)}
           />
         </div>
         
