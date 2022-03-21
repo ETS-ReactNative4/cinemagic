@@ -53,7 +53,7 @@ export default function TrendingCarousel() {
           style={{ 
             borderRadius: "20px",
             backgroundSize: "cover",
-            width: "145px",
+            width: "123px",
   //          width: views [view].card_height,
             height: "auto"
           }}
@@ -65,7 +65,7 @@ export default function TrendingCarousel() {
           justifyContent: 'center',
           textAlign: 'center',
         
-          width: '145px',
+          width: '123px',
         
           color: comp_themes[theme].carouselTextColour,
           fontSize: '8pt',
@@ -79,13 +79,13 @@ export default function TrendingCarousel() {
           justifyContent: 'center',
           textAlign: 'center',
         
-          width: '145px',
+          width: '123px',
           paddingTop: '0px',
         
           color: comp_themes[theme].carouselTextColour,
-          fontSize: '10.5pt',
+          fontSize: '10pt',
         }}>
-          {movie.Title}
+          {movie.Title.slice(0, 15) + "..."}
         </p>
 
       
@@ -109,7 +109,7 @@ export default function TrendingCarousel() {
             }}
             slidesPerView={3}
             slidesPerGroup={3}
-            spaceBetween={150}
+            spaceBetween={50}
             loop={false}
           >
             { slides }
@@ -130,7 +130,7 @@ export default function TrendingCarousel() {
         }}
         slidesPerView={3}
         slidesPerGroup={3}
-        spaceBetween={100}
+        spaceBetween={50}
         loop={false}
         observer={true}
         observeParents={true}

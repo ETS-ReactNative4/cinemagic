@@ -8,6 +8,7 @@ import scss from '@/styles/pageStyles/genreFiltered.module.scss';
 // components
 import TextUI from '@/comps/TextUI';
 import GridCard from '@/comps/GridCard';
+import { stringify } from '@firebase/util';
 
 export default function FilteredPage({
 
@@ -26,11 +27,17 @@ export default function FilteredPage({
     });
     var slicedArr = movieFilteredArr.slice(0, 20);
 
+    function sliceTitle(movie){
+      if(movie.length > 14){
+        return "...";
+      }
+    }
+
     for(let i = 0; i < slicedArr.length; i++){
       return (
         <div className={scss.contentRow}>
           {slicedArr.map(data => (
-            <GridCard movieName={data.Title} imageSrc={ data.Poster } key={data.Title} onCardClick={ () => handleCardClick(`${data.Title}`)} />
+            <GridCard movieName={data.Title.slice(0,14) + sliceTitle(data.Title)} imageSrc={ data.Poster } key={data.Title} onCardClick={ () => handleCardClick(`${data.Title}`)} />
           ))}
         </div>
       )
