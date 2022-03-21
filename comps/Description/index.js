@@ -34,9 +34,7 @@ const Description = ({
             <Cast textColor={comp_themes[theme].popUpSettingText}>{cast}</Cast>
             <CastList textColor={comp_themes[theme].popUpSettingText}>{castlist}</CastList>
         </CastTop>
-        <CastBot>
-            <CastList textColor={comp_themes[theme].popUpSettingText}>{castlist}</CastList>
-        </CastBot>
+
     </Cont>
 }
 
@@ -47,6 +45,7 @@ const Cont = styled.div`
     flex-direction: column;
     width: 100%;
     font-family: 'Sen';
+    height:450px;
 `;
 
 const Top = styled.div`
@@ -108,10 +107,6 @@ const CastList = styled.text`
     line-height: 17px;
     font-weight: lighter;
     color: ${props => props.textColor};
-`;
-
-const CastBot = styled.div`
-    justify-content: center;
 `;
 
 const DirectorTop = styled.div`
