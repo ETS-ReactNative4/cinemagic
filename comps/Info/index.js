@@ -20,6 +20,8 @@ const Card = styled.button`
 const InfoIcon = styled.img`
     width: ${props=>props.width};
     height: ${props=>props.height};
+    margin-bottom: 5px;
+    margin-top: -2px;
 `
 const Title = styled.div`
     font-size: 11px;
@@ -35,8 +37,8 @@ const Text = styled.div`
 `
 
 const Info = ({
-    width = "15px",
-    height = "15px",
+    width = "20px",
+    height = "20px",
     infoSrc= "/duration-dark.svg",
     title="Duration",
     text="Action",

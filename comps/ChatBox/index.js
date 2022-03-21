@@ -4,16 +4,18 @@ import { useTheme } from "@/utils/provider";
 import { comp_themes } from "@/utils/themes";
 
 const Cont = styled.div`
-display: ${props => props.display};
-position:fixed;
-margin-top:240px;
+    display: ${props => props.display};
+    position:fixed;
+    top: 220px;
+    z-index: 1;
 `;
 
 const BoxCont = styled.div`
     display: flex;
     flex-direction: column;
-    width: 400px; 
-    height: 400px;
+    justify-content: center;
+    width: 390px; 
+    height: 500px;
     background: ${props => props.chatboxBg};
     border-radius: 20px;
     position: relative;
@@ -24,7 +26,7 @@ const BoxCont = styled.div`
 const Top = styled.div`
     display: flex;
     align-items:center;
-    width: 400px;
+    width: 390px; 
     background-color: ${props => props.chattopBg};
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
@@ -47,13 +49,13 @@ const ChatClose = styled.img`
     width: 25px;
     height: 25px;
     flex:1;
-    margin-left:6px;
+    margin-right:-25px;
 `;
 
 const ChatCont = styled.div`
     display: flex;
     flex-direction: column;
-    width:400px;
+    width:385px;
     background-color:${props => props.chatboxBg};
     margin-bottom:3px;
 `;
@@ -64,13 +66,13 @@ const ChatTime = styled.p`
     align-items: center;
     justify-content: center;
     color: #767676;
-    font-size: 14px;
+    font-size: 15px;
 `;
 
 const Comment = styled.h4`
     margin-left: 20px;
     color: ${props => props.chatText};
-    font-size: 14px;
+    font-size: 16px;
 `;
 
 const Bot = styled.div`
@@ -84,10 +86,13 @@ const TextBoard = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top:53px;
-    width: 400px;
-    height: 45px;
+    margin-top:62px;
+    width: 390px; 
+    margin-right:5px;
+    margin-left:5px;
+    height: 55px;
     background: rgba(37, 38, 38);
+    border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 `;
 
@@ -99,13 +104,13 @@ const ChatInput = styled.input`
     border: none;
     border-radius: 10px;
     color: #E0E0E0;
-    font-size: 12px;
+    font-size: 15px;
     outline: none;
 `;
 
 const MsgSent = styled.img`
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     margin-right:20px;
 `;
 

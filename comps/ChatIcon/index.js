@@ -12,9 +12,9 @@ const Cont = styled.div`
 `;
 
 const ChatIcon = styled.img`
-    width: 45px;
-    height: 45px;
-    margin-top: 10px;
+    width: 70px;
+    height: 70px;
+    margin-bottom: -20px;
 `;
 
 const ChatIcons = ({
