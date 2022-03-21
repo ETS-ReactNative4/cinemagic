@@ -3,6 +3,9 @@ import { useTheme } from "@/utils/provider";
 import { useRouter } from 'next/router';
 import scss from '@/styles/pageStyles/home.module.scss';
 
+
+import ListCard from '@/comps/ListCard';
+
 // components
 import Logo from '@/comps/Logo';
 import SearchBar from '@/comps/SearchBar';
@@ -60,6 +63,11 @@ export default function Home() {
   return (
     <div className={scss.windowCont}>
       <div className={scss.phoneSizeCont}>
+
+
+
+
+        <ListCard />
         {/* cinemagic logo/title */}
         <div className={scss.titleCont}>
           <Logo />
