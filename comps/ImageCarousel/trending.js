@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination } from 'swiper';
 import { useTheme } from "@/utils/provider";
 import { comp_themes } from "@/utils/themes";
+//import { views } from "@/utils/themes";
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -17,6 +18,7 @@ export var movieJsonDataArr = [];
 
 export default function TrendingCarousel() {
   const { theme } = useTheme();  
+ // const { view } = useView();  
   const [movieData, setMovieData] = useState([]);
   const router = useRouter();
   const slides = [];
@@ -46,27 +48,49 @@ export default function TrendingCarousel() {
         <img 
           src={ movie.Poster } 
           alt={ movie.Title }
+          alt={ movie.Date }
+          alt={ movie.Genre }
           style={{ 
             borderRadius: "20px",
             backgroundSize: "cover",
-            width: "160px",
+            width: "145px",
+  //          width: views [view].card_height,
             height: "auto"
           }}
         />
 
+      {/* date */}
+          <p style={{
+          display: 'flex',
+          justifyContent: 'center',
+          textAlign: 'center',
+        
+          width: '145px',
+        
+          color: comp_themes[theme].carouselTextColour,
+          fontSize: '8pt',
+        }}>
+          {movie.Date}
+        </p>
+
+        {/* title */}
         <p style={{
           display: 'flex',
           justifyContent: 'center',
           textAlign: 'center',
         
-          width: '160px',
-          paddingTop: '13px',
+          width: '145px',
+          paddingTop: '0px',
         
           color: comp_themes[theme].carouselTextColour,
-          fontSize: '12pt',
+          fontSize: '10.5pt',
         }}>
           {movie.Title}
         </p>
+
+      
+
+        
       </SwiperSlide>
     )
   })

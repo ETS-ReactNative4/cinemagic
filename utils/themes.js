@@ -33,6 +33,7 @@ export const comp_themes = {
     chatbox_bg:"#383838;",
     chattop_bg:"#383838",
     chat_text:"#E0E0E0",
+    
   },
   light: {
     search_bar: '#FFFFFF',
@@ -63,9 +64,10 @@ export const comp_themes = {
 }
 export const views = { 
   default: {
-    
+    card_height:"145px",
+
   },
   list: {
-
+    card_height:"95px",
   }
 }

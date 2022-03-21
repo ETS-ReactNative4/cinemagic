@@ -1,5 +1,6 @@
 import { useContext, createContext, useState } from "react";
 import { themes } from "@/utils/themes";
+import { views } from "@/utils/themes";
 
 //setting 
 const initialStates = {
@@ -44,6 +45,6 @@ export function useTheme(){
 }
 
 export function useView(){
-  const { theme, setView } = useContext(themeContext);
-  return { theme, setView };
+  const { view, setView } = useContext(themeContext);
+  return { view, setView };
 }

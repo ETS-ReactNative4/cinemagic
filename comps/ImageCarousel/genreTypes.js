@@ -61,7 +61,7 @@ export default function GenreCarousel() {
           paddingTop: '13px',
           
           color: comp_themes[theme].carouselTextColour,
-          fontSize: '12pt'
+          fontSize: '10.5pt'
         }}>
           {genre}
         </p>
