@@ -66,8 +66,8 @@ const Title = styled.text`
 `
 
 const Icon = styled.img`
-    width: 35px;
-    height: 35px;
+    width: 27px;
+    height: 27px;
 `
 const Bot = styled.div`
     display: flex;
@@ -108,19 +108,17 @@ const CastList = styled.text`
     line-height: 17px;
     font-weight: lighter;
     color: ${props => props.textColor};
-`
+`;
 
 const CastBot = styled.div`
-
     justify-content: center;
-`
+`;
 
 const DirectorTop = styled.div`
-
     justify-content: space-between;
     align-items:center;
     // width: 100vw;
-`
+`;
 const Director = styled.text`
     display: flex;
     margin-top: 25px;
@@ -130,7 +128,7 @@ const Director = styled.text`
     color: ${props => props.textColor};
     // inline-size: 200px;
     // overflow-wrap: break-word;
-`
+`;
 
 const DirectorList = styled.text`
     margin-top: 70px;
@@ -139,4 +137,4 @@ const DirectorList = styled.text`
     line-height: 17px;
     font-weight: lighter;
     color: ${props => props.textColor};
-`
+`;
