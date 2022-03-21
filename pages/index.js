@@ -60,6 +60,7 @@ export default function Home() {
   return (
     <div className={scss.windowCont}>
       <div className={scss.phoneSizeCont}>
+        
         {/* cinemagic logo/title */}
         <div className={scss.titleCont}>
           <Logo />
