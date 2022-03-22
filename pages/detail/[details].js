@@ -46,17 +46,56 @@ export default function Detail({
     setSetPop(!setPop);
   }
 
+// code below is to identify and get the appropriate movie details
+  const identifyMovie = filtering(movies, {
+    title: fixedURL
+  });
+  const identifiedMovie = identifyMovie.slice(0, 1);
+
   const FindMovieImg = () => {
-    var findImg = filtering(movies, {
-      title: fixedURL
-    });
-
-    var slicedArr = findImg.slice(0, 1);
-
     return (
       <>
-        {slicedArr.map(arr => (
+        {identifiedMovie.map(arr => (
           <Card src={ arr.Poster } caption={ arr.Title } key={ arr.Title } />
+        ))}
+      </>
+    )
+  }
+  const FindMovieGenre = () => {
+    return (
+      <>
+        {identifiedMovie.map(movie => (
+          <Info 
+            title="Genre" 
+            text={ movie.Genre.split(",")[0] } 
+            infoSrc={ comp_themes[theme].info_genre } 
+          />
+        ))}
+      </>
+    )
+  }
+  const FindMovieRunTime = () => {
+    return (
+      <>
+        {identifiedMovie.map(movie => (
+          <Info
+            title="Duration"
+            text={ movie.RunTime + "mins" }
+            infoSrc={ comp_themes[theme].info_genre }
+          />
+        ))}
+      </>
+    )
+  }
+  const FindMovieRating = () => {
+    return (
+      <>
+        {identifiedMovie.map(movie => (
+          <Info
+            title="Rating"
+            text={ movie.Rating + "/10" }
+            infoSrc={ comp_themes[theme].info_genre }
+          />
         ))}
       </>
     )
@@ -74,7 +113,7 @@ export default function Detail({
           <div className={`${scss.titleCont} ${scss.detailTitle}`}>
             {/* movie heading */}
             <TextUI 
-              Title={fixedURL} 
+              Title={"MOVIE DETAIL"} 
               TextUIColor={ comp_themes[theme].TextUI } 
             />
           </div>          
@@ -86,19 +125,9 @@ export default function Detail({
             <FindMovieImg />
           </div>
           <div className={scss.squaresCont}>
-            <Info 
-              infoSrc={ comp_themes[theme].info_genre } 
-              title='Genre'
-            />          
-            <Info 
-              infoSrc={ comp_themes[theme].info_genre } 
-              title='1h 20m'
-            />          
-            <Info 
-              infoSrc={ comp_themes[theme].info_genre } 
-              title='Rating'
-              text='8/10'
-            />
+            <FindMovieGenre />
+            <FindMovieRunTime />      
+            <FindMovieRating />
           </div>
         </section>
         {/* movie description */}
