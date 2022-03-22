@@ -41,15 +41,9 @@ export default function Home() {
     setSetPop(!setPop);
   }
 
-  const filteringMoviesByGenre = (genre) => {
-    router.push(`/genre/${genre}`);
-  }  
-  const filteringMoviesByYear = (year) => {
-    router.push(`/year/${year}`);
-  }  
-  const filteringMoviesByDuration = (dur) => {
-    router.push(`/duration/${dur}`);
-  }
+  const filteringMoviesByGenre = genre => router.push(`/genre/${genre}`); 
+  const filteringMoviesByYear = year => router.push(`/year/${year}`); 
+  const filteringMoviesByDuration = dur => router.push(`/duration/${dur}`);
 
   return (
     <div className={scss.windowCont}>
@@ -96,9 +90,9 @@ export default function Home() {
           <TextUI Title="2021 MOVIES" />
         </div>
         {/* movie carousel */}
-        <div className={scss.carouselCont2}>
+        {/* <div className={scss.carouselCont2}>
           <YearlyCarousel />
-        </div>
+        </div> */}
         {/* nav bar */}
         <div className={scss.navBarCont}>
           <NavBar onClickSetting={setting} />

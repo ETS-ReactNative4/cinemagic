@@ -1,0 +1,14 @@
+@use "@/styles/variables.scss";
+@use "@/styles/mixins.scss";
+
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.image {
+  width: 30px;
+  height: 30px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
