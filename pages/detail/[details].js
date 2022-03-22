@@ -122,7 +122,6 @@ export default function Detail({
             <TextUI 
               Title={"MOVIE DETAIL"} 
               TextUIColor={ comp_themes[theme].TextUI } 
-              
             />
                     {/* D icon*/}
         <div>
@@ -138,26 +137,9 @@ export default function Detail({
           </div>
           {/* movie info */}
           <div className={scss.squaresCont}>
-<<<<<<< HEAD
             <FindMovieGenre />
             <FindMovieRunTime />      
             <FindMovieRating />
-=======
-            <Info 
-              infoSrc={ comp_themes[theme].info_genre } 
-              title='Genre'
-            />          
-            <Info 
-              infoSrc={ comp_themes[theme].info_duration } 
-              title='Duration'
-              text='1h 20m'
-            />          
-            <Info 
-              infoSrc={ comp_themes[theme].info_rating} 
-              title='Rating'
-              text='8/10'
-            />
->>>>>>> 484dbff14a6d7e743e49dbc64ebd477323381ee4
           </div>
         </section>
         {/* movie description */}

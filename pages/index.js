@@ -86,17 +86,6 @@ export default function Home() {
         <div className={scss.carouselCont}>
           <GenreCarousel />
         </div>
-        {/* 2021 movies subheading */}
-        <div className={scss.subHeadingCont}>
-          <TextUI Title="2021 MOVIES" />
-        </div>
-        {/* movie carousel */}
-        {/* <div className={scss.carouselCont2}>
-          <YearlyCarousel />
-<<<<<<< HEAD
-        </div> */}
-=======
-        </div>
 
         {/* Drag icon*/}
         <div>
@@ -108,7 +97,6 @@ export default function Home() {
           display={dropzonePop === true ? "block" : "none"} 
         />
 
->>>>>>> 484dbff14a6d7e743e49dbc64ebd477323381ee4
         {/* nav bar */}
         <div className={scss.navBarCont}>
           <NavBar onClickSetting={setting} />
