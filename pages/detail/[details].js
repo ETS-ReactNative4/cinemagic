@@ -1,10 +1,13 @@
-import Head from 'next/head';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import scss from '@/styles/pageStyles/detail.module.scss';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
+
 import { useTheme } from "@/utils/provider";
 import { comp_themes, themes } from "@/utils/themes";
-import { useRouter } from 'next/router'
-import scss from '@/styles/pageStyles/detail.module.scss';
+import { filtering, sortArr } from '@/utils/func';
+
+import movies from '@/utils/imdbTop250.json';
 
 // components
 import BackBtn from '@/comps/BackBtn';
@@ -43,6 +46,22 @@ export default function Detail({
     setSetPop(!setPop);
   }
 
+  const FindMovieImg = () => {
+    var findImg = filtering(movies, {
+      title: fixedURL
+    });
+
+    var slicedArr = findImg.slice(0, 1);
+
+    return (
+      <>
+        {slicedArr.map(arr => (
+          <Card src={ arr.Poster } caption={ arr.Title } key={ arr.Title } />
+        ))}
+      </>
+    )
+  }
+
   return (
     <div className={scss.windowCont}>
       <div className={scss.phoneSizeCont}>
@@ -50,7 +69,7 @@ export default function Detail({
         <div className={scss.headerCont}>
           <div className={scss.backBtnCont}>
             {/* back button in header */}
-            <BackBtn onBackBtnClick={ () => router.push('/') } />
+            <BackBtn onBackBtnClick={ () => router.back() } />
           </div>
           <div className={`${scss.titleCont} ${scss.detailTitle}`}>
             {/* movie heading */}
@@ -64,10 +83,7 @@ export default function Detail({
         <section className={scss.mainCont}>
           {/* movie photo */}
           <div className={scss.moviePhoto}>
-            <Card 
-              CardImgHeight='405px' 
-              CardImgWidth='279px' 
-            />
+            <FindMovieImg />
           </div>
           <div className={scss.squaresCont}>
             <Info 

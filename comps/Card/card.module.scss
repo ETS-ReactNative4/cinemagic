@@ -1,0 +1,20 @@
+@use "@/styles/variables.scss";
+@use "@/styles/mixins.scss";
+
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  width: auto;
+  height: 426px;
+
+  .image {
+    width: 279px;
+    height: 405px;
+  }
+}
