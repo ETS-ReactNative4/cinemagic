@@ -107,6 +107,19 @@ export default function Detail({
       </>
     )
   }
+  const FindMovieDescDetails = () => {
+    return (
+      <>
+        {identifiedMovie.map(movie => (
+          <Description 
+            title={fixedURL}
+            directorList={movie.Director}
+            castList={movie.Cast1 + "," + movie.Cast2 + "," + movie.Cast3 + "," + movie.Cast4}
+          />
+        ))}
+      </>
+    )
+  }
 
   return (
     <div className={scss.windowCont}>
@@ -123,12 +136,9 @@ export default function Detail({
               Title={"MOVIE DETAIL"} 
               TextUIColor={ comp_themes[theme].TextUI } 
             />
-                    {/* D icon*/}
-        <div>
-          <ChatIcons/>
-        </div>
           </div>          
         </div>
+
         {/* main movie detail content container */}
         <section className={scss.mainCont}>
           {/* movie photo */}
@@ -142,15 +152,14 @@ export default function Detail({
             <FindMovieRating />
           </div>
         </section>
+
         {/* movie description */}
         <section className={scss.descCont}>
-          <Description title={fixedURL} />
+          <FindMovieDescDetails />
         </section>
 
         {/* Chat icon*/}
-        <div>
         <ChatIcons onClickChat={chatbox}/>
-        </div>
 
         {/* Chatbox pop up */}
         <ChatBox 
