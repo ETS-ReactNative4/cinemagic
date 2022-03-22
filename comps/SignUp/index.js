@@ -12,7 +12,7 @@ const TextCont = styled.h1`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 17vh;
+    margin-top: 15vh;
 `;
 
 const SignUpTitle = styled.h1`
@@ -39,7 +39,7 @@ const SignUpInputCont = styled.div`
 
 const SignUpInput = styled.input`
     height: 60px;
-    width: 365px;
+    width: 340px;
     background: #3F4142;
     border: none;
     border-radius: 10px;
@@ -47,11 +47,12 @@ const SignUpInput = styled.input`
     outline: none;
     font-size: 17px;
     margin-bottom: 20px;
+    padding-left: 15px;
 `
 
 const SignUpBtn = styled.button`
     height: 60px;
-    width: 365px;
+    width: 340px;
     font-size: 20px;
     border: none;
     border-radius: 10px;
@@ -65,7 +66,7 @@ const SignUpBtn = styled.button`
 const SignUpIn = styled.p`
     font-size: 17px;
     color: white;
-    margin-top: 10rem;
+    margin-top: 5rem;
     font-weight: 400;
 `;
 
@@ -77,6 +78,9 @@ const SignInNow = styled.span`
 const SignUp = ({
     onClickLogIn = () => {},
     onClickSignUp = () => {},
+    inputName = () => {},
+    inputEmail = () => {},
+    inputPassword = () => {},
 }) => {
     return <Cont>
         <TextCont>
@@ -85,14 +89,14 @@ const SignUp = ({
         </TextCont>
 
         <SignUpInputCont>
-            <SignUpInput type="text" placeholder='Enter Username'></SignUpInput>
-            <SignUpInput type="Password" placeholder='Password'></SignUpInput>
-            <SignUpInput type="Password" placeholder='Confirm Password'></SignUpInput>
+            <SignUpInput onChange={inputName} type="text" placeholder='Enter Name'></SignUpInput>
+            <SignUpInput onChange={inputEmail} type="email" placeholder='Enter Email'></SignUpInput>
+            <SignUpInput onChange={inputPassword} type="Password" placeholder='Password'></SignUpInput>
 
-            <SignUpBtn onClickSignUp={onClickSignUp} >Sign Up</SignUpBtn>
+            <SignUpBtn onClick={onClickSignUp} >Sign Up</SignUpBtn>
         </SignUpInputCont>
 
-        <SignUpIn>Already have an account? <SignInNow onClickLogIn={onClickLogIn}>Log In now</SignInNow ></SignUpIn>
+        <SignUpIn>Already have an account? <SignInNow onClick={onClickLogIn}>Log In now</SignInNow ></SignUpIn>
 
         {/* <DragIcon onClickDrag={onClickDrag} src="/Drag.png"></DragIcon> */}
 

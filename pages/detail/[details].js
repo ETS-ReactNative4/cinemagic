@@ -17,6 +17,8 @@ import Info from '@/comps/Info';
 import Description from '@/comps/Description'
 import NavBar from '@/comps/NavBar';
 import PopUpCont from '@/comps/PopUpCont';
+import ChatIcons from '@/comps/ChatIcon';
+import ChatBox from '@/comps/ChatBox';
 
 export default function Detail({
 
@@ -29,6 +31,7 @@ export default function Detail({
   const { theme, setTheme } = useTheme();
   const [mode, setMode] = useState(false);
   const [view, setView] = useState(false);
+  const [chatPop, setChatPop] = useState(false);
   const [setPop, setSetPop] = useState(false);
 
   const changeTheme = () => {
@@ -40,6 +43,10 @@ export default function Detail({
   const changeView = () => {
     setView(!view);
     console.log("View", view)
+  }
+
+  const chatbox = () => {
+    setChatPop(!chatPop);
   }
 
   const setting = () => {
@@ -115,7 +122,12 @@ export default function Detail({
             <TextUI 
               Title={"MOVIE DETAIL"} 
               TextUIColor={ comp_themes[theme].TextUI } 
+              
             />
+                    {/* D icon*/}
+        <div>
+          <ChatIcons/>
+        </div>
           </div>          
         </div>
         {/* main movie detail content container */}
@@ -124,10 +136,28 @@ export default function Detail({
           <div className={scss.moviePhoto}>
             <FindMovieImg />
           </div>
+          {/* movie info */}
           <div className={scss.squaresCont}>
+<<<<<<< HEAD
             <FindMovieGenre />
             <FindMovieRunTime />      
             <FindMovieRating />
+=======
+            <Info 
+              infoSrc={ comp_themes[theme].info_genre } 
+              title='Genre'
+            />          
+            <Info 
+              infoSrc={ comp_themes[theme].info_duration } 
+              title='Duration'
+              text='1h 20m'
+            />          
+            <Info 
+              infoSrc={ comp_themes[theme].info_rating} 
+              title='Rating'
+              text='8/10'
+            />
+>>>>>>> 484dbff14a6d7e743e49dbc64ebd477323381ee4
           </div>
         </section>
         {/* movie description */}
@@ -135,11 +165,23 @@ export default function Detail({
           <Description title={fixedURL} />
         </section>
 
+        {/* Chat icon*/}
+        <div>
+        <ChatIcons onClickChat={chatbox}/>
+        </div>
+
+        {/* Chatbox pop up */}
+        <ChatBox 
+          display={chatPop === true ? "block" : "none"}
+          onPressCloseCB={chatbox} 
+        />
+        {/* Navbar setting */}
         <section className={scss.navBarCont}>
           <NavBar 
             onClickSetting={ setting } 
             onClickHome={ () => router.push('/') } 
           />
+          {/* setting popup */}
           <PopUpCont 
             darkLight={changeTheme} 
             gridList={changeView} 

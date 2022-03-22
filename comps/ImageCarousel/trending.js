@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination } from 'swiper';
 import { useTheme } from "@/utils/provider";
 import { comp_themes } from "@/utils/themes";
+//import { views } from "@/utils/themes";
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -17,6 +18,7 @@ export var movieJsonDataArr = [];
 
 export default function TrendingCarousel() {
   const { theme } = useTheme();  
+ // const { view } = useView();  
   const [movieData, setMovieData] = useState([]);
   const router = useRouter();
   const slides = [];
@@ -46,27 +48,49 @@ export default function TrendingCarousel() {
         <img 
           src={ movie.Poster } 
           alt={ movie.Title }
+          alt={ movie.Date }
+          alt={ movie.Genre }
           style={{ 
             borderRadius: "20px",
             backgroundSize: "cover",
-            width: "160px",
+            width: "123px",
+  //          width: views [view].card_height,
             height: "auto"
           }}
         />
 
+      {/* date */}
+          <p style={{
+          display: 'flex',
+          justifyContent: 'center',
+          textAlign: 'center',
+        
+          width: '123px',
+        
+          color: comp_themes[theme].carouselTextColour,
+          fontSize: '8pt',
+        }}>
+          {movie.Date}
+        </p>
+
+        {/* title */}
         <p style={{
           display: 'flex',
           justifyContent: 'center',
           textAlign: 'center',
         
-          width: '160px',
-          paddingTop: '13px',
+          width: '123px',
+          paddingTop: '0px',
         
           color: comp_themes[theme].carouselTextColour,
-          fontSize: '12pt',
+          fontSize: '10pt',
         }}>
-          {movie.Title}
+          {movie.Title.slice(0, 15) + "..."}
         </p>
+
+      
+
+        
       </SwiperSlide>
     )
   })
@@ -85,7 +109,7 @@ export default function TrendingCarousel() {
             }}
             slidesPerView={3}
             slidesPerGroup={3}
-            spaceBetween={150}
+            spaceBetween={50}
             loop={false}
           >
             { slides }
@@ -106,7 +130,7 @@ export default function TrendingCarousel() {
         }}
         slidesPerView={3}
         slidesPerGroup={3}
-        spaceBetween={100}
+        spaceBetween={50}
         loop={false}
         observer={true}
         observeParents={true}

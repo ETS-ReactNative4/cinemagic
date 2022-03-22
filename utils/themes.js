@@ -7,7 +7,7 @@ export const themes = {
   }
 }
 
-export const comp_themes = {
+export const comp_themes = { 
   default: {
     search_bar: '#303234',
     search_bar_img: '/search-dark.svg',
@@ -28,6 +28,12 @@ export const comp_themes = {
     info_genre:"/video-dark.svg",
     info_duration:"/duration-dark.svg",
     info_rating:"/star-black.svg",
+    dropzone_bg:"#4A4A4A",
+    dropzone_text:"#FFFFFF",
+    chatbox_bg:"#383838;",
+    chattop_bg:"#383838",
+    chat_text:"#E0E0E0",
+    
   },
   light: {
     search_bar: '#FFFFFF',
@@ -49,5 +55,19 @@ export const comp_themes = {
     info_genre:"/video.svg",
     info_duration:"/duration.svg",
     info_rating:"/star.svg",
+    dropzone_bg:"#FFFFFF",
+    dropzone_text:"#D02A1C",
+    chatbox_bg:"#FFFFFF",
+    chattop_bg:"#FFFFFF",
+    chat_text:"#3E3E3E",
   },
+}
+export const views = { 
+  default: {
+    card_height:"145px",
+
+  },
+  list: {
+    card_height:"95px",
+  }
 }
