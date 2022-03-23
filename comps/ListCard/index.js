@@ -1,22 +1,26 @@
 import React, {useRouter} from 'react';
 import styled from 'styled-components';
+import { useTheme } from "@/utils/provider";
+import { comp_themes } from "@/utils/themes";
 
 const ListCard = ({
     CardListImgSrc="https://i.pinimg.com/564x/02/be/85/02be8597e6265fcbc9eb90501600ea18.jpg",
     AddFavList='/favorite-dark.svg',
     onClickCard = () =>{},
     onClickAddFav = () =>{},
-    ListText = "Name",
+    ListYear = "Year",
+    ListTitle = "Title",
     ListTextSize = "14px",
     ListTextWeight = "bold",
-    ListColor = "#FFFFFF"
+    textColor = "#FFFFFF"
 }) => {
+  const { theme } = useTheme();
   return <Cont onClick={onClickCard}>
     <CardCont>
       <ListCardImg src={CardListImgSrc}></ListCardImg>
       <ListCardInfo>
-        <ListCardText ListColor={ListColor} ListTextSize={ListTextSize} ListTextWeight={ListTextWeight}>{ListText}</ListCardText>
-        <ListCardText ListColor={ListColor} ListTextSize={ListTextSize} ListTextWeight={ListTextWeight}>{ListText}</ListCardText>
+        <ListCardText textColor={comp_themes[theme].popUpSettingText} ListTextSize={ListTextSize} ListTextWeight={ListTextWeight}>{ListYear}</ListCardText>
+        <ListCardText textColor={comp_themes[theme].popUpSettingText} ListTextSize={ListTextSize} ListTextWeight={ListTextWeight}>{ListTitle}</ListCardText>
       </ListCardInfo>
     </CardCont>
   </Cont>
@@ -37,7 +41,7 @@ const CardCont = styled.div`
     border: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
-    background: #303234;
+    background: ${props => props.ListCardBg};
 `;
 
 const ListCardImg = styled.img`
@@ -59,5 +63,6 @@ const ListCardInfo = styled.div`
 const ListCardText = styled.h3`
     font-size: ${props=>props.ListTextSize};
     font-weight:  ${props=>props.ListWeight};
-    color: ${props=>props.ListColor};
+    color: ${props => props.textColor};
 `;
+
