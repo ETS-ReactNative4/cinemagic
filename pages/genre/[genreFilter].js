@@ -28,11 +28,12 @@ export default function FilteredPage({
     var slicedArr = movieFilteredArr.slice(0, 20);
 
     function sliceTitle(movie){
-      if(movie.length > 14){
+      if(movie.length < 14){
+        return "";
+      }else if(movie.length > 14 ){
         return "...";
-      }
     }
-
+  }
     for(let i = 0; i < slicedArr.length; i++){
       return (
         <div className={scss.contentRow}>

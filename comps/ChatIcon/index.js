@@ -2,6 +2,7 @@ import React, {useRouter} from 'react';
 import styled from 'styled-components';
 
 const Cont = styled.div`
+    visibility: ${props=>props.display};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,8 +20,9 @@ const ChatIcon = styled.img`
 
 const ChatIcons = ({
     onClickChat = () => {},
+    display = "visible",
 }) => {
-    return <Cont  onClick={onClickChat} >
+    return <Cont display={display} onClick={onClickChat} >
         <ChatIcon src="/Chat.png"></ChatIcon>
     </Cont>
 }

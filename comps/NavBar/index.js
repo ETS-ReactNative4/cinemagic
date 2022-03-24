@@ -4,6 +4,7 @@ import { useTheme } from "@/utils/provider";
 import { comp_themes } from "@/utils/themes";
 
 const Cont = styled.div`
+    visibility: ${props=>props.display};
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -27,9 +28,10 @@ const NavBar = ({
     onClickSetting = () =>{},
     onClickHome = () =>{},
     onClickNavBar= () =>{},
+    display = "visible"
 }) => {
     const { theme } = useTheme();
-    return <Cont bgColor={comp_themes[theme].navbar}>
+    return <Cont display={display} bgColor={comp_themes[theme].navbar}>
         <NavBarIcon onClick={onClickNavBar} src={comp_themes[theme].navbar_fav} width='30px' height='30px'></NavBarIcon>
         <NavBarIcon onClick={onClickHome} src={comp_themes[theme].navbar_home} width={width} height={height}></NavBarIcon>
         <NavBarIcon onClick={onClickSetting} src={comp_themes[theme].navbar_setting} width={width} height={height}></NavBarIcon>

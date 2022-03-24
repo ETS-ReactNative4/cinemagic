@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useTheme } from "@/utils/provider";
 import { comp_themes, themes } from "@/utils/themes";
@@ -30,6 +30,7 @@ export default function Detail({
   const [view, setView] = useState(false);
   const [chatPop, setChatPop] = useState(false);
   const [setPop, setSetPop] = useState(false);
+  const [setNav, setSetNav] = useState(false);
 
   const changeTheme = () => {
     setMode(!mode);
@@ -44,6 +45,7 @@ export default function Detail({
 
   const chatbox = () => {
     setChatPop(!chatPop);
+    setSetNav(!setNav);
   }
 
   const setting = () => {
@@ -112,13 +114,14 @@ export default function Detail({
         {/* Chatbox pop up */}
         <ChatBox 
           display={chatPop === true ? "block" : "none"}
-          onPressCloseCB={chatbox} 
+          onPressCloseCB={chatbox}
         />
         {/* Navbar setting */}
         <section className={scss.navBarCont}>
           <NavBar 
             onClickSetting={ setting } 
             onClickHome={ () => router.push('/') } 
+            display={setNav === true ? "hidden" : "visible"} 
           />
           {/* setting popup */}
           <PopUpCont 
