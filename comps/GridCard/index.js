@@ -25,6 +25,7 @@ export default function GridCard({
       <p style={{
         fontSize: "16px",
         fontWeight: "bold",
+        textAlign: "center",
         color: comp_themes[theme].carouselTextColour,
         margin: 0,
       }}>

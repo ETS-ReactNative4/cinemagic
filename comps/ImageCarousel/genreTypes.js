@@ -13,28 +13,94 @@ export default function GenreCarousel() {
   const slides = [];
 
   const genres = [
-    "Action",
-    "Adventure",
-    "Animation",
-    "Biography",
-    "Comedy",
-    "Crime",
-    "Drama",
-    "Family",
-    "Fantasy",
-    "Film Noir",
-    "History",
-    "Horror",
-    "Music",
-    "Musical",
-    "Mystery",
-    "Romance",
-    "Sci-Fi",
-    "Short",
-    "Sport",
-    "Thriller",
-    "War",
-    "Western"
+    {
+      genre: "Action",
+      image: "/genres/action.png"
+    },
+    {
+      genre: "Adventure",
+      image: "/genres/adventure.png"
+    },
+    {
+      genre: "Animation",
+      image: "/genres/animation.png"
+    },
+    {
+      genre: "Biography",
+      image: "/genres/biography.png"
+    },
+    {
+      genre: "Comedy",
+      image: "/genres/comedy.png"
+    },
+    {
+      genre: "Crime",
+      image: "/genres/crime.png"
+    },
+    {
+      genre: "Drama",
+      image: "/genres/drama.png"
+    },
+    {
+      genre: "Family",
+      image: "/genres/family.png"
+    },
+    {
+      genre: "Fantasy",
+      image: "/genres/fantasy.png"
+    },
+    {
+      genre: "Film Noir",
+      image: "/genres/filmnoir.png"
+    },
+    {
+      genre: "History",
+      image: "/genres/history.png"
+    },
+    {
+      genre: "Horror",
+      image: "/genres/horror.png"
+    },
+    {
+      genre: "Music",
+      image: "/genres/music.png"
+    },
+    {
+      genre: "Musical",
+      image: "/genres/musical.png"
+    },
+    {
+      genre: "Mystery",
+      image: "/genres/mystery.png"
+    },
+    {
+      genre: "Romance",
+      image: "/genres/romance.png"
+    },
+    {
+      genre: "Sci-Fi",
+      image: "/genres/scifi.png"
+    },
+    {
+      genre: "Short",
+      image: "/genres/short.png"
+    },
+    {
+      genre: "Sport",
+      image: "/genres/sport.png"
+    },
+    {
+      genre: "Thriller",
+      image: "/genres/thriller.png"
+    },
+    {
+      genre: "War",
+      image: "/genres/war.png"
+    },
+    {
+      genre: "Western",
+      image: "/genres/western.png"
+    }
   ];
 
   const handleCarouselItemClick = sel => router.push(`/genre/${sel}`);
@@ -42,14 +108,14 @@ export default function GenreCarousel() {
   genres.map(genre => {
     slides.push(
       <SwiperSlide 
-        key={ genre } 
+        key={ genre.genre } 
         tag='li'
-        onClick={ () => handleCarouselItemClick(genre) }   
+        onClick={ () => handleCarouselItemClick(genre.genre) }   
         style={{ cursor: "pointer" }}
       >
         <img
-          src='http://placekitten.com/123/179'
-          alt={ genre }
+          src={ genre.image }
+          alt={ genre.genre }
           style={ styles.image }
         />
 
@@ -63,7 +129,7 @@ export default function GenreCarousel() {
           color: comp_themes[theme].carouselTextColour,
           fontSize: '10.5pt'
         }}>
-          {genre}
+          { genre.genre }
         </p>
       </SwiperSlide>
     )

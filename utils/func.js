@@ -7,38 +7,32 @@ export function filtering(
       year:null, 
       duration:null,
       title:null,
-      gross:null
+      gross:null,
+      yearGreaterThan:null
     } 
 ){
-    const {title, genre, year, duration, gross} = config;
+    const {title, genre, year, duration, gross, yearGreaterThan} = config;
 
-    if(title || genre || year || duration || gross){
-    const filtered_arr = arr.filter((o)=>{
+    if(title || genre || year || duration || gross || yearGreaterThan){
+      const filtered_arr = arr.filter((o) => {
         var cond = true;
-            if(title){
-              cond = cond && o.Title.includes(title);
-            }
+        if(title) return cond = cond && o.Title.includes(title);
 
-            if(genre){
-                cond = cond && o.Genre.includes(genre);
-            }
-    
-            if(year){
-                cond = cond && Number(o.Date) === Number(year);
-            }
-    
-            if(duration){
-                cond = cond && Number(o.RunTime) >= Number(duration);
-            }
+        if(genre) return cond = cond && o.Genre.includes(genre);
 
-            if(gross){
-              cond = cond && Number(o.Gross) >= Number(gross);
-            }
-            return cond;
-        })
-        return filtered_arr;
-    }else{
-        return [];
+        if(year) return cond = cond && Number(o.Date) === Number(year);
+
+        if(duration) return cond = cond && Number(o.RunTime) >= Number(duration);
+
+        if(gross) return cond = cond && Number(o.Gross) >= Number(gross);
+
+        if(yearGreaterThan) return cond = cond && Number(o.Date) > Number(yearGreaterThan);
+
+        return cond;
+      })
+      return filtered_arr;
+    } else {
+      return [];
     }
 }
 
