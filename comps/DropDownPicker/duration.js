@@ -37,8 +37,8 @@ const DurationDropdownMenu = ({
   onSelection,
 }) => {
   const duration = [
-    "Less than 90mins",
-    "More than 90mins"
+    "> 90mins",
+    "< 90mins"
   ];
 
   const DropdownKeys = () => {
