@@ -15,7 +15,7 @@ const BoxCont = styled.div`
     flex-direction: column;
     justify-content: center;
     width: 390px; 
-    height: 500px;
+    height: 50vh;
     background: ${props => props.chatboxBg};
     border-radius: 20px;
     position: relative;
@@ -62,23 +62,18 @@ const ChatCont = styled.div`
 
 const ChatTime = styled.p`
     display: flex;
-    margin-top: 20px;
+    margin-top: 15px;
     align-items: center;
     justify-content: center;
     color: #767676;
     font-size: 15px;
 `;
 
-const Comment = styled.h4`
-    margin-left: 20px;
-    color: ${props => props.chatText};
-    font-size: 16px;
-`;
-
 const Bot = styled.div`
     display:flex;
     justify-content:center;
-    flex:2;
+    flex:1;
+    margin-bottom: 3px;
 `;
 
 const TextBoard = styled.div`
@@ -86,7 +81,6 @@ const TextBoard = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top:62px;
     width: 390px; 
     margin-right:5px;
     margin-left:5px;
@@ -99,7 +93,7 @@ const TextBoard = styled.div`
 const ChatInput = styled.input`
     width: 75vw;
     height: 39px;
-    margin-left:10px;
+    margin-right:25px;
     background: none;
     border: none;
     border-radius: 10px;
@@ -111,7 +105,6 @@ const ChatInput = styled.input`
 const MsgSent = styled.img`
     width: 25px;
     height: 25px;
-    margin-right:20px;
 `;
 
 const NameBoard = styled.div`
@@ -119,20 +112,19 @@ const NameBoard = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top:62px;
     width: 390px; 
     margin-right:5px;
     margin-left:5px;
     height: 55px;
     background: rgba(37, 38, 38);
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 `;
 
 const NameInput = styled.input`
     width: 75vw;
     height: 39px;
-    margin-left:10px;
+    margin-right:25px;
     background: none;
     border: none;
     border-radius: 10px;
@@ -144,7 +136,6 @@ const NameInput = styled.input`
 const NameMsgSent = styled.img`
     width: 25px;
     height: 25px;
-    margin-right:20px;
 `;
 
 const ChatBox = ({
@@ -211,11 +202,11 @@ const ChatBox = ({
                 {userName === false ?
                     <NameBoard>
                     <NameInput type="text" placeholder="What is your name?" onChange={(e) => setName(e.target.value)}></NameInput>
-                    <NameMsgSent onClick={()=>setUserName(userName === false?true:false)} src="/sent.svg"></NameMsgSent>
+                    <NameMsgSent onClick={()=>setUserName(userName === false?true:false)} src="/send.png"></NameMsgSent>
                 </NameBoard>
                 : <TextBoard>
                 <ChatInput type="text" placeholder="Type something..." onChange={(e) => setTxt(e.target.value)}></ChatInput>
-                <MsgSent onClick={SendMessage} src="/sent.svg"></MsgSent>
+                <MsgSent onClick={SendMessage} src="/send.png"></MsgSent>
                 </TextBoard>}
             </Bot>
         </BoxCont>
