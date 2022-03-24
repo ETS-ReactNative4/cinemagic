@@ -60,6 +60,7 @@ export const comp_themes = {
     chatbox_bg:"#FFFFFF",
     chattop_bg:"#FFFFFF",
     chat_text:"#3E3E3E",
+    //#303234 list card bg
   },
 }
 export const views = { 
