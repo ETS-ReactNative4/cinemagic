@@ -65,7 +65,7 @@ export default function Detail({
     return (
       <>
         {identifiedMovie.map(arr => (
-          <Card src={ arr.Poster } caption={ arr.Title } key={ arr.Title } />
+          <Card src={ arr.Poster } key={ arr.Title } />
         ))}
       </>
     )
