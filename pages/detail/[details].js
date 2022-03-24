@@ -76,6 +76,7 @@ export default function Detail({
             title="Genre" 
             text={ movie.Genre.split(",")[0] } 
             infoSrc={ comp_themes[theme].info_genre } 
+            key={ movie.Title }
           />
         ))}
       </>
@@ -89,6 +90,7 @@ export default function Detail({
             title="Duration"
             text={ movie.RunTime + "mins" }
             infoSrc={ comp_themes[theme].info_genre }
+            key={ movie.Title }
           />
         ))}
       </>
@@ -102,6 +104,7 @@ export default function Detail({
             title="Rating"
             text={ movie.Rating + "/10" }
             infoSrc={ comp_themes[theme].info_genre }
+            key={ movie.Title }
           />
         ))}
       </>
@@ -115,6 +118,7 @@ export default function Detail({
             title={fixedURL}
             directorList={movie.Director}
             castList={movie.Cast1 + "," + movie.Cast2 + "," + movie.Cast3 + "," + movie.Cast4}
+            key={movie.Title}
           />
         ))}
       </>
