@@ -47,20 +47,13 @@ export default function Home() {
     setSetPop(!setPop);
   }
 
-  const filteringMoviesByGenre = (genre) => {
-    router.push(`/genre/${genre}`);
-  }  
-  const filteringMoviesByYear = (year) => {
-    router.push(`/year/${year}`);
-  }  
-  const filteringMoviesByDuration = (dur) => {
-    router.push(`/duration/${dur}`);
-  }
+  const filteringMoviesByGenre = genre => router.push(`/genre/${genre}`); 
+  const filteringMoviesByYear = year => router.push(`/year/${year}`); 
+  const filteringMoviesByDuration = dur => router.push(`/duration/${dur}`);
 
   return (
     <div className={scss.windowCont}>
       <div className={scss.phoneSizeCont}>
-        
         {/* cinemagic logo/title */}
         <div className={scss.titleCont}>
           <Logo />
@@ -70,35 +63,33 @@ export default function Home() {
         <div className={scss.searchBarCont}>
           <SearchBar onChange={ (e) => inputSearch(e.target.value) }/>
         </div>
+
         {/* drop down filter menus */}
         <div className={scss.dropDownCont}>
           <GenreDropdownMenu onSelection={ sel => filteringMoviesByGenre(`${sel}`) } />
           <YearDropdownMenu onSelection={ sel => filteringMoviesByYear(`${sel}`) } />
           <DurationDropdownMenu onSelection={ sel => filteringMoviesByDuration(`${sel}`) } />
         </div>
+
         {/* TRENDING subheading */}
         <div className={scss.trendingHeadingCont}>
-          <TextUI Title="TRENDING" />
+          <TextUI Title="RECENT MOVIES" />
         </div>
+
         {/* movie carousel */}
         <div className={scss.carouselCont}>
-          <TrendingCarousel />
+          {/* <TrendingCarousel /> */}
+          <YearlyCarousel />
         </div>
+
         {/* GENRE subheading */}
         <div className={scss.subHeadingCont}>
           <TextUI Title="GENRE" />
         </div>
+
         {/* movie carousel */}
         <div className={scss.carouselCont}>
           <GenreCarousel />
-        </div>
-        {/* 2021 movies subheading */}
-        <div className={scss.subHeadingCont}>
-          <TextUI Title="2021 MOVIES" />
-        </div>
-        {/* movie carousel */}
-        <div className={scss.carouselCont2}>
-          <YearlyCarousel />
         </div>
 
         {/* Drag icon*/}

@@ -2,6 +2,11 @@
 
 @import "@/styles/variables.scss";
 
+@mixin noMargins {
+  margin: 0;
+  padding: 0;
+}
+
 @mixin flexCenterAlignCenter {
   display: flex;
   justify-content: center;

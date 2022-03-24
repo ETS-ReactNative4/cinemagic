@@ -1,10 +1,13 @@
-import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
+import scss from '@/styles/pageStyles/detail.module.scss';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
+
 import { useTheme } from "@/utils/provider";
 import { comp_themes, themes } from "@/utils/themes";
-import { useRouter } from 'next/router'
-import scss from '@/styles/pageStyles/detail.module.scss';
+import { filtering, sortArr } from '@/utils/func';
+
+import movies from '@/utils/imdbTop250.json';
 
 // components
 import BackBtn from '@/comps/BackBtn';
@@ -52,6 +55,78 @@ export default function Detail({
     setSetPop(!setPop);
   }
 
+// code below is to identify and get the appropriate movie details
+  const identifyMovie = filtering(movies, {
+    title: fixedURL
+  });
+  const identifiedMovie = identifyMovie.slice(0, 1);
+
+  const FindMovieImg = () => {
+    return (
+      <>
+        {identifiedMovie.map(arr => (
+          <Card src={ arr.Poster } caption={ arr.Title } key={ arr.Title } />
+        ))}
+      </>
+    )
+  }
+  const FindMovieGenre = () => {
+    return (
+      <>
+        {identifiedMovie.map(movie => (
+          <Info 
+            title="Genre" 
+            text={ movie.Genre.split(",")[0] } 
+            infoSrc={ comp_themes[theme].info_genre } 
+            key={ movie.Title }
+          />
+        ))}
+      </>
+    )
+  }
+  const FindMovieRunTime = () => {
+    return (
+      <>
+        {identifiedMovie.map(movie => (
+          <Info
+            title="Duration"
+            text={ movie.RunTime + "mins" }
+            infoSrc={ comp_themes[theme].info_genre }
+            key={ movie.Title }
+          />
+        ))}
+      </>
+    )
+  }
+  const FindMovieRating = () => {
+    return (
+      <>
+        {identifiedMovie.map(movie => (
+          <Info
+            title="Rating"
+            text={ movie.Rating + "/10" }
+            infoSrc={ comp_themes[theme].info_genre }
+            key={ movie.Title }
+          />
+        ))}
+      </>
+    )
+  }
+  const FindMovieDescDetails = () => {
+    return (
+      <>
+        {identifiedMovie.map(movie => (
+          <Description 
+            title={fixedURL}
+            directorList={movie.Director}
+            castList={movie.Cast1 + "," + movie.Cast2 + "," + movie.Cast3 + "," + movie.Cast4}
+            key={movie.Title}
+          />
+        ))}
+      </>
+    )
+  }
+
   return (
     <div className={scss.windowCont}>
       <div className={scss.phoneSizeCont}>
@@ -59,57 +134,38 @@ export default function Detail({
         <div className={scss.headerCont}>
           <div className={scss.backBtnCont}>
             {/* back button in header */}
-            <BackBtn onBackBtnClick={ () => router.push('/') } />
+            <BackBtn onBackBtnClick={ () => router.back() } />
           </div>
           <div className={`${scss.titleCont} ${scss.detailTitle}`}>
             {/* movie heading */}
             <TextUI 
-              Title={fixedURL} 
+              Title={"MOVIE DETAIL"} 
               TextUIColor={ comp_themes[theme].TextUI } 
-              
             />
-                    {/* D icon*/}
-        <div>
-          <ChatIcons/>
-        </div>
           </div>          
         </div>
+
         {/* main movie detail content container */}
         <section className={scss.mainCont}>
           {/* movie photo */}
           <div className={scss.moviePhoto}>
-            <Card 
-              CardImgHeight='405px' 
-              CardImgWidth='279px' 
-            />
+            <FindMovieImg />
           </div>
           {/* movie info */}
           <div className={scss.squaresCont}>
-            <Info 
-              infoSrc={ comp_themes[theme].info_genre } 
-              title='Genre'
-            />          
-            <Info 
-              infoSrc={ comp_themes[theme].info_duration } 
-              title='Duration'
-              text='1h 20m'
-            />          
-            <Info 
-              infoSrc={ comp_themes[theme].info_rating} 
-              title='Rating'
-              text='8/10'
-            />
+            <FindMovieGenre />
+            <FindMovieRunTime />      
+            <FindMovieRating />
           </div>
         </section>
+
         {/* movie description */}
         <section className={scss.descCont}>
-          <Description title={fixedURL} />
+          <FindMovieDescDetails />
         </section>
 
         {/* Chat icon*/}
-        <div>
         <ChatIcons onClickChat={chatbox}/>
-        </div>
 
         {/* Chatbox pop up */}
         <ChatBox 

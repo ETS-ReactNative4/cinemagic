@@ -1,0 +1,53 @@
+@use "@/styles/variables.scss";
+@use "@/styles/mixins.scss";
+
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.container {
+  @include noMargins();
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .descCont {
+    @include flexCenterAlignCenter();
+
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 167px;
+    width: auto;
+
+    .headingCont {
+      display: flex;
+      justify-content: space-between;
+      align-items:center;
+      width: 100%;
+      
+      .icon {
+        width: 27px;
+        height: 27px;
+  
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .directorCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 77px;
+    width: auto;
+  }
+
+  .castCont {
+    display: flex;
+    flex-direction: column;
+    height: 94px;
+    width: auto;
+  }
+}

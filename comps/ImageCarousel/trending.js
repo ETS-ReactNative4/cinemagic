@@ -48,29 +48,27 @@ export default function TrendingCarousel() {
         <img 
           src={ movie.Poster } 
           alt={ movie.Title }
-          alt={ movie.Date }
-          alt={ movie.Genre }
           style={{ 
             borderRadius: "20px",
             backgroundSize: "cover",
             width: "123px",
   //          width: views [view].card_height,
-            height: "auto"
+            height: "179px"
           }}
         />
 
-      {/* date */}
-          <p style={{
+        {/* date */}
+        <p style={{
           display: 'flex',
           justifyContent: 'center',
           textAlign: 'center',
-        
+      
           width: '123px',
-        
+      
           color: comp_themes[theme].carouselTextColour,
           fontSize: '8pt',
         }}>
-          {movie.Date}
+          { movie.Date }
         </p>
 
         {/* title */}
@@ -85,12 +83,8 @@ export default function TrendingCarousel() {
           color: comp_themes[theme].carouselTextColour,
           fontSize: '10pt',
         }}>
-          {movie.Title.slice(0, 15) + "..."}
+          { movie.Title.slice(0, 15) + "..." }
         </p>
-
-      
-
-        
       </SwiperSlide>
     )
   })
@@ -130,7 +124,7 @@ export default function TrendingCarousel() {
         }}
         slidesPerView={3}
         slidesPerGroup={3}
-        spaceBetween={50}
+        spaceBetween={0}
         loop={false}
         observer={true}
         observeParents={true}

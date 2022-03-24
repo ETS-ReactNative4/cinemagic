@@ -1,58 +1,93 @@
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper';
+import SwiperCore, { Pagination } from 'swiper';
 import { useTheme } from "@/utils/provider";
 import { comp_themes } from "@/utils/themes";
-import { filtering, sortArr } from '@/utils/func';
+//import { views } from "@/utils/themes";
 
 import 'swiper/css';
+import 'swiper/css/pagination';
 
 import movies from '@/utils/imdbTop250.json';
+import { filtering } from '@/utils/func';
 
-export default function YearlyCarousel({
-  movieTitles = []
-}) {
-  const { theme } = useTheme();
-  const [movieData, setMovieData] = useState(movies);
+SwiperCore.use([Pagination]);
+
+export var movieJsonDataArr = [];
+
+export default function TrendingCarousel() {
+  const { theme } = useTheme();  
+ // const { view } = useView();  
+  const [movieData, setMovieData] = useState([]);
+  const router = useRouter();
   const slides = [];
-  var movieDates = [];
-  // var movieTitles = [];
 
-  for(let i = 0; i < 20; i += 1) {
-    // if(movieData) {
-    //   movieDates = filtering(movies, {
-    //     // genre: null,  
-    //     year: 2021
-    //     // duration:null,
-    //   });
+  useEffect(() => {
+    filterMovies();
+  }, []);
 
-    //   movieTitles.push(movieDates[i]);
-    // }
+  const handleCarouselItemClick = sel => router.push(`/detail/${sel}`);
 
+  const filterMovies = () => {
+    var movieFilteredArr = filtering(movies, {
+      yearGreaterThan: 2017
+    });
+
+    setMovieData(movieFilteredArr);
+  }
+
+  movieData.slice(0, 15).map(movie => {
     slides.push(
-      <SwiperSlide key={ `slide-${i}` } tag='li'>
-        <img
-          src='http://placekitten.com/123/179'
-          alt={ `Slide ${i}` }
-          style={ styles.image }
+      <SwiperSlide 
+        key={ movie.Title } 
+        tag='li' 
+        onClick={() => handleCarouselItemClick(`${movie.Title}`)} 
+        style={{ cursor: "pointer" }} 
+      >
+        <img 
+          src={ movie.Poster } 
+          alt={ movie.Title }
+          style={{ 
+            borderRadius: "20px",
+            backgroundSize: "cover",
+            width: "123px",
+  //          width: views [view].card_height,
+            height: "179px"
+          }}
         />
 
-        { movieTitles.map((o) => <p style={{
+        {/* date */}
+        <p style={{
           display: 'flex',
           justifyContent: 'center',
-          
+          textAlign: 'center',
+      
           width: '123px',
-          paddingTop: '13px',
-          
+      
           color: comp_themes[theme].carouselTextColour,
-          fontSize: '12pt'
-        }}
-        >{ o }</p>) }
+          fontSize: '8pt',
+        }}>
+          { movie.Date }
+        </p>
+
+        {/* title */}
+        <p style={{
+          display: 'flex',
+          justifyContent: 'center',
+          textAlign: 'center',
+        
+          width: '123px',
+          paddingTop: '0px',
+        
+          color: comp_themes[theme].carouselTextColour,
+          fontSize: '10pt',
+        }}>
+          { movie.Title.slice(0, 15) + "..." }
+        </p>
       </SwiperSlide>
     )
-
-    movieTitles.pop(i);
-  }
+  })
 
 // Screen dimension check
   if(typeof window !== "undefined"){
@@ -80,24 +115,21 @@ export default function YearlyCarousel({
 
 // default return for desktop screen
   return (
-    <React.Fragment>
-      <Swiper
-        className='customSwiper2'
+      <Swiper 
+        className='customSwiper' 
         wrapperTag='ul'
+        modules={[Pagination]}
+        pagination={{
+          clickable: true,
+        }}
         slidesPerView={3}
         slidesPerGroup={3}
         spaceBetween={0}
         loop={false}
+        observer={true}
+        observeParents={true}
       >
         {slides}
       </Swiper>
-    </React.Fragment>
   )
-}
-
-var styles = {
-  image: {
-    borderRadius: "20px",
-    // marginLeft: "-10px"
-  }
 }
