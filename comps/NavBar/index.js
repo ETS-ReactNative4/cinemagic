@@ -5,7 +5,7 @@ import { useTheme } from "@/utils/provider";
 import { comp_themes } from "@/utils/themes";
 
 export default function NavBar({
-  onClickNavBar = () => {},
+  onClickFav = () => {},
   onClickHome = () => {},
   onClickSetting = () => {},
   display= "visible"
@@ -17,7 +17,7 @@ export default function NavBar({
       <img 
         className={ scss.image }
         src={ comp_themes[theme].navbar_fav }
-        onClick={ onClickNavBar }
+        onClick={ onClickFav }
       />      
       <img 
         className={ scss.image }
