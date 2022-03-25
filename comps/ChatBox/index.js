@@ -8,8 +8,7 @@ const Cont = styled.div`
     display: ${props => props.display};
     position:fixed;
     bottom: 0px;
-    margin-top: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 `;
 
 const BoxCont = styled.div`
@@ -17,7 +16,7 @@ const BoxCont = styled.div`
     flex-direction: column;
     justify-content: center;
     width: 390px; 
-    height: 90vh;
+    height: 80vh;
     background: ${props => props.chatboxBg};
     border-radius: 20px;
     position: relative;
