@@ -72,6 +72,7 @@ const SectionTitle = styled.h2`
 `
 
 const SectionInfo = styled.p`
+  width: 270px;
   font-size: 14px;
   line-height: 17px;
   font-weight: lighter;

@@ -8,14 +8,14 @@ const Cont = styled.div`
 display: ${props => props.display};
 z-index:7;
 position:fixed;
-bottom:90px;
+bottom:150px;
 ` 
 const Drop = styled.div`
 background-color: ${props=>props.dropzonebg};
 border-radius: 20px;
 border: 1px solid lightgrey;
-width:386px;
-height:150px;
+width:95vw;
+height:210px;
 position:relative;
 display:flex;
     flex-direction:column;
