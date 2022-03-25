@@ -17,6 +17,7 @@ import YearlyCarousel from '@/comps/ImageCarousel/2021movies';
 import PopUpCont from '@/comps/PopUpCont';
 import DragIcons from '@/comps/DragIcon';
 import Dropzone from '@/comps/Dropzone';
+import PopUpFavCont from '@/comps/PopUpFavCont';
 
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
   const [view, setView] = useState(false);
   const [dropzonePop, setDropzonePop] = useState(false);
   const [setPop, setSetPop] = useState(false);
+  const [favPop, setFavPop] = useState(false);
   
   const router = useRouter();
 
@@ -45,6 +47,10 @@ export default function Home() {
   
   const setting = () => {
     setSetPop(!setPop);
+  }
+
+  const favourite = () => {
+    setFavPop(!favPop);
   }
 
   const filteringMoviesByGenre = genre => router.push(`/genre/${genre}`); 
@@ -104,7 +110,10 @@ export default function Home() {
 
         {/* nav bar */}
         <div className={scss.navBarCont}>
-          <NavBar onClickSetting={setting} />
+          <NavBar 
+          onClickSetting={setting} 
+          onClickFav={favourite}
+          />
         </div>
 
         {/* Setting pop up */}
@@ -112,10 +121,15 @@ export default function Home() {
           darkLight={changeTheme} 
           gridList={changeView} 
           onPressCloseBtn={setting} 
-          display={setPop === true ? "block" : "none"} 
+          display={setPop === true ? "visible" : "hidden"}  
           position1={mode === true ? "0px" : "27px"} 
           position2={view === true ? "0px" : "27px"} 
         />
+        {/* fav popup */}
+        <PopUpFavCont
+            display={favPop === true ? "visible" : "hidden"}
+            onPressCloseBtn={favourite}
+          />
       </div>
     </div>
   )

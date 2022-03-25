@@ -11,12 +11,14 @@ import GenreDropdownMenu from '@/comps/DropDownPicker/genre';
 import YearDropdownMenu from '@/comps/DropDownPicker/year';
 import DurationDropdownMenu from '@/comps/DropDownPicker/duration';
 import PopUpCont from '@/comps/PopUpCont';
+import PopUpFavCont from '@/comps/PopUpFavCont';
 
 export default function PageLayout({ children }) {
   const { theme, setTheme } = useTheme();
   const [mode, setMode] = useState(false);
   const [view, setView] = useState(false);
   const [setPop, setSetPop] = useState(false);
+  const [favPop, setFavPop] = useState(false);
   
   const router = useRouter();
 
@@ -33,6 +35,10 @@ export default function PageLayout({ children }) {
 
   const setting = () => {
     setSetPop(!setPop);
+  }
+
+  const favourite = () => {
+    setFavPop(!favPop);
   }
 
   const filteringMoviesByGenre = (genre) => {
@@ -70,7 +76,9 @@ export default function PageLayout({ children }) {
 
         {/* nav bar */}
         <div className={scss.navBarCont}>
-          <NavBar onClickSetting={setting} />
+          <NavBar 
+          onClickSetting={setting} 
+          onClickFav={favourite}/>
         </div>
 
         {/* Setting pop up */}
@@ -78,10 +86,16 @@ export default function PageLayout({ children }) {
           darkLight={changeTheme} 
           gridList={changeView} 
           onPressCloseBtn={setting} 
-          display={setPop === true ? "block" : "none"} 
+          display={setPop === true ? "visible" : "hidden"} 
           position1={mode === true ? "0px" : "27px"} 
           position2={view === true ? "0px" : "27px"} 
         />
+
+        {/* fav popup */}
+        <PopUpFavCont
+            display={favPop === true ? "visible" : "hidden"}
+            onPressCloseBtn={favourite}
+          />
       </div>
     </div>
   )
