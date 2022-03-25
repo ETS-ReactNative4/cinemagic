@@ -15,7 +15,7 @@ const BoxCont = styled.div`
     flex-direction: column;
     justify-content: center;
     width: 390px; 
-    height: 100vh;
+    height: 80vh;
     background: ${props => props.chatboxBg};
     border-radius: 20px;
     position: relative;
@@ -42,7 +42,7 @@ const BoxText = styled.h1`
 `;
 
 const Mid = styled.div`
-    flex:5;
+    flex:7;
     overflow-y: scroll;
 `
 
@@ -73,7 +73,6 @@ const Bot = styled.div`
     display:flex;
     justify-content:center;
     flex:1;
-    margin-bottom: 3px;
 `;
 
 const TextBoard = styled.div`
@@ -156,7 +155,7 @@ const ChatBox = ({
     const [name, setName] = useState("")
 
     useEffect(() => {
-        const socket = io("https://cinemagicproject.herokuapp.com/")
+        const socket = io("http://cinemagicproject.herokuapp.com/")
 
         //everytime with a user connect
         socket.on("user_connected", (allusers) => {
