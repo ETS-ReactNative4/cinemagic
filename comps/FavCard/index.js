@@ -5,10 +5,11 @@ import { comp_themes } from "@/utils/themes";
 
 const FavCard = ({
     title = "The Dark knight",
-    img = "https://images-na.ssl-images-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+    img = "https://images-na.ssl-images-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    display = "hidden"
 }) => { 
   const { theme } = useTheme();
-  return <Cont>
+  return <Cont display={display}>
       <CardCont>
         <MovieImage src={img}/>
         <MovieTitle>{title}</MovieTitle>
@@ -19,6 +20,7 @@ const FavCard = ({
 export default FavCard;
 
 const Cont = styled.div`
+    display: ${props => props.display};
 `
 
 const CardCont = styled.div`

@@ -30,10 +30,23 @@ export default function FilteredPage({
     });
     var slicedArr = movieFilteredArr.slice(0, 20);
 
+    function sliceTitle(movie){
+      if(movie.length < 14){
+        return "";
+      }else if(movie.length > 14 ){
+        return "...";
+    }
+  }
+
     return (
       <div className={scss.contentRow}>
         {slicedArr.map(data => (
-          <GridCard movieName={data.Title} key={data.Title}/>
+          <GridCard 
+            movieName={data.Title.slice(0,14) + sliceTitle(data.Title)} 
+            imageSrc={ data.Poster } 
+            key={data.Title} 
+            onCardClick={ () => handleCardClick(`${data.Title}`)} 
+          />
         ))}
       </div>
     )

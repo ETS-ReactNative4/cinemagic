@@ -27,6 +27,7 @@ export default function Home() {
   const [dropzonePop, setDropzonePop] = useState(false);
   const [setPop, setSetPop] = useState(false);
   const [favPop, setFavPop] = useState(false);
+  const [displayFav, setDisplayFav] = useState(false);
   
   const router = useRouter();
 
@@ -129,6 +130,7 @@ export default function Home() {
         <PopUpFavCont
             display={favPop === true ? "visible" : "hidden"}
             onPressCloseBtn={favourite}
+            cardDisplay={displayFav === true ? "block" : "none"} 
           />
       </div>
     </div>

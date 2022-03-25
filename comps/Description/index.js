@@ -9,6 +9,8 @@ export default function Description({
   releaseDate,
   directorList,
   castList,
+  heartImg = "/favorite-dark.svg",
+  addFav = () => {},
 }){
   const { theme } = useTheme();
 
@@ -22,7 +24,8 @@ export default function Description({
             { title }
           </SectionTitle>
           <img
-            src={comp_themes[theme].navbar_fav}
+            onClick={addFav}
+            src={heartImg}
             className={scss.icon}
           />
         </div>
@@ -65,12 +68,13 @@ const SectionTitle = styled.h2`
   font-size: 18px;
   font-weight: bold;
   line-height: 28px;
-  color: ${props => props.textColor}
+  color: ${props => props.textColor};
 `
 
 const SectionInfo = styled.p`
   font-size: 14px;
   line-height: 17px;
   font-weight: lighter;
-  color: ${props => props.textColor}
+  color: ${props => props.textColor};
 `
+

@@ -19,6 +19,7 @@ export default function PageLayout({ children }) {
   const [view, setView] = useState(false);
   const [setPop, setSetPop] = useState(false);
   const [favPop, setFavPop] = useState(false);
+  const [displayFav, setDisplayFav] = useState(false);
   
   const router = useRouter();
 
@@ -78,7 +79,9 @@ export default function PageLayout({ children }) {
         <div className={scss.navBarCont}>
           <NavBar 
           onClickSetting={setting} 
-          onClickFav={favourite}/>
+          onClickFav={favourite}
+          onClickHome={ () => router.push('/') } 
+          />
         </div>
 
         {/* Setting pop up */}
@@ -95,6 +98,7 @@ export default function PageLayout({ children }) {
         <PopUpFavCont
             display={favPop === true ? "visible" : "hidden"}
             onPressCloseBtn={favourite}
+            cardDisplay={displayFav === true ? "block" : "none"}
           />
       </div>
     </div>

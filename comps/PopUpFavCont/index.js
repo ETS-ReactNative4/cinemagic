@@ -63,7 +63,10 @@ const Mid = styled.div`
 
 const PopUpFavCont = ({
     onPressCloseBtn = () => { },
-    display = "hidden"
+    display = "hidden",
+    FavMovieTitle,
+    FavMovieimage,
+    cardDisplay = "hidden"
 }) => {
     const { theme } = useTheme();
     return <Cont display={display}>
@@ -74,8 +77,7 @@ const PopUpFavCont = ({
                 <CloseBtnImg src={comp_themes[theme].popUpSettingImg} onClick={onPressCloseBtn}></CloseBtnImg>
             </Top>
             <Mid>
-                <FavCard/>
-                <FavCard/>
+                <FavCard title={FavMovieTitle} img={FavMovieimage} display={cardDisplay}/>
             </Mid>
         </Box>
 

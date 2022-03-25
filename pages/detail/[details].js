@@ -37,6 +37,13 @@ export default function Detail({
   const [setNav, setSetNav] = useState(false);
   const [chatIcon, setChatIcon] = useState(false);
   const [favPop, setFavPop] = useState(false);
+  const [addFavMovie, setAddFavMovie] = useState(false);
+  const [favMovieList, setFavMovieList] = useState({
+    movieName: "",
+    movieImg: ""
+  });
+
+  const [test, setTest] = useState("test")
 
   const changeTheme = () => {
     setMode(!mode);
@@ -64,6 +71,26 @@ export default function Detail({
     setFavPop(!favPop);
     setChatIcon(!chatIcon);
   }
+
+  const AddFavCard = () =>{
+    setAddFavMovie(!addFavMovie);
+    EditFav();
+  }
+
+  const EditFav = () => {
+  if(addFavMovie === false){
+    setFavMovieList({
+      movieName: identifiedMovie[0].Title,
+      movieImg: identifiedMovie[0].Poster
+    })
+  }else if (addFavMovie === true){
+    setFavMovieList({
+      movieName: "",
+      movieImg: ""
+    })
+  }
+}
+
 
 // code below is to identify and get the appropriate movie details
   const identifyMovie = filtering(movies, {
@@ -147,6 +174,8 @@ export default function Detail({
             directorList={movie.Director}
             castList={movie.Cast1 + "," + movie.Cast2 + "," + movie.Cast3 + "," + movie.Cast4}
             key={movie.Title}
+            addFav={AddFavCard}
+            heartImg={addFavMovie === true ? "/redheart.png" : "/favorite-dark.svg"} 
           />
         ))}
       </>
@@ -223,6 +252,9 @@ export default function Detail({
           <PopUpFavCont
             display={favPop === true ? "visible" : "hidden"}
             onPressCloseBtn={favourite}
+            FavMovieTitle={addFavMovie === true ? favMovieList.movieName : ""} 
+            FavMovieimage={addFavMovie === true ? favMovieList.movieImg : ""} 
+            cardDisplay={addFavMovie === true ? "block" : "none"} 
           />
         </section>
       </div>
