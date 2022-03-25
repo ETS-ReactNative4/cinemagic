@@ -171,13 +171,13 @@ const ChatBox = ({
                 ...prev,
                 `${name}: ${txt}`
             ])
-            setTxt("");
         })
 
         setMySock(socket);
     }, [])
 
     const SendMessage = async () => {
+        ChatInput.value = "";
         mySock.emit("send_msg", txt, name);
     }
 
