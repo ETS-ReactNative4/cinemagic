@@ -2,6 +2,7 @@ import React, { useRouter } from 'react';
 import styled from 'styled-components';
 import { useTheme } from "@/utils/provider";
 import { comp_themes } from "@/utils/themes";
+import FavCard from '../FavCard';
 
 const Cont = styled.div`
    visibility: ${props => props.display};
@@ -11,9 +12,12 @@ const Cont = styled.div`
 `;
 
 const TitleText = styled.div`
+    display: flex;
+    flex:1;
     font-size: "17px";
     font-weight: "700";
     color: ${props => props.textColor};
+    justify-content: center;
 `;
 
 const Box = styled.div`
@@ -27,27 +31,34 @@ const Box = styled.div`
 
 const Top = styled.div`
     display: flex;
+    flex:1;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
-    margin-top: 20px;
 `
 
 const CloseBtnImg = styled.img`
+    display: flex;
+    flex:1;
     height: 30px;
     width: 30px;
 `
 
 const Empty = styled.div`
     display: flex;
+    flex:1;
 `
 
 const Mid = styled.div`
-    margin-top: 50px;
     height: 100px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex:4;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex-direction: row;
+    justify-content: space-around;
+    overflow-y: scroll;
+    height: 100vh;
+    margin-bottom: 10px;
 `
 
 const PopUpFavCont = ({
@@ -63,7 +74,8 @@ const PopUpFavCont = ({
                 <CloseBtnImg src={comp_themes[theme].popUpSettingImg} onClick={onPressCloseBtn}></CloseBtnImg>
             </Top>
             <Mid>
-                
+                <FavCard/>
+                <FavCard/>
             </Mid>
         </Box>
 
