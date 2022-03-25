@@ -176,9 +176,15 @@ const ChatBox = ({
         setMySock(socket);
     }, [])
 
+    // Input Field handler
+    const handleUserInput = (e) => {
+    setTxt(e.target.value);
+    };
+
     const SendMessage = async () => {
-        ChatInput.value = "";
         mySock.emit("send_msg", txt, name);
+        // Reset Input Field handler
+        setTxt("");
     }
 
     //----sockets----
@@ -206,7 +212,7 @@ const ChatBox = ({
                     <NameMsgSent onClick={()=>setUserName(userName === false?true:false)} src="/send.png"></NameMsgSent>
                 </NameBoard>
                 : <TextBoard>
-                <ChatInput type="text" placeholder="Movie thoughts..?" onChange={(e) => setTxt(e.target.value)}></ChatInput>
+                <ChatInput type="text" placeholder="Movie thoughts..?" value={txt} onChange={handleUserInput}></ChatInput>
                 <MsgSent onClick={SendMessage} src="/send.png"></MsgSent>
                 </TextBoard>}
             </Bot>
