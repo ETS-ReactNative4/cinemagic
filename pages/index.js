@@ -88,7 +88,7 @@ export default function Home() {
         </div>
 
         {/* movie carousel */}
-        <div className={scss.carouselCont}>
+        <div className={scss.carouselContGenre}>
           <GenreCarousel />
         </div>
 

@@ -1,5 +1,7 @@
 import React from "react";
 import { Dropdown, DropdownButton, DropdownType, DropdownText, ButtonGroup, Button } from "react-bootstrap";
+import { comp_themes } from "@/utils/themes";
+import { useTheme } from "@/utils/provider";
 import { filtering } from "@/utils/func";
 
 class GenreDropdownMenuTest extends React.Component {
@@ -64,6 +66,8 @@ class GenreDropdownMenuTest extends React.Component {
 const GenreDropdownMenu = ({
   onSelection,
 }) => {
+  const { theme } = useTheme();
+
   const genreTypes = [
     "Action",
     "Adventure",

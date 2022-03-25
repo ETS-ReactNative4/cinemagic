@@ -33,6 +33,7 @@ export const comp_themes = {
     chatbox_bg:"#383838;",
     chattop_bg:"#383838",
     chat_text:"#E0E0E0",
+    dropDownColour:"#303234",
     
   },
   light: {
