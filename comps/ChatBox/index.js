@@ -171,6 +171,7 @@ const ChatBox = ({
                 ...prev,
                 `${name}: ${txt}`
             ])
+            setTxt("");
         })
 
         setMySock(socket);
@@ -192,7 +193,6 @@ const ChatBox = ({
             <Mid>
                 <ChatCont chatboxBg={comp_themes[theme].chatbox_bg}>
                     <ChatTime>{time}</ChatTime>
-                    {/* <Comment chatText={comp_themes[theme].chat_text}>{cmt}</Comment> */}
                     {blocks.map((o, i) =>
                      <div key={i} style={{padding: 10, color: 'white'}}>
                         {o}
@@ -202,11 +202,11 @@ const ChatBox = ({
             <Bot>
                 {userName === false ?
                     <NameBoard>
-                    <NameInput type="text" placeholder="What is your name?" onChange={(e) => setName(e.target.value)}></NameInput>
+                    <NameInput type="text" placeholder="Please enter your name." onChange={(e) => setName(e.target.value)}></NameInput>
                     <NameMsgSent onClick={()=>setUserName(userName === false?true:false)} src="/send.png"></NameMsgSent>
                 </NameBoard>
                 : <TextBoard>
-                <ChatInput type="text" placeholder="Type something..." onChange={(e) => setTxt(e.target.value)}></ChatInput>
+                <ChatInput type="text" placeholder="Movie thoughts..?" onChange={(e) => setTxt(e.target.value)}></ChatInput>
                 <MsgSent onClick={SendMessage} src="/send.png"></MsgSent>
                 </TextBoard>}
             </Bot>
