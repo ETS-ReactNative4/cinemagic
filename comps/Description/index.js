@@ -6,7 +6,7 @@ import { comp_themes } from "@/utils/themes";
 
 export default function Description({
   title,
-  desc = "With Spider-Man's identity now revealed, our friendly neighborhood web-slinger is unmasked and no longer able to separate his normal life as Peter Parker from the high stakes of being a superhero. When Peter asks for help from Doctor Strange, the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.",
+  releaseDate,
   directorList,
   castList,
 }){
@@ -26,9 +26,15 @@ export default function Description({
             className={scss.icon}
           />
         </div>
-        {/* desc */}
+      </section>
+
+       {/* release date */}
+       <section className={scss.yearCont}>
+        <SectionTitle textColor={comp_themes[theme].popUpSettingText}>
+          Release Date
+        </SectionTitle>
         <SectionInfo textColor={comp_themes[theme].popUpSettingText}>
-          { desc }
+          { releaseDate }
         </SectionInfo>
       </section>
 

@@ -72,6 +72,21 @@ export default function Detail({
       </>
     )
   }
+  const FindMovieRanking = () => {
+    return (
+      <>
+        {identifiedMovie.map(movie => (
+          <Info
+            title="Ranking"
+            text={ movie.Ranking + "/250 "}
+            // year={ movie.IMDByear}
+            infoSrc={ comp_themes[theme].info_ranking }
+            key={ movie.Title }
+          />
+        ))}
+      </>
+    )
+  }
   const FindMovieGenre = () => {
     return (
       <>
@@ -93,7 +108,7 @@ export default function Detail({
           <Info
             title="Duration"
             text={ movie.RunTime + "mins" }
-            infoSrc={ comp_themes[theme].info_genre }
+            infoSrc={ comp_themes[theme].info_duration }
             key={ movie.Title }
           />
         ))}
@@ -107,7 +122,7 @@ export default function Detail({
           <Info
             title="Rating"
             text={ movie.Rating + "/10" }
-            infoSrc={ comp_themes[theme].info_genre }
+            infoSrc={ comp_themes[theme].info_rating }
             key={ movie.Title }
           />
         ))}
@@ -120,6 +135,7 @@ export default function Detail({
         {identifiedMovie.map(movie => (
           <Description 
             title={fixedURL}
+            releaseDate={movie.Date}
             directorList={movie.Director}
             castList={movie.Cast1 + "," + movie.Cast2 + "," + movie.Cast3 + "," + movie.Cast4}
             key={movie.Title}
@@ -155,6 +171,7 @@ export default function Detail({
           </div>
           {/* movie info */}
           <div className={scss.squaresCont}>
+            <FindMovieRanking/>
             <FindMovieGenre />
             <FindMovieRunTime />      
             <FindMovieRating />

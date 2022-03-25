@@ -39,9 +39,10 @@ const Text = styled.div`
 const Info = ({
     width = "20px",
     height = "20px",
-    infoSrc= "/duration-dark.svg",
+    infoSrc= "/ranking-dark.svg",
     title="Duration",
     text="Action",
+    year=""
 }) => {
     const { theme } = useTheme();
     return <Cont>
@@ -49,7 +50,7 @@ const Info = ({
             <InfoIcon/>
             <InfoIcon width={width} height={height} src={infoSrc}></InfoIcon>
             <Title titleColor={comp_themes[theme].info_title}>{title}</Title>
-            <Text textColor={comp_themes[theme].info_text}>{text}</Text>
+            <Text textColor={comp_themes[theme].info_text}>{text}{year}</Text>
         </Card>
     </Cont>
 }
