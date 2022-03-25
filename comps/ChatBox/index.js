@@ -8,6 +8,7 @@ const Cont = styled.div`
     display: ${props => props.display};
     position:fixed;
     bottom: 0px;
+    margin-bottom: 20px;
 `;
 
 const BoxCont = styled.div`
@@ -15,7 +16,7 @@ const BoxCont = styled.div`
     flex-direction: column;
     justify-content: center;
     width: 390px; 
-    height: 80vh;
+    height: 90vh;
     background: ${props => props.chatboxBg};
     border-radius: 20px;
     position: relative;
@@ -155,11 +156,10 @@ const ChatBox = ({
     const [name, setName] = useState("")
 
     useEffect(() => {
-        const socket = io("http://cinemagicproject.herokuapp.com/")
+        const socket = io("https://cinemagicproject.herokuapp.com/")
 
         //everytime with a user connect
         socket.on("user_connected", (allusers) => {
-            console.log(allusers)
             setUsers(allusers);
         })
 

@@ -34,6 +34,7 @@ export default function Detail({
   const [chatPop, setChatPop] = useState(false);
   const [setPop, setSetPop] = useState(false);
   const [setNav, setSetNav] = useState(false);
+  const [chatIcon, setChatIcon] = useState(false);
 
   const changeTheme = () => {
     setMode(!mode);
@@ -49,6 +50,7 @@ export default function Detail({
   const chatbox = () => {
     setChatPop(!chatPop);
     setSetNav(!setNav);
+    setChatIcon(!chatIcon);
   }
 
   const setting = () => {
@@ -165,7 +167,10 @@ export default function Detail({
         </section>
 
         {/* Chat icon*/}
-        <ChatIcons onClickChat={chatbox}/>
+        <ChatIcons 
+        onClickChat={chatbox}
+        display={chatIcon === false ? "visible":"hidden"}
+        />
 
         {/* Chatbox pop up */}
         <ChatBox 
