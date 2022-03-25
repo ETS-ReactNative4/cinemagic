@@ -46,6 +46,7 @@ const BoxText = styled.h1`
 const Mid = styled.div`
     flex:7;
     overflow-y: scroll;
+    overflow-x: hidden;
 `
 
 const ChatClose = styled.img`
@@ -57,7 +58,7 @@ const ChatClose = styled.img`
 const ChatCont = styled.div`
     display: flex;
     flex-direction: column;
-    width:385px;
+    width:384px;
     background-color:${props => props.chatboxBg};
     margin-bottom:3px;
 `;
@@ -74,7 +75,8 @@ const ChatTime = styled.p`
 const Bot = styled.div`
     display:flex;
     justify-content:center;
-    flex:1;
+    align-items: center;
+    flex:2;
 `;
 
 const TextBoard = styled.div`
