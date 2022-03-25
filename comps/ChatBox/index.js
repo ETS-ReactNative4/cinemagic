@@ -16,7 +16,7 @@ const BoxCont = styled.div`
     flex-direction: column;
     justify-content: center;
     width: 390px; 
-    height: 80vh;
+    height: 85vh;
     background: ${props => props.chatboxBg};
     border-radius: 20px;
     position: relative;
