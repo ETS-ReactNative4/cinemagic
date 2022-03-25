@@ -4,7 +4,7 @@ import { useTheme } from "@/utils/provider";
 import { comp_themes } from "@/utils/themes";
 
 const Cont = styled.div`
-   display: ${props => props.display};
+   visibility: ${props => props.display};
    position: fixed;
    bottom: 0;
    z-index: 99;
@@ -79,7 +79,7 @@ const PopUpCont = ({
     gridList = () => { },
     position1 = "0px",
     position2 = "0px",
-    display = "none"
+    display = "hidden"
 }) => {
     const { theme } = useTheme();
     return <Cont display={display}>

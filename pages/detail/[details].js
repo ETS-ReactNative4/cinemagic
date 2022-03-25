@@ -19,6 +19,7 @@ import NavBar from '@/comps/NavBar';
 import PopUpCont from '@/comps/PopUpCont';
 import ChatIcons from '@/comps/ChatIcon';
 import ChatBox from '@/comps/ChatBox';
+import PopUpFavCont from '@/comps/PopUpFavCont';
 
 export default function Detail({
 
@@ -35,6 +36,7 @@ export default function Detail({
   const [setPop, setSetPop] = useState(false);
   const [setNav, setSetNav] = useState(false);
   const [chatIcon, setChatIcon] = useState(false);
+  const [favPop, setFavPop] = useState(false);
 
   const changeTheme = () => {
     setMode(!mode);
@@ -55,6 +57,12 @@ export default function Detail({
 
   const setting = () => {
     setSetPop(!setPop);
+    setChatIcon(!chatIcon);
+  }
+
+  const favourite = () => {
+    setFavPop(!favPop);
+    setChatIcon(!chatIcon);
   }
 
 // code below is to identify and get the appropriate movie details
@@ -181,6 +189,7 @@ export default function Detail({
         <section className={scss.navBarCont}>
           <NavBar 
             onClickSetting={ setting } 
+            onClickFav={favourite}
             onClickHome={ () => router.push('/') } 
             display={setNav === true ? "hidden" : "visible"} 
           />
@@ -189,9 +198,14 @@ export default function Detail({
             darkLight={changeTheme} 
             gridList={changeView} 
             onPressCloseBtn={setting} 
-            display={setPop === true ? "block" : "none"} 
+            display={setPop === true ? "visible" : "hidden"} 
             position1={mode === true ? "0px" : "27px"} 
             position2={view === true ? "0px" : "27px"} 
+          />
+          {/* fav popup */}
+          <PopUpFavCont
+            display={favPop === true ? "visible" : "hidden"}
+            onPressCloseBtn={favourite}
           />
         </section>
       </div>

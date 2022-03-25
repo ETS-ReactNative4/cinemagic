@@ -1,51 +1,72 @@
-import React, {useRouter} from 'react';
+import React, { useRouter } from 'react';
 import styled from 'styled-components';
-import TextUI from '../TextUI';
-import CloseBtn from '../CloseBtn';
-import Card from '../Card';
+import { useTheme } from "@/utils/provider";
+import { comp_themes } from "@/utils/themes";
 
 const Cont = styled.div`
+   visibility: ${props => props.display};
+   position: fixed;
+   bottom: 0;
+   z-index: 99;
+`;
+
+const TitleText = styled.div`
+    font-size: "17px";
+    font-weight: "700";
+    color: ${props => props.textColor};
+`;
+
+const Box = styled.div`
     display: flex;
     flex-direction: column;
-    width: 258px;
-    height: 310px;
-    background-color: #2C2C2C;
+    width: 100vw;
+    height: 400px;
+    background-color: ${props=>props.boxColor};
     border-radius: 25px 25px 20px 20px;
-`;
+`
 
-const PopFavCont = styled.div`
-    padding: 20px;
+const Top = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-`;
+    margin-top: 20px;
+`
 
-const PopFavContTitle = styled.div`
-    margin-left: 20%;
-`;
+const CloseBtnImg = styled.img`
+    height: 30px;
+    width: 30px;
+`
 
-const PopCard = styled.div`
+const Empty = styled.div`
     display: flex;
-    flex-direction: row; 
-    margin-left: 10px;
-`;
+`
+
+const Mid = styled.div`
+    margin-top: 50px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+`
 
 const PopUpFavCont = ({
-    onClickFav = () =>{},
-    onPressFavCloseBtn = () =>{}
+    onPressCloseBtn = () => { },
+    display = "hidden"
 }) => {
-    return <Cont onClick={onClickFav}>
-        <PopFavCont>
-            <PopFavContTitle>
-                <TextUI TextUISize="14px" TextUIColor="#E0E0E0" Title="YOUR FAVOURITE"/> 
-            </PopFavContTitle>
-            <CloseBtn onClick={onPressFavCloseBtn} CloseSrc='/close-dark.svg'/>
-        </PopFavCont>
-        <PopCard>
-            <Card CardImgWidth='93px' CardImgHeight='130px' CardTextSize='12px'/>
-        </PopCard>
-        
+    const { theme } = useTheme();
+    return <Cont display={display}>
+        <Box boxColor={comp_themes[theme].popUpSettingBg}>
+            <Top>
+                <Empty />
+                <TitleText textColor={comp_themes[theme].popUpSettingText}>FAVOURITE</TitleText>
+                <CloseBtnImg src={comp_themes[theme].popUpSettingImg} onClick={onPressCloseBtn}></CloseBtnImg>
+            </Top>
+            <Mid>
+                
+            </Mid>
+        </Box>
+
     </Cont>
 }
 
