@@ -8,6 +8,7 @@ const Cont = styled.div`
     display: ${props => props.display};
     position:fixed;
     bottom: 0px;
+    margin-top: 50px;
     margin-bottom: 20px;
 `;
 
