@@ -1,7 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useTheme } from "@/utils/provider";
-import { useRouter } from 'next/router';
 import scss from '@/styles/pageStyles/home.module.scss';
+import axios from 'axios';
+import { useRouter } from 'next/router';
+import { useTheme } from "@/utils/provider";
+import { filtering } from '@/utils/func';
+
+import movies from '@/utils/imdbTop250.json';
 
 // components
 import Logo from '@/comps/Logo';
@@ -11,12 +15,13 @@ import NavBar from '@/comps/NavBar';
 import GenreDropdownMenu from '@/comps/DropDownPicker/genre';
 import YearDropdownMenu from '@/comps/DropDownPicker/year';
 import DurationDropdownMenu from '@/comps/DropDownPicker/duration';
-import TrendingCarousel from '@/comps/ImageCarousel/trending';
 import GenreCarousel from '@/comps/ImageCarousel/genreTypes';
 import YearlyCarousel from '@/comps/ImageCarousel/2021movies';
 import PopUpCont from '@/comps/PopUpCont';
 import PopUpFavCont from '@/comps/PopUpFavCont';
+import GridCard from '@/comps/GridCard';
 
+var timer = null;
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
@@ -25,6 +30,8 @@ export default function Home() {
   const [setPop, setSetPop] = useState(false);
   const [favPop, setFavPop] = useState(false);
   const [displayFav, setDisplayFav] = useState(false);
+  const [searched, setSearched] = useState([]);
+  const [search, setSearch] = useState(false);
   
   const router = useRouter();
 
@@ -47,6 +54,65 @@ export default function Home() {
     setFavPop(!favPop);
   }
 
+  const handleCardClick = sel => router.push(`/detail/${sel}`);
+
+  useEffect(() => {
+    InputSearched();
+  }, []);
+
+  const InputSearched = async (val) => {
+    var inputVal = val + " ";
+
+    const res = await axios.get("/api/movies", {
+      params: {
+        text: val
+      }
+    })
+
+    setSearched(res.data);
+    
+    if(inputVal.length > 1) {
+      inputVal.trim();
+      SearchCards(searched);
+    }
+
+    function SearchCards(val){
+      // var searchedVal = filtering(movies, {
+      //   title: val
+      // })
+      var slicedSearchArr = val.slice(0, 20);
+  
+      function sliceTitle(movie){
+        if(movie.length < 14){
+          return "";
+        }else if(movie.length > 14 ){
+          return "...";
+        }
+      }
+  
+      return (
+        <div className={scss.contentContainer}>
+          <div className={scss.contentRow}>
+            {slicedSearchArr.map(data => (
+              <GridCard 
+                movieName={data.Title.slice(0,14) + sliceTitle(data.Title)} 
+                imageSrc={ data.Poster } 
+                key={ data.Title } 
+                onCardClick={ () => handleCardClick(`${data.Title}`)} 
+              />
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    return (
+      <>
+        <SearchCards />
+      </>
+    )
+  }
+
   const filteringMoviesByGenre = genre => router.push(`/genre/${genre}`); 
   const filteringMoviesByYear = year => router.push(`/year/${year}`); 
   const filteringMoviesByDuration = dur => router.push(`/duration/${dur}`);
@@ -58,10 +124,10 @@ export default function Home() {
         <div className={scss.titleCont}>
           <Logo />
         </div>
-       
+      
         {/* search bar */}
         <div className={scss.searchBarCont}>
-          <SearchBar onChange={ (e) => inputSearch(e.target.value) }/>
+          <SearchBar onChange={ e => InputSearched(e.target.value) } />
         </div>
 
         {/* drop down filter menus */}
@@ -76,21 +142,24 @@ export default function Home() {
           <TextUI Title="RECENT MOVIES" />
         </div>
 
-        {/* movie carousel */}
-        <div className={scss.carouselCont}>
-          {/* <TrendingCarousel /> */}
-          <YearlyCarousel />
-        </div>
+          {
+            search ? <InputSearched /> : 
+            <>
+              <div className={scss.carouselCont}>
+              {/* <TrendingCarousel /> */}
+                <YearlyCarousel />
+              </div>
 
-        {/* GENRE subheading */}
-        <div className={scss.subHeadingCont}>
-          <TextUI Title="GENRE" />
-        </div>
+              <div className={scss.subHeadingCont}>
+                <TextUI Title="GENRE" />
+              </div>
 
-        {/* movie carousel */}
-        <div className={scss.carouselContGenre}>
-          <GenreCarousel />
-        </div>
+              {/* movie carousel */}
+              <div className={scss.carouselContGenre}>
+                <GenreCarousel />
+              </div>
+            </>
+          }
 
         {/* nav bar */}
         <div className={scss.navBarCont}>

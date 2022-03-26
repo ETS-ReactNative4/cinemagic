@@ -1,4 +1,4 @@
-import React, {useRouter} from 'react';
+import React, { useRouter } from 'react';
 import styled from 'styled-components';
 import { useTheme } from "@/utils/provider";
 import { comp_themes } from "@/utils/themes";
@@ -7,15 +7,18 @@ const SearchBar = ({
   onClickSearch = () => {},
   onChange = () => {}
 }) => {
-  const {theme} = useTheme();
-  return <Cont bgColor={ comp_themes[theme].search_bar }>
-      <SearchBarInput 
-        bgColor={ comp_themes[theme].search_bar } 
-        placeholder="Search by title, casts, and director "
-        onChange={ onChange }  
-      />
-      <SearchBarIcon src={ comp_themes[theme].search_bar_img } onClick={ onClickSearch }/>
-  </Cont>
+  const { theme } = useTheme();
+
+  return (
+    <Cont bgColor={ comp_themes[theme].search_bar }>
+        <SearchBarInput 
+          bgColor={ comp_themes[theme].search_bar } 
+          placeholder="Search by title, casts, and director "
+          onChange={ onChange }  
+        />
+        <Submit src={ comp_themes[theme].search_bar_img } />
+    </Cont>
+  )
 }
 
 export default SearchBar;
@@ -44,8 +47,11 @@ const SearchBarInput = styled.input`
   font-size:14px;
   outline: none;
 `
-const SearchBarIcon = styled.img`
+
+const Submit = styled.input.attrs({
+  type: 'image'
+})`
   width: 20px;
-  height: 20px;  
-  margin-right:20px;
-`;
+  height: 20px;
+  margin-right: 20px;
+`

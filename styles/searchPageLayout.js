@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import scss from '@/styles/pageStyles/genreFiltered.module.scss';
+import scss2 from '@/styles/pageStyles/genreFiltered.module.scss';
 import { useTheme } from "@/utils/provider";
 import { useRouter } from 'next/router';
 import { filtering } from '@/utils/func';
@@ -18,6 +19,7 @@ import Dropzone from '@/comps/Dropzone';
 import PopUpCont from '@/comps/PopUpCont';
 import GridCard from '@/comps/GridCard';
 import PopUpFavCont from '@/comps/PopUpFavCont';
+import TextUI from '@/comps/TextUI';
 
 export default function PageLayout({ children }) {
   const { theme, setTheme } = useTheme();
@@ -53,7 +55,12 @@ export default function PageLayout({ children }) {
     setFavPop(!favPop);
   }
 
+  useEffect(() => {
+    SearchCards();
+  }, [])
+
   function SearchCards(val){
+    console.log(val);
     var searchedVal = filtering(movies, {
       title: val
     })
@@ -68,7 +75,7 @@ export default function PageLayout({ children }) {
     }
 
     return (
-      <div className={scss.contentRow}>
+      <div className={scss2.contentRow}>
         {slicedSearchArr.map(data => (
           <GridCard 
             movieName={data.Title.slice(0,14) + sliceTitle(data.Title)} 
@@ -112,7 +119,15 @@ export default function PageLayout({ children }) {
           <DurationDropdownMenu onSelection={ sel => filteringMoviesByDuration(`${sel}`) } />
         </div>
 
-        { children }
+              {/* subheading */}
+      <div className={scss.trendingHeadingCont}>
+        <TextUI Title="test" />
+      </div>
+
+      {/* filtered movies */}
+      <div className={scss2.contentContainer}>
+        <SearchCards />
+      </div>  
 
         {/* Drag icon*/}
         <div>

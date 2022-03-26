@@ -38,8 +38,6 @@ ul.swiper-wrapper {
 
 /* React Bootstrap styling override =============================== */
 .dropdown.btn-group {
-  background-color: ;
-
   .btn-sm {
     border: 1px solid #494949;
     border-radius: 20px;
@@ -52,4 +50,8 @@ ul.swiper-wrapper {
     max-height: 33vh;
     overflow-y: scroll;
   }
+}
+
+#dropdown-button-drop-0 {
+  background-color: #303234;
 }

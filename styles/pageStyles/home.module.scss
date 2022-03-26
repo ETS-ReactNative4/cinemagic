@@ -80,6 +80,27 @@
       width: 95%;
       min-height: 40px
     }
+
+    .contentContainer {
+      display: flex;
+      /* flex-direction: column; */
+      width: auto;
+      max-width: 375px;
+      flex-wrap: wrap;
+
+      margin-bottom: 68px;
+    }
+  
+    .contentRow {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+  
+      width: 100%;
+      max-width: 100%;
+      flex-wrap: wrap;
+    }
   }
 }
 
