@@ -41,7 +41,7 @@ Developers
 * [Next JS](https://nextjs.org/)
 * [React-Native](https://reactnative.dev/)
 * [Styled-Components](https://styled-components.com/)
-* [Socket] (https://socket.io/)
+* [Socket](https://socket.io/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
