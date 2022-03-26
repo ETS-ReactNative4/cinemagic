@@ -3,6 +3,7 @@ import scss from './description.module.scss';
 import styled from 'styled-components';
 import { useTheme } from "@/utils/provider";
 import { comp_themes } from "@/utils/themes";
+import Notes from '../Notes';
 
 export default function Description({
   title,
@@ -60,6 +61,16 @@ export default function Description({
           { castList }
         </SectionInfo>
       </section>
+
+      {/* Comment */}
+      <section className={scss.commentCont}>
+        <SectionTitle textColor={comp_themes[theme].popUpSettingText}>
+          Comment
+        </SectionTitle>
+        <SectionInfo textColor={comp_themes[theme].popUpSettingText}>
+          Drag <Notes/>into the board to add your notes
+        </SectionInfo>
+      </section>
     </div>
   )
 }
@@ -72,7 +83,6 @@ const SectionTitle = styled.h2`
 `
 
 const SectionInfo = styled.p`
-  width: 270px;
   font-size: 14px;
   line-height: 17px;
   font-weight: lighter;

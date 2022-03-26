@@ -140,6 +140,11 @@ const NameMsgSent = styled.img`
     height: 25px;
 `;
 
+const CommentTime = styled.div`
+    color: #767676;
+    font-size: 15px;
+`
+
 const ChatBox = ({
     onPressCloseCB = () => { },
     display = "none",
@@ -148,6 +153,7 @@ const ChatBox = ({
 
     const today = new Date();
     const time = today.getHours() + " : " + (today.getMinutes()<10?'0':'') + today.getMinutes();
+    const chattime = time.toString();
 
     //----sockets----
     const [mySock, setMySock] = useState(null);
@@ -198,10 +204,9 @@ const ChatBox = ({
             </Top>
             <Mid>
                 <ChatCont chatboxBg={comp_themes[theme].chatbox_bg}>
-                    <ChatTime>{time}</ChatTime>
                     {blocks.map((o, i) =>
                      <div key={i} style={{padding: 10, color: 'white'}}>
-                        {o}
+                        <CommentTime>{chattime}</CommentTime> {o}
                     </div>)}
                 </ChatCont>
             </Mid>

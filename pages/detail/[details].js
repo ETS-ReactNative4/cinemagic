@@ -2,12 +2,19 @@ import React, { useEffect, useState } from 'react';
 import scss from '@/styles/pageStyles/detail.module.scss';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import ax from "axios";
 
 import { useTheme } from "@/utils/provider";
 import { comp_themes, themes } from "@/utils/themes";
 import { filtering, sortArr } from '@/utils/func';
 
 import movies from '@/utils/imdbTop250.json';
+
+// dropzone
+import { TouchBackend } from 'react-dnd-touch-backend'
+//import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider } from 'react-dnd'
+import {v4 as uuidv4} from 'uuid';
 
 // components
 import BackBtn from '@/comps/BackBtn';
@@ -20,11 +27,14 @@ import PopUpCont from '@/comps/PopUpCont';
 import ChatIcons from '@/comps/ChatIcon';
 import ChatBox from '@/comps/ChatBox';
 import PopUpFavCont from '@/comps/PopUpFavCont';
+import Dropzone from '@/comps/Dropzone';
+import Notes from '@/comps/Notes';
 
 export default function Detail({
 
 }) {
   const router = useRouter();
+  const { uuid } = router.query;
   const { asPath } = useRouter();
   const cutURL = asPath.substring(8);
   const fixedURL = cutURL.replace(/%20/g, ' ');
@@ -42,8 +52,6 @@ export default function Detail({
     movieName: "",
     movieImg: ""
   });
-
-  const [test, setTest] = useState("test")
 
   const changeTheme = () => {
     setMode(!mode);
@@ -91,6 +99,40 @@ export default function Detail({
   }
 }
 
+//dropzone
+const [ns, setNs] = useState({})
+
+useEffect(()=>{
+  if(uuid){
+    const GetNotes = async()=>{
+      const resp = await ax.get('/api/load', {
+        params:{uuid}
+      });
+      if(resp.data !== false){
+        setNs(resp.data)
+      }
+    }
+    GetNotes();
+  }
+}, [uuid])
+
+const HandleUpdateNote = (id, notedata)=>{
+  ns[id] = {
+    ...ns[id],
+    ...notedata
+  }
+
+  setNs(({
+    ...ns
+  }))
+}
+
+const HandleSave = async () => {
+  const resp = await ax.post('/api/save', {
+    uuid,
+    ns,
+  })
+}
 
 // code below is to identify and get the appropriate movie details
   const identifyMovie = filtering(movies, {
@@ -183,8 +225,14 @@ export default function Detail({
   }
 
   return (
+    
     <div className={scss.windowCont}>
       <div className={scss.phoneSizeCont}>
+      <div>
+          <DndProvider backend={TouchBackend} options={{
+            enableTouchEvents: true,
+            enableMouseEvents: true
+          }}>
         {/* detail page header container */}
         <div className={scss.headerCont}>
           <div className={scss.backBtnCont}>
@@ -220,6 +268,30 @@ export default function Detail({
           <FindMovieDescDetails />
         </section>
 
+        {/* Dropzone*/}
+        <section className={scss.dropzoneCont}>
+            {ns && <Dropzone onDropItem={(item)=>{
+              const n_id = uuidv4();
+              setNs((prev)=>({
+                ...prev,
+                [n_id]:{id:n_id}
+              }))
+            }}>
+              {Object.values(ns).map(o=><Notes 
+                // once the note is drop, the type change so that it is not dropable
+                type="empty" 
+                // add {children} so that we can see the uniq id and stuff
+                key={o.id}
+                //pass the content of pos and content
+                notepos={o.pos}
+                notecontent={o.content}
+                onUpdateNote={(obj)=>HandleUpdateNote(o.id, obj)}
+              >
+                {o.id}
+              </Notes>)}
+            </Dropzone>}
+        </section>
+
         {/* Chat icon*/}
         <ChatIcons 
         onClickChat={chatbox}
@@ -231,6 +303,7 @@ export default function Detail({
           display={chatPop === true ? "block" : "none"}
           onPressCloseCB={chatbox}
         />
+
         {/* Navbar setting */}
         <section className={scss.navBarCont}>
           <NavBar 
@@ -239,6 +312,7 @@ export default function Detail({
             onClickHome={ () => router.push('/') } 
             display={setNav === true ? "hidden" : "visible"} 
           />
+
           {/* setting popup */}
           <PopUpCont 
             darkLight={changeTheme} 
@@ -248,6 +322,7 @@ export default function Detail({
             position1={mode === true ? "0px" : "27px"} 
             position2={view === true ? "0px" : "27px"} 
           />
+
           {/* fav popup */}
           <PopUpFavCont
             display={favPop === true ? "visible" : "hidden"}
@@ -256,8 +331,12 @@ export default function Detail({
             FavMovieimage={addFavMovie === true ? favMovieList.movieImg : ""} 
             cardDisplay={addFavMovie === true ? "block" : "none"} 
           />
+
         </section>
+        </DndProvider>
+    </div>
       </div>
     </div>
+    
   )
 }
