@@ -41,12 +41,15 @@ Developers
 * [Next JS](https://nextjs.org/)
 * [React-Native](https://reactnative.dev/)
 * [Styled-Components](https://styled-components.com/)
-* [Socket]https://socket.io/)
+* [Socket] (https://socket.io/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 ### Contact
 
-Project Link: https://github.com/danielfubcit/cinemagic
-App Link: https://cinemagic-coral.vercel.app/
+* Project Link: https://github.com/danielfubcit/cinemagic
+* App Link: https://cinemagic-coral.vercel.app/
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
