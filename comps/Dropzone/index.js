@@ -3,11 +3,11 @@ import styled from 'styled-components'
 
 const DropCont =styled.div`
   background: ${({bg})=>bg || '#DDD'};
-  /* background-color: ${props=>props.dropzonebg}; */
   border-radius: 20px;
   border: 1px solid #8C8C8C;
-  width:95vw;
-  height:300px;
+  width:96vw;
+  height:200px;
+  padding: 20px;
 `
 
 const Dropzone = ({

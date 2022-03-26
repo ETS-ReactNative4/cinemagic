@@ -201,7 +201,7 @@ const ChatBox = ({
                     <ChatTime>{time}</ChatTime>
                     {blocks.map((o, i) =>
                      <div key={i} style={{padding: 10, color: 'white'}}>
-                        {o}
+                        {time} + {o}
                     </div>)}
                 </ChatCont>
             </Mid>
