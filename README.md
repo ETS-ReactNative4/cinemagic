@@ -33,6 +33,7 @@ Developers
 * [Michael Trinh](https://github.com/michaelatrinh)
 * [Charlene Tran](https://github.com/CharleneTran)
 * [Jessica Wu](https://github.com/JessicaW0)
+* * [Tiffany Tu](https://github.com/tifftu)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
