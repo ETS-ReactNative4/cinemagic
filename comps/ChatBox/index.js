@@ -140,6 +140,11 @@ const NameMsgSent = styled.img`
     height: 25px;
 `;
 
+const CommentTime = styled.div`
+    color: #767676;
+    font-size: 15px;
+`
+
 const ChatBox = ({
     onPressCloseCB = () => { },
     display = "none",
@@ -201,7 +206,7 @@ const ChatBox = ({
                     <ChatTime>{time}</ChatTime>
                     {blocks.map((o, i) =>
                      <div key={i} style={{padding: 10, color: 'white'}}>
-                        {time} + {o}
+                        <CommentTime>{time}</CommentTime> {o}
                     </div>)}
                 </ChatCont>
             </Mid>
