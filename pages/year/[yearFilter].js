@@ -24,6 +24,7 @@ export default function FilteredPage({
   var cutURLUpperCase = cutURL.toUpperCase();
 
   var movieFilteredArr = [];
+  var uniqueMovieFilteredArry = new Set();
 
   const handleCardClick = sel => router.push(`/detail/${sel}`);
 
@@ -31,7 +32,15 @@ export default function FilteredPage({
     movieFilteredArr = filtering(movies, {
       year: cutURL
     });
-    var slicedArr = movieFilteredArr.slice(0, 20);
+
+    const uniqueArrFinder = movieFilteredArr.filter((obj) => {
+      const isPresentinSet = uniqueMovieFilteredArry.has(obj.Title && obj.Poster);
+      uniqueMovieFilteredArry.add(obj.Title && obj.Poster);
+
+      return !isPresentinSet;
+    });
+
+    var slicedArr = uniqueArrFinder.slice(0, 20);
 
     function sliceTitle(movie){
       if(movie.length < 14){

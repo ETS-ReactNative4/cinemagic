@@ -19,6 +19,7 @@ export default function FilteredPage({
   var cutURLUpperCase = cutURL.toUpperCase();
 
   var movieFilteredArr = [];
+  var uniqueMovieFilteredArry = new Set();
 
   const handleCardClick = sel => router.push(`/detail/${sel}`);
 
@@ -26,6 +27,15 @@ export default function FilteredPage({
     movieFilteredArr = filtering(movies, {
       genre: cutURL
     });
+    
+    // CODE BELOW IS TO FIND AND REMOVE DUPLICATES
+    // const uniqueArrFinder = movieFilteredArr.filter(obj => {
+    //   const dupilcate = uniqueMovieFilteredArry.has(obj.Title);
+    //   uniqueMovieFilteredArry.add(obj.Title);
+
+    //   return !dupilcate;
+    // });
+
     var slicedArr = movieFilteredArr.slice(0, 20);
 
     function sliceTitle(movie){
@@ -33,16 +43,16 @@ export default function FilteredPage({
         return "";
       }else if(movie.length > 14 ){
         return "...";
+      }
     }
-  }
 
     return (
       <div className={scss.contentRow}>
         {slicedArr.map(data => (
           <GridCard 
-            movieName={data.Title.slice(0,14) + sliceTitle(data.Title)} 
+            movieName={ data.Title.slice(0,14) + sliceTitle(data.Title) } 
             imageSrc={ data.Poster } 
-            key={data.Title} 
+            key={ data.Title } 
             onCardClick={ () => handleCardClick(`${data.Title}`)} 
           />
         ))}

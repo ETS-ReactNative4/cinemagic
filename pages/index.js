@@ -21,8 +21,6 @@ import PopUpCont from '@/comps/PopUpCont';
 import PopUpFavCont from '@/comps/PopUpFavCont';
 import GridCard from '@/comps/GridCard';
 
-var timer = null;
-
 export default function Home() {
   const { theme, setTheme } = useTheme();
   const [mode, setMode] = useState(false);
@@ -63,13 +61,17 @@ export default function Home() {
   const InputSearched = async (val) => {
     var inputVal = val + " ";
 
-    const res = await axios.get("/api/movies", {
-      params: {
-        text: val
-      }
-    })
+    if(inputVal.length > 2) {
+      const res = await axios.get("/api/movies", {
+        params: {
+          text: val
+        }
+      })
+  
+      setSearched(res.data);
+    }
 
-    setSearched(res.data);
+    console.log(val);
     
     if(inputVal.length > 1) {
       inputVal.trim();
@@ -112,6 +114,11 @@ export default function Home() {
       </>
     )
   }
+
+  useEffect(() => {
+    if(searched.length >= 1) return setSearch(true);
+    if(searched.length <= 1) return setSearch(false);
+  }, [searched])
 
   const filteringMoviesByGenre = genre => router.push(`/genre/${genre}`); 
   const filteringMoviesByYear = year => router.push(`/year/${year}`); 
