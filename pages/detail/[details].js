@@ -228,11 +228,11 @@ const HandleSave = async () => {
     
     <div className={scss.windowCont}>
       <div className={scss.phoneSizeCont}>
-      <div>
           <DndProvider backend={TouchBackend} options={{
             enableTouchEvents: true,
             enableMouseEvents: true
           }}>
+
         {/* detail page header container */}
         <div className={scss.headerCont}>
           <div className={scss.backBtnCont}>
@@ -334,7 +334,6 @@ const HandleSave = async () => {
 
         </section>
         </DndProvider>
-    </div>
       </div>
     </div>
     
