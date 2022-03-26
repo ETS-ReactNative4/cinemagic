@@ -8,7 +8,7 @@ const Cont = styled.div`
     align-items: center;
     position: fixed;
     bottom: 100px;
-    right: 30px;
+    right: 15px;
     z-index:10;
 `;
 
