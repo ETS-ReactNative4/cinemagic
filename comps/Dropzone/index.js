@@ -5,7 +5,7 @@ const DropCont =styled.div`
   background: ${({bg})=>bg || '#DDD'};
   border-radius: 20px;
   border: 1px solid #8C8C8C;
-  width:96vw;
+  width:100vw;
   height:200px;
   padding: 20px;
 `

@@ -89,6 +89,7 @@ const Notes = ({
       // value={content} 
       onChange={(e)=>setContent(e.target.value)}
       onBlur={()=>setShowInput(false)}
+      style={{fontSize:14}}
       >
         </textarea>}
     </div>
