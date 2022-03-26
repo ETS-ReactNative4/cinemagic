@@ -1,12 +1,8 @@
 <div align="center">
   <a href="https://github.com/danielfubcit/cinemagic">
-    <img src="assets/CINEMAGIC.svg" alt="Logo" width="80" height="80">
+   CINEMAGIC
   </a>
-
-<h3 align="center">OnMe Drink Gifting Application</h3>
-
-  <p align="center">
-    A cross-platform mobile application designed and developed by BCIT's D3 students as our final project.
+  
 </div>
 
 <!-- ABOUT THE PROJECT -->
