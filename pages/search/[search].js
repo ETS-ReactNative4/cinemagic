@@ -1,46 +1,32 @@
 import React, { useEffect, useState } from 'react';
+import scss from '@/styles/pageStyles/genreFiltered.module.scss';
 import { useRouter } from 'next/router';
 import { filtering, sortArr } from '@/utils/func';
 import movies from '@/utils/imdbTop250.json';
 import PageLayout from '@/styles/pageLayout';
-import scss from '@/styles/pageStyles/genreFiltered.module.scss';
 
 // components
-import Logo from '@/comps/Logo';
-import SearchBar from '@/comps/SearchBar';
-import NavBar from '@/comps/NavBar';
-import GenreDropdownMenu from '@/comps/DropDownPicker/genre';
-import YearDropdownMenu from '@/comps/DropDownPicker/year';
-import DurationDropdownMenu from '@/comps/DropDownPicker/duration';
 import TextUI from '@/comps/TextUI';
 import GridCard from '@/comps/GridCard';
+import { stringify } from '@firebase/util';
 
 export default function FilteredPage({
 
 }){
   const router = useRouter();
   const { asPath } = useRouter();
-  var cutURL = asPath.substring(6);
+  var cutURL = asPath.substring(7);
   var cutURLUpperCase = cutURL.toUpperCase();
 
   var movieFilteredArr = [];
-  var uniqueMovieFilteredArry = new Set();
 
   const handleCardClick = sel => router.push(`/detail/${sel}`);
 
   const FilterMoviesByQuery = () => {
     movieFilteredArr = filtering(movies, {
-      year: cutURL
+      genre: cutURL
     });
-
-    const uniqueArrFinder = movieFilteredArr.filter((obj) => {
-      const isPresentinSet = uniqueMovieFilteredArry.has(obj.Title && obj.Poster);
-      uniqueMovieFilteredArry.add(obj.Title && obj.Poster);
-
-      return !isPresentinSet;
-    });
-
-    var slicedArr = uniqueArrFinder.slice(0, 20);
+    var slicedArr = movieFilteredArr.slice(0, 20);
 
     function sliceTitle(movie){
       if(movie.length < 14){
@@ -74,7 +60,7 @@ export default function FilteredPage({
       {/* filtered movies */}
       <div className={scss.contentContainer}>
         <FilterMoviesByQuery />
-      </div>
+      </div>  
     </PageLayout>
   )
 }

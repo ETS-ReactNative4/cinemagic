@@ -45,4 +45,13 @@ ul.swiper-wrapper {
     width: 85px;
     height: 30px;
   }
+
+  .dropdown-menu {
+    max-height: 33vh;
+    overflow-y: scroll;
+  }
+}
+
+#dropdown-button-drop-0 {
+  background-color: #303234;
 }

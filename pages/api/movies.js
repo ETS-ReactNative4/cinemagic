@@ -5,11 +5,7 @@ export default async function handler(req, res) {
   const { text, genre, year, duration } = req.query;
   var moviesList = [];
 
-  if(text){
-    moviesList = filtering(movies, {
-      title: text
-    })
-  }
+  if(text) return moviesList = filtering(movies, { title: text });
 
   if(genre){
     moviesList = filtering(movies, {

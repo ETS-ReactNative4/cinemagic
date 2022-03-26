@@ -5,7 +5,6 @@ import { comp_themes } from '@/utils/themes';
 
 export default function GridCard({
   movieName = "movie title",
-  elementKey,
   imageSrc,
   onCardClick = () => {}
 }){
@@ -14,7 +13,6 @@ export default function GridCard({
   return (
     <div 
       style={ styles.cont } 
-      key={elementKey}
       onClick={onCardClick}
       // onSelect={elementKey}
     >
