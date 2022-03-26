@@ -69,11 +69,13 @@
   flex-grow: 1;
   width: 377px;
   max-width: 377px;
-
-  margin-top: 50px;
-  margin-bottom: 68px;
 }
 
 .navBarCont {
   @include navBar();
+}
+
+.dropzoneCont{
+  height: 350px;
+  margin-bottom: 50px;
 }

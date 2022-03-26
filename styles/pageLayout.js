@@ -10,8 +10,6 @@ import NavBar from '@/comps/NavBar';
 import GenreDropdownMenu from '@/comps/DropDownPicker/genre';
 import YearDropdownMenu from '@/comps/DropDownPicker/year';
 import DurationDropdownMenu from '@/comps/DropDownPicker/duration';
-import DragIcons from '@/comps/DragIcon';
-import Dropzone from '@/comps/Dropzone';
 import PopUpCont from '@/comps/PopUpCont';
 import PopUpFavCont from '@/comps/PopUpFavCont';
 
@@ -81,16 +79,6 @@ export default function PageLayout({ children }) {
         </div>
 
         { children }
-
-        {/* Drag icon*/}
-        <div>
-          <DragIcons onClickDrag={dropzone}/>
-        </div>
-
-        {/* Dropzone pop up */}
-        <Dropzone 
-          display={dropzonePop === true ? "block" : "none"} 
-        />
 
         {/* nav bar */}
         <div className={scss.navBarCont}>
