@@ -279,7 +279,7 @@ const HandleSave = async () => {
             }}>
               {Object.values(ns).map(o=><Notes 
                 // once the note is drop, the type change so that it is not dropable
-                type="boardnotes" 
+                type="empty" 
                 // add {children} so that we can see the uniq id and stuff
                 key={o.id}
                 //pass the content of pos and content

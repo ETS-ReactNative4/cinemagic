@@ -68,7 +68,7 @@ export default function Description({
           Comment
         </SectionTitle>
         <SectionInfo textColor={comp_themes[theme].popUpSettingText}>
-          Drag <Notes/> into the board to add your notes
+          Drag <Notes/>into the board to add your notes
         </SectionInfo>
       </section>
     </div>

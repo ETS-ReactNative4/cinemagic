@@ -15,6 +15,9 @@ const NoteCont = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  margin-left: 4px;
+  margin-right: 6px;
+  margin-bottom: 10px;
   ${({position, left, top})=>(position === 'fixed' || position === 'absolute') && `
     left:${left}px;
     top:${top}px;
@@ -54,7 +57,6 @@ const Notes = ({
     type,
     item: {},
     end:(item, monitor)=>{
-      //only if the type is boardnotes, we set the position based on the moved position
       if(type === 'boardnotes'){
         setPos({
           left:monitor.getClientOffset().x,
@@ -63,8 +65,6 @@ const Notes = ({
         })
       }
     },
-		// The collect function utilizes a "monitor" instance (see the Overview for what this is)
-		// to pull important pieces of state from the DnD system.
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
       coords: monitor.getClientOffset()
